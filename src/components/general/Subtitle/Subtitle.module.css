@@ -1,5 +1,18 @@
 .wrapper {
   width: 100%;
+  display: flex;
+}
+
+.left {
+  justify-content: flex-start;
+}
+
+.center {
+  justify-content: center;
+}
+
+.right {
+  justify-content: flex-end;
 }
 
 .subtitle {
@@ -7,6 +20,11 @@
   /* line-height: 1.25; */
   /* letter-spacing: -0.01em; */
   /* font-weight: 420; */
-  font-weight: var(--fw-subtitle);
+  font-weight: var(--fw-body);
+  font-size: var(--fs-h3);
   visibility: hidden;
+}
+
+.noAnimation {
+  visibility: visible;
 }

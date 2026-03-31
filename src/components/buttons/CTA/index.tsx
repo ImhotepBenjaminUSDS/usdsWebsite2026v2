@@ -27,7 +27,11 @@ export default function CTA({
   className,
 }: ctaProps) {
   const reduceMotion = useReducedMotion();
-  const chars = useMemo(() => Array.from(text), [text]);
+  const displayText = useMemo(
+    () => text.replace(/\b([a-z])/g, (char) => char.toUpperCase()),
+    [text],
+  );
+  const chars = useMemo(() => Array.from(displayText), [displayText]);
 
   const iconOpts = {
     "arrowUpRight": <ArrowUpRight />,
@@ -54,7 +58,7 @@ export default function CTA({
       <Link
         href={href}
         className={styles.link}
-        aria-label={ariaLabel ?? text}
+        aria-label={ariaLabel ?? displayText}
         style={{
           backgroundColor: backgroundColor,
           color: textColor,

@@ -51,7 +51,7 @@ export const COMMUNITY_DISCIPLINES = [
   },
   {
     id: "community-product-strategy-operations",
-    title: "Product, strategy, and operations",
+    title: "Product/Strategy/Operations",
     summary:
       "Product and operations staff align policy, users, and delivery constraints to move critical initiatives from plan to shipped outcomes.",
     roles: [

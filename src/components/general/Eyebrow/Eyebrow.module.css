@@ -2,7 +2,7 @@
   width: fit-content;
   color: var(--primary-light-muted);
   font-size: var(--fs-meta);
-  font-weight: 300;
+  font-weight: var(--fw-body);
   padding: 0.375rem 1.5rem;
   border-radius: var(--border-radius-primary);
   background: var(--primary-dark-panel-muted-transparent);

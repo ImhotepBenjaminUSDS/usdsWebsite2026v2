@@ -264,7 +264,7 @@
   cursor: pointer;
   padding: 0.9rem 0.75rem;
   color: var(--primary-light);
-  font-weight: 600;
+  font-weight: var(--fw-subtitle);
   list-style: none;
 }
 

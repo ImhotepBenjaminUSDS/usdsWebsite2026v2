@@ -8,7 +8,12 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { useRef } from "react";
 import { useBodyReveal } from "@/hooks/useSplitReveal/presets";
+import Subtitle from "../Subtitle";
+import CTA, { type ctaProps as CTAProps } from "@/components/buttons/CTA";
 
+type SectionHeaderCTA = CTAProps & {
+  alignment?: Alignment;
+};
 
 type Props = {
   className?: string;
@@ -20,36 +25,47 @@ type Props = {
   titleHighlightColor?: TitleColor;
   titleHighlightSlice?: [number, number];
   titleAs?: "h1" | "h2" | "h3";
+  subtitle?: string;
+  subtitleSize?: "small" | "medium" | "large";
+  subtitleAlignment?: Alignment;
   subTitle?: string;
   subTitleSize?: "small" | "medium" | "large";
   subTitleAlignment?: Alignment;
   linkText?: string;
   linkHref?: string;
+  cta?: SectionHeaderCTA | SectionHeaderCTA[];
 };
 
 export default function SectionHeader({
   className,
   eyebrow,
   title,
-  titleSize = "large",
+  titleSize: _titleSize = "large",
   titleAlignment = "center",
   titleColor = "primaryLight",
   titleHighlightColor = "primaryColorLight",
   titleHighlightSlice,
   titleAs = "h2",
+  subtitle,
+  subtitleSize,
+  subtitleAlignment,
   subTitle,
   subTitleSize = "medium",
   subTitleAlignment = "center",
   linkText,
   linkHref,
+  cta,
 }: Props) {
   const wrapperRef = useRef<HTMLElement | null>(null);
   const linkRef = useRef<HTMLParagraphElement | null>(null);
+  const resolvedTitleSize: TitleSize = "large";
+  const resolvedCtas = cta ? (Array.isArray(cta) ? cta : [cta]) : [];
+  const ctaAlignment = resolvedCtas[0]?.alignment ?? titleAlignment;
 
   const subTitleSizeOpts = {
-    small: "var(--fs-body)",
-    medium: "var(--fs-h5)",
-    large: "var(--fs-h4)",
+    small: "body" as const,
+    medium: "small" as const,
+    large: "medium" as const,
   };
 
   const alignmentOpts = {
@@ -67,6 +83,10 @@ export default function SectionHeader({
     },
   };
 
+  const resolvedSubtitle = subtitle ?? subTitle;
+  const resolvedSubtitleSize = subtitleSize ?? subTitleSize;
+  const resolvedSubtitleAlignment = subtitleAlignment ?? subTitleAlignment;
+
   useBodyReveal(wrapperRef, linkRef, [linkText, linkHref]);
 
   return (
@@ -79,7 +99,7 @@ export default function SectionHeader({
 
       <Title
         text={title}
-        size={titleSize}
+        size={resolvedTitleSize}
         alignment={titleAlignment}
         color={titleColor}
         highlightColor={titleHighlightColor}
@@ -88,17 +108,16 @@ export default function SectionHeader({
         className={styles.title}
       />
 
-      {subTitle ? (
-        <p
+      {resolvedSubtitle ? (
+        <Subtitle
+          text={resolvedSubtitle}
+          as="p"
+          size="medium"
+          // color="primaryLightMuted"
+          align={resolvedSubtitleAlignment}
+          animation="body"
           className={styles.subTitle}
-          style={{
-            fontSize: subTitleSizeOpts[subTitleSize],
-            alignSelf: alignmentOpts[subTitleAlignment].alignSelf,
-            textAlign: alignmentOpts[subTitleAlignment].textAlign,
-          }}
-        >
-          {subTitle}
-        </p>
+        />
       ) : null}
 
       {linkText && linkHref ? (
@@ -115,6 +134,28 @@ export default function SectionHeader({
             <ArrowRight size={18} />
           </Link>
         </p>
+      ) : null}
+
+      {resolvedCtas.length > 0 ? (
+        <div
+          className={styles.ctaWrap}
+          style={{
+            alignSelf: alignmentOpts[ctaAlignment].alignSelf,
+          }}
+        >
+          {resolvedCtas.map((ctaItem, index) => (
+            <CTA
+              key={`${ctaItem.href}-${ctaItem.text}-${index}`}
+              text={ctaItem.text}
+              href={ctaItem.href}
+              backgroundColor={ctaItem.backgroundColor}
+              textColor={ctaItem.textColor}
+              ariaLabel={ctaItem.ariaLabel}
+              icon={ctaItem.icon}
+              className={ctaItem.className}
+            />
+          ))}
+        </div>
       ) : null}
     </header>
   );

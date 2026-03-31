@@ -28,7 +28,7 @@ export const PROJECTS_PAGE_CONTENT = {
   },
   section: {
     eyebrow: "Current Work",
-    title: "Where we deliver impact",
+    title: "Where we deliver impact", 
     subTitle:
       "A snapshot of modernization efforts underway across healthcare, veterans services, education, and emergency response.",
   },

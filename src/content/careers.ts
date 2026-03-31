@@ -96,7 +96,7 @@ export const CAREERS_PAGE_CONTENT = {
       applyHref: "/mission#applyNow",
     },
     {
-      title: "Product, strategy, and operations",
+      title: "Product/Strategy/Operations",
       summary:
         "Lead delivery with clear priorities, measurable outcomes, and strong coordination across agency stakeholders.",
       skills: [

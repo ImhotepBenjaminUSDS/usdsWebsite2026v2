@@ -5,10 +5,10 @@ import SectionHeader from "@/components/general/SectionHeader";
 import CTA from "@/components/buttons/CTA";
 import ColorImageBlock from "@/components/general/ColorImageBlock";
 import Link from "next/link";
-import { type Card } from "@/components/cards/ContentCard";
-import HorizontalCards from "@/components/sections/HorizontalCards";
+import HorizontalCards from "@/components/general/sections/HorizontalCards";
 import { COMMUNITY_DISCIPLINES } from "@/content/communities";
-import WhoWeHireScroller from "./WhoWeHireScroller";
+import { HOW_WE_WORK_PAGE_CONTENT } from "@/content/howWeWork";
+import ContentScroller from "./ContentScroller";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "https://www.usds.gov";
 
@@ -46,86 +46,34 @@ export const metadata: Metadata = {
   },
 };
 
-const VALUES: Card[] = [
-  {
-    title: "Hire and empower great people.",
-    body: "We work to address some of our nation's most critical needs. We hire people with the experience, skills, compassion, curiosity, and tenacity to find new paths forward.",
-  },
-  {
-    title: "Design with users, not for them.",
-    body: "We build better solutions when our team reflects the people we serve, including people from communities that are traditionally underserved.",
-  },
-  {
-    title: "Go where the work is.",
-    body: "We prioritize based on where we are needed most and where we can do the greatest good for the greatest number of people in the greatest need.",
-  },
-];
-
-const PRINCIPLES: Card[] = [
-  {
-    title: "Put users first",
-    body: "Good design works for everyone. We want users to feel informed, empowered, prepared, and in control.",
-    image: <ColorImageBlock tone="ocean" micro />,
-  },
-  {
-    title: "Build iteratively",
-    body: "We release frequently with modern infrastructure and automation to improve services quickly with minimal risk.",
-    image: <ColorImageBlock tone="teal" micro />,
-  },
-  {
-    title: "Let data drive decisions",
-    body: "Data-centered decisions help us reflect reality, minimize bias, and focus on measurable outcomes over politics.",
-    image: <ColorImageBlock tone="amber" micro />,
-  },
-];
-
-const SPOTLIGHTS: Card[] = [
-  {
-    eyebrow: "Centers for Medicare and Medicaid Services",
-    title: "Modernizing Medicare and Medicaid",
-    body: "Working with CMS to modernize critical healthcare systems by reducing waste, fraud, and abuse while improving secure, user-friendly tools for patients and providers.",
-    image: <ColorImageBlock tone="ocean" micro />,
-    footer: <Link href="/projects">Learn more</Link>,
-  },
-  {
-    eyebrow: "Department of Veterans Affairs",
-    title: "Transforming Veteran care",
-    body: "Partnering with VA teams to modernize legacy systems and deliver faster, more secure digital benefits and services for Veterans and their families.",
-    image: <ColorImageBlock tone="teal" micro />,
-    footer: <Link href="/projects">Learn more</Link>,
-  },
-  {
-    eyebrow: "Department of Education",
-    title: "Modernizing FAFSA and student aid",
-    body: "Collaborating with Education to modernize FAFSA and student aid systems so millions of students can apply for and receive support without disruption.",
-    image: <ColorImageBlock tone="amber" micro />,
-    footer: <Link href="/projects">Learn more</Link>,
-  },
-  {
-    eyebrow: "Office of Personnel Management",
-    title: "Modernizing federal recruitment",
-    body: "Strengthening hiring systems and safeguards while improving speed, quality, and access in federal talent acquisition.",
-    image: <ColorImageBlock tone="ocean" micro />,
-    footer: <Link href="/projects">Learn more</Link>,
-  },
-  {
-    eyebrow: "Cross-agency",
-    title: "Changing how government hires technical talent",
-    body: "We helped build hiring processes that use subject-matter experts to evaluate specialized candidates, restoring fair access while shortening timelines and improving qualification quality.",
-    image: <ColorImageBlock tone="teal" micro />,
-    footer: <Link href="/projects">Learn more</Link>,
-  },
-  {
-    eyebrow: "Veterans Affairs",
-    title: "Simplifying Veteran-facing services through VA.gov",
-    body: "With over 10 million monthly users, VA modernization focused on improving content clarity, findability, and user experience so Veterans can complete key tasks with less friction.",
-    image: <ColorImageBlock tone="amber" micro />,
-    footer: <Link href="/projects">Learn more</Link>,
-  },
-];
-
-
 export default function HowWeWorkPage() {
+  const {
+    hero,
+    valuesSection,
+    disciplinesSection,
+    principlesSection,
+    spotlightsSection,
+    ctaSection,
+  } = HOW_WE_WORK_PAGE_CONTENT;
+
+  const principleCards = principlesSection.cards.map((card) => ({
+    id: card.id,
+    title: card.title,
+    body: card.body,
+    gradientPosition: card.gradientPosition,
+    image: <ColorImageBlock tone={card.tone} micro />,
+  }));
+
+  const spotlightCards = spotlightsSection.cards.map((card) => ({
+    id: card.id,
+    eyebrow: card.eyebrow,
+    title: card.title,
+    body: card.body,
+    gradientPosition: card.gradientPosition,
+    image: <ColorImageBlock tone={card.tone} micro />,
+    footer: <Link href={card.linkHref}>{card.linkText}</Link>,
+  }));
+
   return (
     <div className={`pageWrapper ${styles.wrapper}`}>
       <div className="pageInnerWrapper">
@@ -133,25 +81,20 @@ export default function HowWeWorkPage() {
           <div className={styles.heroLayout}>
             <div className={styles.heroContent}>
               <SectionHeader
-                eyebrow="How We Work"
-                title="Mission-driven tours of service for high-impact government delivery."
+                eyebrow={hero.eyebrow}
+                title={hero.title}
                 titleAs="h1"
                 titleSize="large"
                 titleAlignment="left"
                 titleColor="primaryLight"
                 titleHighlightColor="primaryColorLight"
                 titleHighlightSlice={[36, 47]}
+                subtitle={hero.body}
+                subtitleAlignment="left"
               />
-
-              <p className={styles.heroBody}>
-                We collaborate with federal agencies to deploy mission-driven talent on short tours of service
-                targeting their toughest operational and programmatic challenges. We partner with public servants to
-                bring best practices from our diverse fields and deliver lasting improvements that make government more
-                effective, accountable, and helpful for the citizens and families who depend on it.
-              </p>
             </div>
 
-            <ColorImageBlock tone="teal" className={styles.heroVisual} />
+            <ColorImageBlock tone={hero.visualTone} className={styles.heroVisual} />
           </div>
         </section>
 
@@ -161,30 +104,19 @@ export default function HowWeWorkPage() {
           className={`sectionFrameBase sectionFrameTonePanel ${styles.valuesSection}`}
         >
           <SectionHeader
-            eyebrow="Team and Values"
-            title="Building a team with a broad range of experiences to transform government."
+            eyebrow={valuesSection.header.eyebrow}
+            title={valuesSection.header.title}
             titleAs="h2"
-            titleSize="medium"
+            titleSize="large"
             titleAlignment="left"
             titleColor="primaryLight"
             titleHighlightColor="primaryColorLight"
-            titleHighlightSlice={[21, 50]}
+            titleHighlightSlice={valuesSection.header.titleHighlightSlice}
           />
 
-          <p className={styles.valuesIntro}>
-            With tours of service lasting no more than four years, the U.S. DOGE Service brings fresh perspectives on
-            technology and delivery to government. To build the best possible team, we focus on the same values in our
-            hiring as we do in our work.
-          </p>
-
-          <div className={styles.valuesGrid}>
-            <HorizontalCards cards={VALUES} />
-          </div>
-
-          <p className={styles.valuesFoot}>
-            Learn more about who we hire and how we work below. If you do not find a description that fits you, but
-            think you can help push our mission forward, we encourage you to apply.
-          </p>
+          <section className={styles.valuesGrid}>
+            <HorizontalCards cards={valuesSection.cards} />
+          </section>
         </section>
 
         <DividerStars />
@@ -194,18 +126,18 @@ export default function HowWeWorkPage() {
           className={`sectionFrameBase ${styles.disciplinesSection}`}
         >
           <SectionHeader
-            eyebrow="Communities"
-            title="Who we hire"
+            eyebrow={disciplinesSection.header.eyebrow}
+            title={disciplinesSection.header.title}
             titleAs="h2"
-            titleSize="medium"
+            titleSize="large"
             titleAlignment="left"
             titleColor="primaryLight"
             titleHighlightColor="primaryColorLight"
-            linkText="View careers"
-            linkHref="/careers"
+            linkText={disciplinesSection.header.linkText}
+            linkHref={disciplinesSection.header.linkHref}
           />
 
-          <WhoWeHireScroller disciplines={COMMUNITY_DISCIPLINES} />
+          <ContentScroller disciplines={COMMUNITY_DISCIPLINES} />
         </section>
 
         <DividerStars />
@@ -214,44 +146,20 @@ export default function HowWeWorkPage() {
           className={`sectionFrameBase sectionFrameTonePanel ${styles.principlesSection}`}
         >
           <SectionHeader
-            eyebrow="Digital Services Playbook"
-            title="Bringing private sector best practices to the Federal Government"
+            eyebrow={principlesSection.header.eyebrow}
+            title={principlesSection.header.title}
             titleAs="h2"
-            titleSize="medium"
+            titleSize="large"
             titleAlignment="left"
             titleColor="primaryLight"
             titleHighlightColor="primaryColorLight"
-            titleHighlightSlice={[46, 64]}
+            titleHighlightSlice={principlesSection.header.titleHighlightSlice}
           />
 
-          <p className={styles.principlesIntro}>
-            Private industry knows how to move fast, stay lean, and keep the focus on users. Our teams bring those
-            practices into public service delivery.
-          </p>
+
 
           <div className={styles.principlesGrid}>
-            <HorizontalCards cards={PRINCIPLES} />
-          </div>
-        </section>
-
-        <DividerStars />
-
-        <section className={`sectionFrameBase ${styles.spotlightsSection}`}>
-          <SectionHeader
-            eyebrow="Project Spotlights"
-            title="Prioritizing the greatest good for the greatest number of people in the greatest need"
-            titleAs="h2"
-            titleSize="medium"
-            titleAlignment="left"
-            titleColor="primaryLight"
-            titleHighlightColor="primaryColorLight"
-            titleHighlightSlice={[39, 72]}
-            linkText="See all projects"
-            linkHref="/projects"
-          />
-
-          <div className={styles.spotlightGrid}>
-            <HorizontalCards cards={SPOTLIGHTS} />
+            <HorizontalCards cards={principleCards} />
           </div>
         </section>
 
@@ -259,14 +167,14 @@ export default function HowWeWorkPage() {
 
         <section className={`sectionFrameBase sectionFrameTonePanel ${styles.ctaSection}`}>
           <h2 className={styles.ctaTitle}>
-            We need you.
+            {ctaSection.titleLineOne}
             <br />
-            Let&apos;s help millions of people together.
+            {ctaSection.titleLineTwo}
           </h2>
           <div className={styles.ctaAction}>
             <CTA
-              text="Apply now"
-              href="/mission#applyNow"
+              text={ctaSection.ctaText}
+              href={ctaSection.ctaHref}
               icon="arrowRight"
               backgroundColor="var(--primary-color)"
               textColor="var(--primary-light)"

@@ -23,20 +23,6 @@
   gap: var(--space-m);
 }
 
-.heroBody {
-  margin: 0;
-  max-width: 66ch;
-  color: var(--primary-light-muted);
-  font-size: var(--fs-h5);
-  line-height: 1.65;
-}
-
-.heroActions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-s);
-}
-
 .heroAside {
   min-width: 0;
   flex: 1 1 48%;
@@ -109,8 +95,7 @@
   margin: 0;
   color: var(--primary-color-light);
   font-size: var(--fs-h4);
-  font-weight: 400;
-  font-weight: var(--fw-subtitle);
+  font-weight: var(--fw-large);
   line-height: 1;
 }
 
@@ -119,15 +104,18 @@
   color: var(--primary-light-muted);
   font-size: var(--fs-body);
   line-height: 1.45;
-  font-weight: 330;
+  font-weight: var(--fw-body);
   max-width: 30ch;
+}
+
+.headerSec {
 }
 
 .projectsSection {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: var(--space-xl);
+  gap: 0 !important;
 }
 
 .projectGrid {
@@ -135,8 +123,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-xl);
-  /* border: 1px solid red; */
-  margin-top: var(--space-xl);
 }
 
 .projectCard {
@@ -240,7 +226,7 @@
   font-size: var(--fs-meta);
   letter-spacing: 0.1rem;
   text-transform: uppercase;
-  font-weight: 300;
+  font-weight: var(--fw-body);
 
 }
 
@@ -257,7 +243,7 @@
   color: var(--primary-color-light);
   font-size: var(--fs-h2);
   /* font-family: var(--font-instrumentSerif); */
-  font-weight: var(--fw-subtitle);
+  font-weight: var(--fw-title);
   /* line-height: 1.35; */
 }
 
@@ -265,7 +251,7 @@
   margin: 0;
   color: var(--primary-light-muted);
   font-size: var(--fs-h5) !important;
-  font-weight: 300;
+  font-weight: var(--fw-body);
   /* line-height: 1.6; */
   /* margin-bottom: var(--space-xl); */
 }
@@ -279,7 +265,7 @@
   margin: 0.15rem 0 0;
   color: var(--primary-light);
   font-size: var(--fs-h5);
-  font-weight: 300;
+  font-weight: var(--fw-body);
 
 }
 
@@ -295,7 +281,7 @@
   gap: 0.4rem;
   color: var(--primary-color-light);
   font-size: var(--fs-meta);
-  font-weight: 500;
+  font-weight: var(--fw-subtitle);
   white-space: nowrap;
   cursor: pointer;
   transition: var(--transition-fast);
@@ -323,7 +309,7 @@
   color: var(--primary-light);
   font-family: var(--font-instrumentSerif);
   font-size: var(--fs-h1);
-  font-weight: var(--fw-subtitle);
+  font-weight: 400;
   line-height: 1.2;
   max-width: 20ch;
   text-align: center;
@@ -358,10 +344,6 @@
 }
 
 @media (max-width: 40em) {
-  .heroBody {
-    font-size: var(--fs-body);
-  }
-
   .statCard {
     flex-basis: 100%;
     min-width: 0;

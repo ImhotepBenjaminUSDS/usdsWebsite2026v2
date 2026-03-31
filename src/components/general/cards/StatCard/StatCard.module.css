@@ -1,0 +1,25 @@
+.statCard {
+  gap: 0.75rem;
+}
+
+.statValue {
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-large);
+  color: var(--primary-color);
+}
+
+.statCardBodyInfo {
+  gap: 0.75rem;
+}
+
+.statTitle {
+  color: var(--primary-light);
+  font-weight: var(--fw-title);
+  font-size: var(--fs-h5);
+}
+
+.statSubtitle {
+  color: var(--primary-light-muted);
+  font-size: var(--fs-h5);
+  font-weight: var(--fw-subtitle);
+}

@@ -1,14 +1,19 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import { useRef } from "react";
 import { useBodyReveal, useTitleReveal } from "@/hooks/useSplitReveal/presets";
 import styles from "./Subtitle.module.css";
 
-type SubtitleSize = "small" | "medium" | "large";
-type SubtitleColor = "primaryLight" | "primaryLightSubtle" | "primaryLightMuted";
-type SubtitleAlign = "left" | "center" | "right";
-type SubtitleTag = "h2" | "h3" | "h4" | "p";
-type AnimationMode = "title" | "body" | "none";
+export type SubtitleSize = "body" | "small" | "medium" | "large";
+export type SubtitleColor =
+  | "primaryLight"
+  | "primaryLightSubtle"
+  | "primaryLightMuted"
+  | "primaryColorLight";
+export type SubtitleAlign = "left" | "center" | "right";
+export type SubtitleTag = "h2" | "h3" | "h4" | "p";
+export type AnimationMode = "title" | "body" | "none";
 
 type Props = {
   text: string;
@@ -18,9 +23,12 @@ type Props = {
   align?: SubtitleAlign;
   animation?: AnimationMode;
   className?: string;
+  wrapperClassName?: string;
+  wrapperStyle?: CSSProperties;
 };
 
 const sizeOpts: Record<SubtitleSize, string> = {
+  body: "var(--fs-body)",
   small: "var(--fs-h5)",
   medium: "var(--fs-h4)",
   large: "var(--fs-h3)",
@@ -30,6 +38,7 @@ const colorOpts: Record<SubtitleColor, string> = {
   primaryLight: "var(--primary-light)",
   primaryLightSubtle: "var(--primary-light-subtle)",
   primaryLightMuted: "var(--primary-light-muted)",
+  primaryColorLight: "var(--primary-color-light)",
 };
 
 export default function Subtitle({
@@ -40,6 +49,8 @@ export default function Subtitle({
   align = "left",
   animation = "title",
   className,
+  wrapperClassName,
+  wrapperStyle,
 }: Props) {
   const scopeRef = useRef<HTMLElement | null>(null);
   const textRef = useRef<HTMLHeadingElement | HTMLParagraphElement | null>(null);
@@ -53,10 +64,12 @@ export default function Subtitle({
   });
 
   const Tag = as;
-  const classes = className ? `${styles.subtitle} ${className}` : styles.subtitle;
+  const classes = `${styles.subtitle} ${animation === "none" ? styles.noAnimation : ""} ${className ?? ""}`.trim();
+  const wrapperClasses =
+    `${styles.wrapper} ${styles[align]} ${wrapperClassName ?? ""}`.trim();
 
   return (
-    <section ref={scopeRef} className={styles.wrapper}>
+    <section ref={scopeRef} className={wrapperClasses} style={wrapperStyle}>
       <Tag
         ref={textRef}
         className={classes}

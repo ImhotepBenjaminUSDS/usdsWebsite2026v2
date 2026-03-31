@@ -7,12 +7,12 @@ import styles from "./careers.module.css";
 import DividerStars from "@/ui/DividerStars";
 import SectionHeader from "@/components/general/SectionHeader";
 import CTA from "@/components/buttons/CTA";
-import HorizontalCards from "@/components/sections/HorizontalCards";
+import HorizontalCards from "@/components/general/sections/HorizontalCards";
 import {
   CAREERS_PAGE_CONTENT,
   type CareersRole,
-  type CareersProcessStep,
 } from "@/content/careers";
+import Subtitle from "@/components/general/Subtitle";
 
 type RoleCardProps = CareersRole & {
   index: number;
@@ -58,69 +58,54 @@ function RoleCard({
     >
       <div className={styles.roleCardInner}>
         <div className={styles.roleTop}>
-          <p className={styles.roleStatus}>Open Position</p>
-
           <div className={styles.roleBadges}>
             <span className={styles.roleBadge}>{location}</span>
-            <span className={styles.roleBadge}>{tour}</span>
+            {/* <span className={styles.roleBadge}>{tour}</span> */}
           </div>
         </div>
+        <span className={styles.roleHeader}>
+          <Subtitle text={title} className={styles.roleTitle} />
+          <p className={styles.roleSummary}>{summary}</p>
 
-        <h3 className={styles.roleTitle}>{title}</h3>
-        <p className={styles.roleSummary}>{summary}</p>
+        </span>
 
-        <ul className={styles.skillList}>
-          {skills.map((skill) => (
-            <li key={skill} className={styles.skillItem}>
-              {skill}
-            </li>
-          ))}
-        </ul>
+        <span className={styles.roleCardBottom}>
 
-        <Link href={applyHref} className={styles.roleApply}>
-          View position
-          <ArrowUpRight size={16} />
-        </Link>
+          <ul className={styles.skillList}>
+            {skills.map((skill) => (
+              <li key={skill} className={styles.skillItem}>
+                {skill}
+              </li>
+            ))}
+          </ul>
+
+          <Link href={applyHref} className={styles.roleApply}>
+            View position
+            <ArrowUpRight size={16} />
+          </Link>
+        </span>
       </div>
     </motion.article>
-  );
-}
-
-function ProcessCard({
-  title,
-  body,
-  timeline,
-  index,
-}: CareersProcessStep & { index: number }) {
-  const backgrounds = [
-    "radial-gradient(circle at 20% 80%, var(--primary-color-transparent), transparent 80%)",
-    "radial-gradient(circle at 40% 90%, var(--primary-color-transparent), transparent 80%)",
-    "radial-gradient(circle at 60% 90%, var(--primary-color-transparent), transparent 80%)",
-    "radial-gradient(circle at 80% 80%, var(--primary-color-transparent), transparent 80%)",
-  ];
-
-  return (
-    <article
-      className={styles.processCard}
-      style={{
-        ["--process-card-background" as string]:
-          backgrounds[index % backgrounds.length],
-      }}
-    >
-      <div className={styles.processCardInner}>
-        <p className={styles.processStep}>Step {index + 1}</p>
-        <h3 className={styles.processTitle}>{title}</h3>
-        <p className={styles.processTime}>{timeline}</p>
-
-        <p className={styles.processBody}>{body}</p>
-      </div>
-    </article>
   );
 }
 
 export default function CareersPageClient() {
   const { hero, rolesSection, roles, processSection, process, cta } =
     CAREERS_PAGE_CONTENT;
+  const processCardGradients = [
+    { x: "20%", y: "80%" },
+    { x: "40%", y: "90%" },
+    { x: "60%", y: "90%" },
+    { x: "80%", y: "80%" },
+  ] as const;
+  const processCards = process.map((step, index) => ({
+    id: `process-step-${index + 1}`,
+    title: step.title,
+    subtitle: step.timeline,
+    body: step.body,
+    gradientPosition:
+      processCardGradients[index % processCardGradients.length],
+  }));
 
   return (
     <div className={`pageWrapper ${styles.wrapper}`}>
@@ -137,27 +122,25 @@ export default function CareersPageClient() {
               titleColor="primaryLight"
               titleHighlightColor="primaryColorLight"
               titleHighlightSlice={[24, 38]}
-              subTitle={hero.subTitle}
-              subTitleAlignment="center"
+              subtitle={hero.subTitle}
+              subtitleAlignment="center"
+              cta={[
+                {
+                  text: hero.primaryCta.text,
+                  href: hero.primaryCta.href,
+                  icon: "arrowRight",
+                  backgroundColor: "var(--primary-color)",
+                  textColor: "var(--primary-light)",
+                },
+                {
+                  text: hero.secondaryCta.text,
+                  href: hero.secondaryCta.href,
+                  icon: "arrowRight",
+                  backgroundColor: "var(--primary-dark-panel-muted)",
+                  textColor: "var(--primary-light)",
+                },
+              ]}
             />
-
-            <div className={styles.heroActions}>
-              <CTA
-                text={hero.primaryCta.text}
-                href={hero.primaryCta.href}
-                icon="arrowRight"
-                backgroundColor="var(--primary-color)"
-                textColor="var(--primary-light)"
-              />
-
-              <CTA
-                text={hero.secondaryCta.text}
-                href={hero.secondaryCta.href}
-                icon="arrowRight"
-                backgroundColor="var(--primary-dark-panel-muted)"
-                textColor="var(--primary-light)"
-              />
-            </div>
           </div>
         </section>
 
@@ -173,8 +156,8 @@ export default function CareersPageClient() {
             titleColor="primaryLight"
             titleHighlightColor="primaryColorLight"
             titleHighlightSlice={[0, 14]}
-            subTitle={rolesSection.subTitle}
-            subTitleAlignment="left"
+            subtitle={rolesSection.subTitle}
+            subtitleAlignment="left"
           />
 
           <div className={styles.positionsLayout}>
@@ -189,18 +172,28 @@ export default function CareersPageClient() {
               aria-label="Application details"
             >
               <div className={styles.positionsAsideInner}>
-                <p className={styles.asideEyebrow}>Apply</p>
-                <h3 className={styles.asideTitle}>Focused tours. Real outcomes.</h3>
-                <p className={styles.asideBody}>
-                  Submit one application and we will evaluate you across tracks
-                  where your skills are strongest.
-                </p>
+                <span className={styles.asideInnerHeader}>
+                  <Subtitle
+                    text={"Focused tours. Real outcomes."}
+                    size="large"
+                    className={styles.asideTitle}
+                  />
+                  {/* <h3 className={styles.asideTitle}>Focused tours. Real outcomes.</h3> */}
+                  <p className={styles.asideBody}>
+                    Submit one application and we will evaluate you across
+                    tracks where your skills are strongest.
+                  </p>
+                </span>
 
                 <ul className={styles.asideFacts}>
                   {hero.facts.map((fact) => (
                     <li key={fact.label} className={styles.asideFact}>
-                      <span className={styles.asideFactLabel}>{fact.label}</span>
-                      <span className={styles.asideFactValue}>{fact.value}</span>
+                      <span className={styles.asideFactLabel}>
+                        {fact.label}
+                      </span>
+                      <span className={styles.asideFactValue}>
+                        {fact.value}
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -240,22 +233,13 @@ export default function CareersPageClient() {
             titleColor="primaryLight"
             titleHighlightColor="primaryColorLight"
             titleHighlightSlice={[14, 30]}
-            subTitle={processSection.subTitle}
-            subTitleAlignment="left"
+            subtitle={processSection.subTitle}
+            subtitleAlignment="left"
           />
 
           <HorizontalCards
             className={styles.processGrid}
-            cards={process}
-            renderCard={(step, index) => (
-              <ProcessCard
-                key={step.title}
-                title={step.title}
-                body={step.body}
-                timeline={step.timeline}
-                index={index}
-              />
-            )}
+            cards={processCards}
           />
         </section>
       </div>

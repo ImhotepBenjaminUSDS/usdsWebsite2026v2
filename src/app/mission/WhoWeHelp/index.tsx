@@ -128,8 +128,8 @@ export default function WhoWeHelp({ cards, content }: Props) {
         titleColor="primaryLight"
         titleHighlightColor="primaryColorLight"
         titleHighlightSlice={content.titleHighlightSlice}
-        subTitle={content.subTitle}
-        subTitleAlignment="left"
+        subtitle={content.subTitle}
+        subtitleAlignment="left"
         linkText={content.link?.text}
         linkHref={content.link?.href}
       />

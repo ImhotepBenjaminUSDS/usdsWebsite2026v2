@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./OurImpact.module.css";
-import ImpactCard from "@/components/cards/ImpactCard";
+import ImpactCard from "@/components/general/cards/ImpactCard";
 import SectionHeader from "@/components/general/SectionHeader";
 import { HOME_OUR_IMPACT_CONTENT } from "@/content/home";
 import { AnimatePresence } from "motion/react";
@@ -26,8 +26,8 @@ export default function OurImpact() {
         title={header.title}
         titleHighlightSlice={[4, 10]}
         titleAlignment="center"
-        subTitle={header.subTitle}
-        subTitleAlignment="center"
+        subtitle={header.subTitle}
+        subtitleAlignment="center"
         linkText={header.linkText}
         linkHref={header.linkHref}
       />
@@ -74,7 +74,7 @@ export default function OurImpact() {
                 />
               </div>
 
-              {statsBottom.map((card, index) => (
+              {statsBottom?.map((card, index) => (
                 <ImpactCard
                   key={card.title}
                   variant="stat"

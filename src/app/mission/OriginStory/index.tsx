@@ -27,9 +27,9 @@ export default function OriginStory() {
         title="The USDS origin story"
         titleSize="large"
         titleAlignment="left"
-        subTitle="How a scrappy idea became a durable digital service for the American people."
-        subTitleAlignment="left"
-        subTitleSize="medium"
+        subtitle="How a scrappy idea became a durable digital service for the American people."
+        subtitleAlignment="left"
+        subtitleSize="medium"
         linkText="Apply now"
         linkHref="#applyNow"
         titleHighlightSlice={[4, 9]}

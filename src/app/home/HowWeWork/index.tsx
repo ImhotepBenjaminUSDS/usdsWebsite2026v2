@@ -1,14 +1,12 @@
 "use client";
 
 import styles from "./HowWeWork.module.css";
-import CTA from "@/components/buttons/CTA";
 import SectionHeader from "@/components/general/SectionHeader";
-import ColorImageBlock from "@/components/general/ColorImageBlock";
+import HorizontalCards from "@/components/general/sections/HorizontalCards";
 import { HOME_HOW_WE_WORK_CONTENT } from "@/content/home";
 
 export default function HowWeWork() {
-  const { header, practices, communities, sidePanelTitle, sidePanelCtaText, sidePanelCtaHref } = HOME_HOW_WE_WORK_CONTENT;
-  const practiceTones = ["ocean", "teal", "amber"] as const;
+  const { header, practices } = HOME_HOW_WE_WORK_CONTENT;
 
   return (
     <section
@@ -25,24 +23,14 @@ export default function HowWeWork() {
         titleColor="primaryLight"
         titleHighlightColor="primaryColorLight"
         titleHighlightSlice={[31, 51]}
-        subTitle={header.subTitle}
-        subTitleAlignment="left"
+        subtitle={header.subTitle}
+        subtitleAlignment="left"
         linkText={header.linkText}
         linkHref={header.linkHref}
       />
 
       <div className={styles.content}>
-        <div className={styles.practiceGrid}>
-          {practices.map((practice, index) => (
-            <article key={practice.title} className={styles.practiceCard}>
-              <div className={styles.practiceCardInner}>
-                {/* <ColorImageBlock tone={practiceTones[index % practiceTones.length]} micro className={styles.cardVisual} /> */}
-                <h3 className={styles.practiceTitle}>{practice.title}</h3>
-                <p className={styles.practiceBody}>{practice.body}</p>
-              </div>
-            </article>
-          ))}
-        </div>
+        <HorizontalCards className={styles.practiceGrid} cards={practices} />
 
         {/* <aside className={styles.communitiesPanel} aria-label="Communities we hire from">
           <div className={styles.communitiesPanelInner}>

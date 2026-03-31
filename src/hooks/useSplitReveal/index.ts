@@ -16,6 +16,7 @@ type SplitType =
   | "lines,words,chars";
 
 type UseSplitRevealOpts = {
+  enabled?: boolean;
   type?: SplitType;
   mask?: "lines" | "words" | "chars" | "none";
   autoSplit?: boolean;
@@ -41,6 +42,7 @@ export function useSplitReveal<TScope extends Element, TText extends Element>(
   options: UseSplitRevealOpts = {}
 ) {
   const {
+    enabled = true,
     type = "lines",
     mask = "lines",
     autoSplit = true,
@@ -58,6 +60,8 @@ export function useSplitReveal<TScope extends Element, TText extends Element>(
   } = options;
 
   useLayoutEffect(() => {
+    if (!enabled) return;
+
     const scopeEl = scopeRef.current;
     const textEl = textRef.current;
     if (!scopeEl || !textEl) return;
@@ -122,5 +126,5 @@ export function useSplitReveal<TScope extends Element, TText extends Element>(
       ctx.revert();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, deps);
+  }, [enabled, ...deps]);
 }

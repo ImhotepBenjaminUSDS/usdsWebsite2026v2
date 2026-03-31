@@ -1,9 +1,10 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: var(--space-m);
   width: 100%;
   /* border: 1px solid red; */
+  margin-bottom: var(--space-m);
 }
 
 .eyebrowWrap {
@@ -18,10 +19,8 @@
 
 .subTitle {
   max-width: 50ch;
-  color: var(--primary-light-muted);
-  font-size: var(--fs-h5) !important;
-  font-weight: 300;
-  /* opacity: 0.95; */
+  line-height: 1.5;
+  margin-bottom: var(--space-m);
 }
 
 .linkWrap {
@@ -30,13 +29,19 @@
 }
 
 .link {
-  color: var(--primary-color);
+  color: var(--primary-color-light);
   font-size: var(--fs-body);
-  font-weight: 300;
+  font-weight: var(--fw-body);
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
   text-decoration: none;
+}
+
+.ctaWrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-m);
 }
 
 @media (max-width: 40em) {
@@ -46,7 +51,6 @@
 
   .subTitle {
     max-width: none;
-    font-size: var(--fs-meta);
   }
 
   .link {

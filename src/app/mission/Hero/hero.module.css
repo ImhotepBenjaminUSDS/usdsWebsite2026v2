@@ -53,10 +53,6 @@
 }
 
 @media (max-width: 40em) {
-  .inner {
-    padding: 0 1rem;
-  }
-
   .message {
     /* max-width: 17ch; */
     font-size: clamp(1.65rem, 8.5vw, 2.1rem);

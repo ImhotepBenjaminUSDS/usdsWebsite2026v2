@@ -118,31 +118,28 @@ export default function FooterWrapper() {
             titleColor="primaryLight"
             titleHighlightColor="primaryColorLight"
             titleHighlightSlice={[17, 32]}
+            // subtitle={FOOTER_CALLOUT_CONTENT.body}
+            // subtitleAlignment="left"
+            cta={{
+              text: FOOTER_CALLOUT_CONTENT.ctaText,
+              href: FOOTER_CALLOUT_CONTENT.ctaHref,
+              icon: "arrowRight",
+              backgroundColor: "var(--primary-color-light)",
+              textColor: "var(--primary-dark)",
+            }}
           />
-          <p className={styles.calloutBody}>
-            {FOOTER_CALLOUT_CONTENT.body}
-          </p>
-          <div className={styles.calloutCta}>
-            <CTA
-              text={FOOTER_CALLOUT_CONTENT.ctaText}
-              href={FOOTER_CALLOUT_CONTENT.ctaHref}
-              icon="arrowRight"
-              backgroundColor="var(--primary-color)"
-              textColor="var(--primary-light)"
-            />
-          </div>
         </div>
 
         <aside className={styles.calloutRight} aria-hidden="true" />
       </section>
 
-      <div className={`usa-footer__return-to-top ${styles.returnToTop}`}>
+      {/* <div className={`usa-footer__return-to-top ${styles.returnToTop}`}>
         <div className={styles.returnToTopInner}>
           <a href="#top" className={styles.returnToTopLink}>
             Return to top
           </a>
         </div>
-      </div>
+      </div> */}
 
       <div className={styles.surface}>
         <div className={styles.inner}>

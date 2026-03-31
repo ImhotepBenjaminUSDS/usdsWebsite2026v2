@@ -25,28 +25,25 @@ export default function ProjectsPage() {
                 titleColor="primaryLight"
                 titleHighlightColor="primaryColorLight"
                 titleHighlightSlice={[30, 47]}
+                subtitle={hero.body}
+                subtitleAlignment="left"
+                cta={[
+                  {
+                    text: hero.primaryCta.text,
+                    href: hero.primaryCta.href,
+                    icon: "arrowRight",
+                    backgroundColor: "var(--primary-color)",
+                    textColor: "var(--primary-light)",
+                  },
+                  {
+                    text: hero.secondaryCta.text,
+                    href: hero.secondaryCta.href,
+                    icon: "arrowRight",
+                    backgroundColor: "var(--primary-dark-panel-muted)",
+                    textColor: "var(--primary-light)",
+                  },
+                ]}
               />
-
-              <p className={styles.heroBody}>
-                {hero.body}
-              </p>
-
-              <div className={styles.heroActions}>
-                <CTA
-                  text={hero.primaryCta.text}
-                  href={hero.primaryCta.href}
-                  icon="arrowRight"
-                  backgroundColor="var(--primary-color)"
-                  textColor="var(--primary-light)"
-                />
-                <CTA
-                  text={hero.secondaryCta.text}
-                  href={hero.secondaryCta.href}
-                  icon="arrowRight"
-                  backgroundColor="var(--primary-dark-panel-muted)"
-                  textColor="var(--primary-light)"
-                />
-              </div>
             </div>
 
             <aside className={styles.heroAside} aria-label="Portfolio highlights">
@@ -69,6 +66,7 @@ export default function ProjectsPage() {
 
         <section className={`sectionFrameBase ${styles.projectsSection}`}>
           <SectionHeader
+          className={styles.headerSec}
             eyebrow={section.eyebrow}
             title={section.title}
             titleAs="h2"
@@ -77,8 +75,8 @@ export default function ProjectsPage() {
             titleColor="primaryLight"
             titleHighlightColor="primaryColorLight"
             titleHighlightSlice={[17, 23]}
-            subTitle={section.subTitle}
-            subTitleAlignment="left"
+            subtitle={section.subTitle}
+            subtitleAlignment="left"
           />
 
           <div className={styles.projectGrid}>
@@ -109,6 +107,8 @@ export default function ProjectsPage() {
             ))}
           </div>
         </section>
+
+        <DividerStars />
 
         <section className={`sectionFrameBase ${styles.ctaSection}`}>
           <h2 className={styles.ctaTitle}>{cta.title}</h2>

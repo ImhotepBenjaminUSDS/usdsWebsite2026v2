@@ -31,7 +31,7 @@
   color: var(--primary-light);
   transition: var(--transition-normal);
   font-size: var(--fs-h3);
-  font-weight: var(--fw-subtitle);
+  font-weight: var(--fw-title);
 }
 
 .communityLink:hover,

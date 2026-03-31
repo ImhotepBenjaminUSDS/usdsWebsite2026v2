@@ -1,6 +1,5 @@
 .wrapper {
   width: 100%;
-  padding: 0 clamp(1rem, 3vw, 3rem);
 }
 
 .grid {
@@ -92,7 +91,7 @@
   margin: 0;
   color: var(--primary-light);
   font-size: var(--fs-h4);
-  font-weight: 520;
+  font-weight: var(--fw-title);
   line-height: 1.28;
   visibility: hidden;
 }
@@ -142,10 +141,6 @@
 }
 
 @media (max-width: 40em) {
-  .wrapper {
-    padding: 0 1rem;
-  }
-
   .grid {
     gap: var(--space-m);
   }

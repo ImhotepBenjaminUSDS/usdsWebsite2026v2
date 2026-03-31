@@ -2,7 +2,7 @@
 
 import styles from "./WhatToExpect.module.css";
 import SectionHeader from "@/components/general/SectionHeader";
-import Accordion from "@/components/sections/Accordion";
+import Accordion from "@/components/general/sections/Accordion";
 import { HOME_WHAT_TO_EXPECT_CONTENT } from "@/content/home";
 
 export default function WhatToExpect() {
@@ -24,8 +24,8 @@ export default function WhatToExpect() {
         titleColor="primaryLight"
         titleHighlightColor="primaryColorLight"
         titleHighlightSlice={[10, 25]}
-        subTitle={header.subTitle}
-        subTitleAlignment="left"
+        subtitle={header.subTitle}
+        subtitleAlignment="left"
           linkText={header.linkText}
           linkHref={header.linkHref}
         />

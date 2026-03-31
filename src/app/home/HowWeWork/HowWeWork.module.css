@@ -13,90 +13,15 @@
 .practiceGrid {
   min-width: 0;
   flex: 1 1 auto;
-  /* border: 1px solid red; */
-  display: flex;
-  /* flex-wrap: wrap; */
-  gap: var(--space-xl);
-}
-
-.practiceCard {
-  flex: 1 1 calc((100% - (var(--space-xl) * 2)) / 3);
-  min-width: min(100%, 15rem);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xl);
-  border-radius: var(--border-radius-primary);
-  background: radial-gradient(
-    circle at 10% 10%,
-    var(--primary-color-transparent),
-    transparent 90%
-  );
-  box-shadow: var(--shadow-s);
-  overflow: hidden;
-  /* border: 1px solid red; */
-  /* height: 300px; */
-}
-
-.practiceCard:nth-child(1) {
-  background: var(
-    --card-background,
-    radial-gradient(
-      circle at 20% 80%,
-      var(--primary-color-transparent),
-      transparent 80%
-    )
-  );
-}
-
-.practiceCard:nth-child(2) {
-  background: var(
-    --card-background,
-    radial-gradient(
-      circle at 50% 80%,
-      var(--primary-color-transparent),
-      transparent 80%
-    )
-  );
-}
-
-.practiceCard:nth-child(3) {
-  background: var(
-    --card-background,
-    radial-gradient(
-      circle at 80% 80%,
-      var(--primary-color-transparent),
-      transparent 80%
-    )
-  );
-}
-
- .practiceCardInner {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xl);
-  height: 100%;
-  padding: var(--space-xl);
+  --horizontal-card-basis: calc((100% - (var(--space-m) * 2)) / 3);
+  --horizontal-card-min-width: min(100%, 15rem);
+  gap: var(--space-m);
 }
 
 .cardVisual {
   width: 100%;
   /* margin-bottom: var(--space-s); */
   border-radius: var(--border-radius-secondary);
-}
-
-.practiceTitle {
-  margin: 0;
-  color: var(--primary-color-light);
-  font-weight: 600;
-  font-size: var(--fs-h4);
-  line-height: 1.35;
-}
-
-.practiceBody {
-  margin: 0;
-  color: var(--primary-light-subtle);
-  font-size: var(--fs-h5);
-  font-weight: 300;
 }
 
 .communitiesPanel {
@@ -130,7 +55,7 @@
   margin: 0;
   color: var(--primary-light);
   font-size: var(--fs-h1);
-  font-weight: var(--fw-subtitle);
+  font-weight: 400;
   text-transform: capitalize;
   font-family: var(--font-instrumentSerif);
 }
@@ -154,7 +79,7 @@
   font-size: var(--fs-h2);
   justify-content: center;
   padding: 0.75rem;
-  font-weight: 500;
+  font-weight: var(--fw-subtitle);
   padding: var(--space-xl);
   border: 1px solid green;
 }
@@ -175,12 +100,8 @@
 
 @media (max-width: 72em) {
   .practiceGrid {
-    gap: var(--space-l);
-  }
-
-  .practiceCard {
-    flex-basis: 100%;
-    min-width: 0;
+    --horizontal-card-basis: 100%;
+    --horizontal-card-min-width: 0;
   }
 
   .communitiesPanel {
@@ -194,12 +115,8 @@
     gap: var(--space-l);
   }
 
-  .practiceCardInner,
   .communitiesPanelInner {
     padding: var(--space-l);
   }
 
-  .practiceGrid {
-    gap: var(--space-m);
-  }
 }

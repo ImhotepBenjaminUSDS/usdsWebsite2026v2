@@ -1,4 +1,5 @@
 import { COMMUNITY_DISCIPLINES } from "./communities";
+import type { BasicTextCard } from "@/types/cards";
 
 type HomeHeaderContent = {
   eyebrow: string;
@@ -24,10 +25,7 @@ type HomeHeroContent = {
   }[];
 };
 
-type HomePractice = {
-  title: string;
-  body: string;
-};
+type HomePractice = BasicTextCard;
 
 type HomeHowWeWorkContent = {
   header: HomeHeaderContent;
@@ -87,7 +85,7 @@ type HomeOurImpactContent = {
   header: HomeHeaderContent;
   leftCards: readonly ImpactListCard[];
   statsTop: readonly ImpactStatCard[];
-  statsBottom: readonly ImpactStatCard[];
+  statsBottom?: readonly ImpactStatCard[];
   wideCard: ImpactListCard;
 };
 
@@ -175,21 +173,9 @@ export const HOME_OUR_IMPACT_CONTENT: HomeOurImpactContent = {
       subtitle: "VA, CMS, GSA, OPM, State & more",
     },
     {
-      value: "1M",
-      title: "Daily Timeouts Fixed",
-      subtitle: "Visa application sessions restored",
-    },
-  ],
-  statsBottom: [
-    {
       value: "$6B",
       title: "Est. Healthcare Savings",
       subtitle: "National Provider Directory",
-    },
-    {
-      value: "26",
-      title: "States on NBS 7.0",
-      subtitle: "Disease surveillance with CDC",
     },
   ],
   wideCard: {
@@ -217,16 +203,22 @@ export const HOME_HOW_WE_WORK_CONTENT: HomeHowWeWorkContent = {
   sidePanelCtaHref: "/how-we-work",
   practices: [
     {
+      id: "short-tours-high-trust",
       title: "Short tours, high trust",
       body: "Teams deploy on focused tours of service and work directly with civil servants on hard, high-impact delivery problems.",
+      gradientPosition: { x: "20%", y: "80%" },
     },
     {
-      title: "Cross-functional by default",
+      id: "cross-functional",
+      title: "Cross-functional",
       body: "Engineering, product, design, data, and acquisition expertise move together so execution decisions stay practical and user-centered.",
+      gradientPosition: { x: "50%", y: "80%" },
     },
     {
+      id: "outcomes-over-optics",
       title: "Outcomes over optics",
       body: "We prioritize measurable service improvements that make government more effective, accountable, and useful for people.",
+      gradientPosition: { x: "80%", y: "80%" },
     },
   ],
   communities: COMMUNITY_DISCIPLINES.map(({ title }) => title),

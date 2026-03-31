@@ -33,7 +33,7 @@
 }
 
 .logoText {
-  font-weight: 500;
+  font-weight: var(--fw-subtitle);
   font-size: var(--fs-body);
 
 }

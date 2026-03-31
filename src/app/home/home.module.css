@@ -37,7 +37,7 @@
 .intro h1 {
   max-width: 320px;
   font-size: 40px;
-  font-weight: 600;
+  font-weight: var(--fw-large);
   line-height: 48px;
   text-wrap: balance;
   color: var(--text-primary);
@@ -52,7 +52,7 @@
 }
 
 .intro a {
-  font-weight: 500;
+  font-weight: var(--fw-subtitle);
   color: var(--text-primary);
 }
 
@@ -76,7 +76,7 @@
   transition: var(--transition-fast);
   cursor: pointer;
   width: fit-content;
-  font-weight: 500;
+  font-weight: var(--fw-subtitle);
 }
 
 a.primary {
@@ -115,4 +115,3 @@ a.secondary {
     line-height: 40px;
   }
 }
-

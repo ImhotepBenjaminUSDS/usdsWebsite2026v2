@@ -1,6 +1,5 @@
 .wrapper {
   width: 100%;
-  padding: 0 clamp(1rem, 3vw, 3rem);
   display: flex;
   flex-direction: column;
   gap: var(--space-xl);
@@ -30,7 +29,7 @@
   color: var(--primary-light-muted);
   font-size: var(--fs-body);
   line-height: 1.7;
-  font-weight: 350;
+  font-weight: var(--fw-body);
   max-width: 68ch;
   visibility: hidden;
 }
@@ -55,7 +54,7 @@
   color: var(--primary-light-subtle);
   line-height: 1.6;
   font-size: var(--fs-body);
-  font-weight: 400;
+  font-weight: var(--fw-body);
   /* border: 1px solid red; */
 }
 
@@ -101,7 +100,6 @@
 
 @media (max-width: 40em) {
   .wrapper {
-    padding: 0 1rem;
     gap: var(--space-l);
   }
 
