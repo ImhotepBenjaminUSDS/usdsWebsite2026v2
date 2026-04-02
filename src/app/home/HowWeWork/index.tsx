@@ -3,7 +3,7 @@
 import styles from "./HowWeWork.module.css";
 import SectionHeader from "@/components/general/SectionHeader";
 import HorizontalCards from "@/components/general/sections/HorizontalCards";
-import { HOME_HOW_WE_WORK_CONTENT } from "@/content/home";
+import { HOME_HOW_WE_WORK_CONTENT, HOME_SECTION_ARIA_TEXT } from "@/text/home";
 
 export default function HowWeWork() {
   const { header, practices } = HOME_HOW_WE_WORK_CONTENT;
@@ -12,16 +12,12 @@ export default function HowWeWork() {
     <section
       className={`sectionFrameBase homeSection ${styles.wrapper}`}
       id="work"
-      aria-label="How we work"
+      aria-label={HOME_SECTION_ARIA_TEXT.howWeWork}
     >
       <SectionHeader
         eyebrow={header.eyebrow}
         title={header.title}
-        titleAs="h2"
-        titleSize="large"
         titleAlignment="left"
-        titleColor="primaryLight"
-        titleHighlightColor="primaryColorLight"
         titleHighlightSlice={[31, 51]}
         subtitle={header.subTitle}
         subtitleAlignment="left"

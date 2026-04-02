@@ -10,8 +10,9 @@ import CTA from "@/components/buttons/CTA";
 import HorizontalCards from "@/components/general/sections/HorizontalCards";
 import {
   CAREERS_PAGE_CONTENT,
+  CAREERS_PAGE_UI_TEXT,
   type CareersRole,
-} from "@/content/careers";
+} from "@/text/careers";
 import Subtitle from "@/components/general/Subtitle";
 
 type RoleCardProps = CareersRole & {
@@ -80,7 +81,7 @@ function RoleCard({
           </ul>
 
           <Link href={applyHref} className={styles.roleApply}>
-            View position
+            {CAREERS_PAGE_UI_TEXT.viewPositionLabel}
             <ArrowUpRight size={16} />
           </Link>
         </span>
@@ -108,141 +109,125 @@ export default function CareersPageClient() {
   }));
 
   return (
-    <div className={`pageWrapper ${styles.wrapper}`}>
-      <div className="pageInnerWrapper">
-        <section className={`sectionFrameBase ${styles.hero}`}>
-          <div className={styles.heroLayout}>
-            <SectionHeader
-              className={styles.sectionHeader}
-              eyebrow={hero.eyebrow}
-              title={hero.title}
-              titleAs="h1"
-              titleSize="large"
-              titleAlignment="center"
-              titleColor="primaryLight"
-              titleHighlightColor="primaryColorLight"
-              titleHighlightSlice={[24, 38]}
-              subtitle={hero.subTitle}
-              subtitleAlignment="center"
-              cta={[
-                {
-                  text: hero.primaryCta.text,
-                  href: hero.primaryCta.href,
-                  icon: "arrowRight",
-                  backgroundColor: "var(--primary-color)",
-                  textColor: "var(--primary-light)",
-                },
-                {
-                  text: hero.secondaryCta.text,
-                  href: hero.secondaryCta.href,
-                  icon: "arrowRight",
-                  backgroundColor: "var(--primary-dark-panel-muted)",
-                  textColor: "var(--primary-light)",
-                },
-              ]}
-            />
-          </div>
-        </section>
-
-        <DividerStars />
-
-        <section className={`sectionFrameBase ${styles.positionsSection}`}>
+    <div className={`pageWrap ${styles.wrapper}`}>
+      <section className={`sectionFrameBase ${styles.hero}`}>
+        <div className={styles.heroLayout}>
           <SectionHeader
-            eyebrow={rolesSection.eyebrow}
-            title={rolesSection.title}
-            titleAs="h2"
-            titleSize="large"
-            titleAlignment="left"
-            titleColor="primaryLight"
-            titleHighlightColor="primaryColorLight"
-            titleHighlightSlice={[0, 14]}
-            subtitle={rolesSection.subTitle}
-            subtitleAlignment="left"
+            className={styles.sectionHeader}
+            eyebrow={hero.eyebrow}
+            title={hero.title}
+            isPageTitle
+            titleHighlightSlice={[0, 7]}
+            subtitle={hero.subTitle}
+            cta={[
+              {
+                text: hero.primaryCta.text,
+                href: hero.primaryCta.href,
+                icon: "arrowRight",
+                backgroundColor: "var(--primary-color)",
+                textColor: "var(--primary-light)",
+              },
+              {
+                text: hero.secondaryCta.text,
+                href: hero.secondaryCta.href,
+                icon: "arrowRight",
+                backgroundColor: "var(--primary-dark-panel-muted)",
+                textColor: "var(--primary-light)",
+              },
+            ]}
           />
+        </div>
+      </section>
 
-          <div className={styles.positionsLayout}>
-            <div className={styles.roleGrid}>
-              {roles.map((role, index) => (
-                <RoleCard key={role.title} {...role} index={index} />
-              ))}
-            </div>
+      <DividerStars />
 
-            <aside
-              className={styles.positionsAside}
-              aria-label="Application details"
-            >
-              <div className={styles.positionsAsideInner}>
-                <span className={styles.asideInnerHeader}>
-                  <Subtitle
-                    text={"Focused tours. Real outcomes."}
-                    size="large"
-                    className={styles.asideTitle}
-                  />
-                  {/* <h3 className={styles.asideTitle}>Focused tours. Real outcomes.</h3> */}
-                  <p className={styles.asideBody}>
-                    Submit one application and we will evaluate you across
-                    tracks where your skills are strongest.
-                  </p>
-                </span>
+      <section className={`sectionFrameBase ${styles.positionsSection}`}>
+        <SectionHeader
+          eyebrow={rolesSection.eyebrow}
+          title={rolesSection.title}
+          titleAlignment="left"
+          titleHighlightSlice={[0, 14]}
+          subtitle={rolesSection.subTitle}
+          subtitleAlignment="left"
+        />
 
-                <ul className={styles.asideFacts}>
-                  {hero.facts.map((fact) => (
-                    <li key={fact.label} className={styles.asideFact}>
-                      <span className={styles.asideFactLabel}>
-                        {fact.label}
-                      </span>
-                      <span className={styles.asideFactValue}>
-                        {fact.value}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+        <div className={styles.positionsLayout}>
+          <div className={styles.roleGrid}>
+            {roles.map((role, index) => (
+              <RoleCard key={role.title} {...role} index={index} />
+            ))}
+          </div>
 
-                <div className={styles.asideActions}>
-                  <Link
-                    href={hero.secondaryCta.href}
-                    className={styles.asideLink}
-                  >
-                    Read hiring FAQ
-                    <ArrowUpRight size={16} />
-                  </Link>
-                  <CTA
-                    text={cta.text}
-                    href={cta.href}
-                    icon="arrowRight"
-                    backgroundColor="var(--primary-color)"
-                    textColor="var(--primary-light)"
-                  />
-                </div>
+          <aside
+            className={styles.positionsAside}
+            aria-label={CAREERS_PAGE_UI_TEXT.applicationDetailsAriaLabel}
+          >
+            <div className={styles.positionsAsideInner}>
+              <span className={styles.asideInnerHeader}>
+                <Subtitle
+                  text={CAREERS_PAGE_UI_TEXT.focusedToursTitle}
+                  size="large"
+                  className={styles.asideTitle}
+                />
+                {/* <h3 className={styles.asideTitle}>Focused tours. Real outcomes.</h3> */}
+                <p className={styles.asideBody}>
+                  {CAREERS_PAGE_UI_TEXT.focusedToursBody}
+                </p>
+              </span>
+
+              <ul className={styles.asideFacts}>
+                {hero.facts.map((fact) => (
+                  <li key={fact.label} className={styles.asideFact}>
+                    <span className={styles.asideFactLabel}>
+                      {fact.label}
+                    </span>
+                    <span className={styles.asideFactValue}>
+                      {fact.value}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className={styles.asideActions}>
+                <Link
+                  href={hero.secondaryCta.href}
+                  className={styles.asideLink}
+                >
+                  {CAREERS_PAGE_UI_TEXT.readHiringFaqLabel}
+                  <ArrowUpRight size={16} />
+                </Link>
+                <CTA
+                  text={cta.text}
+                  href={cta.href}
+                  icon="arrowRight"
+                  backgroundColor="var(--primary-color)"
+                  textColor="var(--primary-light)"
+                />
               </div>
-            </aside>
-          </div>
-        </section>
+            </div>
+          </aside>
+        </div>
+      </section>
 
-        <DividerStars />
+      <DividerStars />
 
-        <section
-          className={`sectionFrameBase sectionFrameToneSoft ${styles.processSection}`}
-        >
-          <SectionHeader
-            eyebrow={processSection.eyebrow}
-            title={processSection.title}
-            titleAs="h2"
-            titleSize="large"
-            titleAlignment="left"
-            titleColor="primaryLight"
-            titleHighlightColor="primaryColorLight"
-            titleHighlightSlice={[14, 30]}
-            subtitle={processSection.subTitle}
-            subtitleAlignment="left"
-          />
+      <section
+        className={`sectionFrameBase sectionFrameToneSoft ${styles.processSection}`}
+      >
+        <SectionHeader
+          eyebrow={processSection.eyebrow}
+          title={processSection.title}
+          titleAlignment="left"
+          titleHighlightSlice={[14, 30]}
+          subtitle={processSection.subTitle}
+          subtitleAlignment="left"
+        />
 
-          <HorizontalCards
-            className={styles.processGrid}
-            cards={processCards}
-          />
-        </section>
-      </div>
+        <HorizontalCards
+          className={styles.processGrid}
+          cards={processCards}
+        />
+      </section>
     </div>
   );
 }

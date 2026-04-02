@@ -8,8 +8,7 @@
 
 .heroLayout {
   width: 100%;
-  max-width: 74ch;
-  margin-inline: auto;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,7 +17,6 @@
 
 .heroBody {
   margin: 0;
-  max-width: 66ch;
   color: var(--primary-light-muted);
   font-size: var(--fs-h5);
   /* line-height: 1.7; */
@@ -229,7 +227,7 @@ background: radial-gradient(
 }
 
 .roleApply:hover {
-  color: var(--yellow-color);
+  color: var(--primary-yellow-color);
 }
 
 .positionsAside {
@@ -275,9 +273,8 @@ background: radial-gradient(
 
 .asideTitle {
   margin: 0;
-  /* color: var(--yellow-color) !important; */
+  /* color: var(--primary-yellow-color) !important; */
   /* font-family: var(--font-instrumentSerif); */
-  max-width: 11ch;
   /* line-height: 1.2; */
   /* letter-spacing: -0.03rem; */
   font-weight: var(--fw-subtitle) !important;
@@ -380,6 +377,8 @@ background: radial-gradient(
     width: 100%;
     flex-basis: auto;
     position: static;
+    top: auto;
+    height: auto;
   }
 }
 

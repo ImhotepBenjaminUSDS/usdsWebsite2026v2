@@ -6,6 +6,7 @@ import ColorImageBlock from "@/components/general/ColorImageBlock";
 import usePerspectiveTilt from "@/hooks/usePerspectiveTilt";
 import { useBodyReveal, useTitleReveal } from "@/hooks/useSplitReveal/presets";
 import styles from "./whoWeHelp.module.css";
+import { MISSION_WHO_WE_HELP_UI_TEXT } from "@/text/mission";
 
 type CardTone = "ocean" | "teal" | "amber";
 
@@ -92,7 +93,11 @@ function WhoWeHelpCardItem({
                 <h3 className={styles.cardTitle} ref={titleRef}>
                   {item.title}
                 </h3>
-                <span className={styles.cardHint}>{expanded ? "Less" : "More"}</span>
+                <span className={styles.cardHint}>
+                  {expanded
+                    ? MISSION_WHO_WE_HELP_UI_TEXT.collapseLabel
+                    : MISSION_WHO_WE_HELP_UI_TEXT.expandLabel}
+                </span>
               </div>
 
               <p className={styles.cardSummary} ref={summaryRef}>
@@ -117,16 +122,12 @@ export default function WhoWeHelp({ cards, content }: Props) {
     <section
       className={`sectionFrameBase ${styles.wrapper}`}
       id="whoWeHelp"
-      aria-label="Who we help"
+      aria-label={MISSION_WHO_WE_HELP_UI_TEXT.sectionAriaLabel}
     >
       <SectionHeader
         eyebrow={content.eyebrow}
         title={content.title}
-        titleAs="h2"
-        titleSize="large"
         titleAlignment="left"
-        titleColor="primaryLight"
-        titleHighlightColor="primaryColorLight"
         titleHighlightSlice={content.titleHighlightSlice}
         subtitle={content.subTitle}
         subtitleAlignment="left"

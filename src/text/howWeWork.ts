@@ -23,10 +23,9 @@ type SpotlightCardContent = BasicTextCard & {
 
 export const HOW_WE_WORK_PAGE_CONTENT = {
   hero: {
-    eyebrow: "How We Work",
-    title: "Mission-driven tours of service for high-impact government delivery.",
-    body: "We collaborate with federal agencies to deploy mission-driven talent on short tours of service targeting their toughest operational and programmatic challenges. We partner with public servants to bring best practices from our diverse fields and deliver lasting improvements that make government more effective, accountable, and helpful for the citizens and families who depend on it.",
-    visualTone: "teal" as Tone,
+    eyebrow: "Mission-driven tours of service for high-impact delivery",
+    title: "How We Work",
+    body: "We deploy mission-driven experts with federal teams to solve urgent service problems and deliver measurable improvements for the people.",
   },
   valuesSection: {
     header: {
@@ -60,7 +59,7 @@ export const HOW_WE_WORK_PAGE_CONTENT = {
   disciplinesSection: {
     header: {
       eyebrow: "Communities",
-      title: "Who we hire",
+      title: "Our Fields of Work",
       linkText: "View careers",
       linkHref: "/careers",
     } satisfies SectionHeaderContent,
@@ -174,4 +173,8 @@ export const HOW_WE_WORK_PAGE_CONTENT = {
     ctaText: "Apply now",
     ctaHref: "/mission#applyNow",
   },
+} as const;
+
+export const HOW_WE_WORK_PAGE_UI_TEXT = {
+  communityListAriaLabel: "Community list",
 } as const;

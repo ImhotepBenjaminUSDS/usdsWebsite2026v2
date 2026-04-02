@@ -4,6 +4,7 @@ import type { CSSProperties } from "react";
 import { useRef } from "react";
 import { useBodyReveal, useTitleReveal } from "@/hooks/useSplitReveal/presets";
 import styles from "./Subtitle.module.css";
+import { motion } from "motion/react";
 
 export type SubtitleSize = "body" | "small" | "medium" | "large";
 export type SubtitleColor =
@@ -53,7 +54,9 @@ export default function Subtitle({
   wrapperStyle,
 }: Props) {
   const scopeRef = useRef<HTMLElement | null>(null);
-  const textRef = useRef<HTMLHeadingElement | HTMLParagraphElement | null>(null);
+  const textRef = useRef<HTMLHeadingElement | HTMLParagraphElement | null>(
+    null,
+  );
 
   useTitleReveal(scopeRef, textRef, [animation], {
     enabled: animation === "title",
@@ -64,23 +67,24 @@ export default function Subtitle({
   });
 
   const Tag = as;
-  const classes = `${styles.subtitle} ${animation === "none" ? styles.noAnimation : ""} ${className ?? ""}`.trim();
-  const wrapperClasses =
-    `${styles.wrapper} ${styles[align]} ${wrapperClassName ?? ""}`.trim();
 
   return (
-    <section ref={scopeRef} className={wrapperClasses} style={wrapperStyle}>
+    <motion.section
+      ref={scopeRef}
+      className={`${styles.wrapper} ${styles[align]} ${wrapperClassName ?? ""}`}
+      style={wrapperStyle}
+    >
       <Tag
         ref={textRef}
-        className={classes}
+        className={`${styles.subtitle} ${animation === "none" ? styles.noAnimation : ""} ${className ?? ""}`}
         style={{
-          fontSize: sizeOpts[size],
+          // fontSize: sizeOpts[size],
           color: colorOpts[color],
           textAlign: align,
         }}
       >
         {text}
       </Tag>
-    </section>
+    </motion.section>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./FooterWrapper.module.css";
-import { SocialLinks } from "@trussworks/react-uswds";
+import FooterSocialLinks from "./FooterSocialLinks";
 import Link from "next/link";
 import Image from "next/image";
 import { useRef } from "react";
@@ -16,7 +16,8 @@ import {
   FOOTER_COLUMNS,
   FOOTER_POLICIES,
   FOOTER_SOCIALS,
-} from "@/content/site";
+} from "@/text/site";
+import { FOOTER_WRAPPER_TEXT } from "@/text/ui";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -24,12 +25,6 @@ export default function FooterWrapper() {
   const footerRef = useRef<HTMLElement | null>(null);
   const bounceTweenRef = useRef<gsap.core.Tween | null>(null);
   const year = new Date().getFullYear();
-  const socialIconByKey: Record<string, string> = {
-    x: "x",
-    linkedin: "linkedin",
-    github: "github",
-    youtube: "youtube",
-  };
   const actionStyles = [
     {
       backgroundColor: "var(--primary-dark-panel-muted)",
@@ -85,38 +80,21 @@ export default function FooterWrapper() {
     { scope: footerRef },
   );
 
-  const socialLinkItems = FOOTER_SOCIALS.map(({ label, href }) => {
-    const spriteKey = socialIconByKey[label.toLowerCase()] ?? "x";
-
-    return (
-    <a
-      key={href}
-      className="usa-social-link border-radius-primary padding-1"
-      href={href}
-      aria-label={label}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <span className="display-flex flex-align-center flex-justify-center height-full width-full">
-        <svg className="usa-icon width-full height-full" aria-hidden="true" focusable="false" role="img">
-          <use href={`/assets/img/sprite.svg#${spriteKey}`} />
-        </svg>
-      </span>
-    </a>
-  )});
-
   return (
-    <footer ref={footerRef} className={`usa-footer usa-footer--big ${styles.footer}`} aria-label="Footer">
-      <section className={styles.callout} aria-label="Join the mission">
+    <footer
+      ref={footerRef}
+      className={styles.footer}
+      aria-label={FOOTER_WRAPPER_TEXT.footerAriaLabel}
+    >
+      <section
+        className={styles.callout}
+        aria-label={FOOTER_WRAPPER_TEXT.joinMissionAriaLabel}
+      >
         <div className={styles.calloutText}>
           <SectionHeader
+            wrapperClassName={styles.footerHeaderWrapper}
             className={styles.calloutHeader}
             title={FOOTER_CALLOUT_CONTENT.title}
-            titleAs="h2"
-            titleSize="large"
-            titleAlignment="left"
-            titleColor="primaryLight"
-            titleHighlightColor="primaryColorLight"
             titleHighlightSlice={[17, 32]}
             // subtitle={FOOTER_CALLOUT_CONTENT.body}
             // subtitleAlignment="left"
@@ -129,28 +107,24 @@ export default function FooterWrapper() {
             }}
           />
         </div>
-
-        <aside className={styles.calloutRight} aria-hidden="true" />
       </section>
-
-      {/* <div className={`usa-footer__return-to-top ${styles.returnToTop}`}>
-        <div className={styles.returnToTopInner}>
-          <a href="#top" className={styles.returnToTopLink}>
-            Return to top
-          </a>
-        </div>
-      </div> */}
 
       <div className={styles.surface}>
         <div className={styles.inner}>
           <div className={styles.brandRow}>
             <div className={styles.brandLockup}>
               <span className={styles.logoBox}>
-                <Image src="/usds-logo-cropped.svg" alt="U.S. DOGE Service logo" fill priority className={styles.logoImg} />
+                <Image
+                  src="/usds-logo-cropped.svg"
+                  alt={FOOTER_WRAPPER_TEXT.logoAlt}
+                  fill
+                  priority
+                  className={styles.logoImg}
+                />
               </span>
-              <p className={`usa-footer__logo-heading margin-y-0 ${styles.logoHeading}`}>U.S. DOGE Service</p>
+              <p className={styles.logoHeading}>{FOOTER_WRAPPER_TEXT.logoHeading}</p>
             </div>
-            <span className={styles.brandMark}>USDS</span>
+            <span className={styles.brandMark}>{FOOTER_WRAPPER_TEXT.brandMark}</span>
           </div>
 
           <div className={styles.mainGrid}>
@@ -158,7 +132,7 @@ export default function FooterWrapper() {
               {FOOTER_COLUMNS.map((column) => (
                 <nav key={column.title} className={styles.column} aria-label={column.title}>
                   <p className={styles.colTitle}>{column.title}</p>
-                  <ul className={`usa-list usa-list--unstyled ${styles.linkList}`}>
+                  <ul className={styles.linkList}>
                     {column.links.map((link) => (
                       <li key={`${column.title}-${link.label}`}>
                         <Link href={link.href}>{link.label}</Link>
@@ -169,7 +143,10 @@ export default function FooterWrapper() {
               ))}
             </div>
 
-            <aside className={styles.actionPanel} aria-label="Primary actions">
+            <aside
+              className={styles.actionPanel}
+              aria-label={FOOTER_WRAPPER_TEXT.primaryActionsAriaLabel}
+            >
               <div className={styles.actionCtas}>
                 {FOOTER_ACTIONS.map((action, index) => (
                   <CTA
@@ -183,13 +160,13 @@ export default function FooterWrapper() {
                 ))}
               </div>
               <p className={styles.actionMeta}>
-                An official website of the United States Government.
+                {FOOTER_WRAPPER_TEXT.officialSiteNotice}
               </p>
             </aside>
           </div>
 
           <div className={styles.bottomRow}>
-            <ul className={`usa-list usa-list--unstyled ${styles.policyList}`}>
+            <ul className={styles.policyList}>
               {FOOTER_POLICIES.map((policy) => (
                 <li key={policy.label}>
                   <Link href={policy.href}>{policy.label}</Link>
@@ -198,10 +175,12 @@ export default function FooterWrapper() {
             </ul>
 
             <div className={styles.socialWrap}>
-              <SocialLinks links={socialLinkItems} />
+              <FooterSocialLinks socials={FOOTER_SOCIALS} />
             </div>
 
-            <p className={styles.notice}>© {year} U.S. DOGE Service. All rights reserved.</p>
+            <p className={styles.notice}>
+              © {year} {FOOTER_WRAPPER_TEXT.rightsReservedSuffix}
+            </p>
           </div>
         </div>
       </div>

@@ -25,14 +25,20 @@ export default function HorizontalCards<T>({
     <div className={`${styles.wrapper} ${className ?? ""}`}>
       {cards.map((card, cardIdx) => {
         const contentCard = card as Card;
-        const key =
-          renderCard
-            ? cardIdx
-            : (contentCard.id ?? contentCard.title ?? cardIdx);
+        const key = renderCard
+          ? cardIdx
+          : (contentCard.id ?? contentCard.title ?? cardIdx);
 
         return (
-          <div className={styles.cardWrapper} key={key}>
-            {renderCard ? renderCard(card as T, cardIdx) : <ContentCard card={contentCard} />}
+          <div
+            className={`${styles.cardWrapper} ${cards.length === 3 ? styles.cardTri : ""} ${cards.length === 4 ? styles.cardQuad : ""} ${cards.length > 4 ? styles.cardOfMany : ""}`}
+            key={key}
+          >
+            {renderCard ? (
+              renderCard(card as T, cardIdx)
+            ) : (
+              <ContentCard card={contentCard} />
+            )}
           </div>
         );
       })}

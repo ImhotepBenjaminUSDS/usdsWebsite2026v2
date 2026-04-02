@@ -130,6 +130,16 @@
   transition: none;
 }
 
+@media (max-width: 40em) {
+  .wrapper {
+    width: 100%;
+  }
+
+  .link {
+    padding: 0.75rem 1rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .lineBack {
     display: none;

@@ -8,6 +8,7 @@ import SplitText from "gsap/SplitText";
 import { useBodyReveal } from "@/hooks/useSplitReveal/presets";
 import Eyebrow from "@/components/general/Eyebrow";
 import Title from "@/components/general/Title";
+import { MISSION_HERO_CONTENT } from "@/text/mission";
 
 gsap.registerPlugin(SplitText);
 
@@ -21,22 +22,16 @@ export default function Hero() {
     <section ref={sectionRef} className={styles.wrapper}>
       <div className={styles.inner}>
         <header className={styles.copy}>
-          <Eyebrow text="Built for the public good" alignment="center" />
+          <Eyebrow text={MISSION_HERO_CONTENT.eyebrow} alignment="center" />
 
           <Title
-            text="Our Mission"
-            as="h2"
-            size="large"
-            alignment="center"
-            color="primaryLight"
-            highlightColor="primaryColorLight"
-            highlightSlice={[4, 11]}
+            text={MISSION_HERO_CONTENT.title}
+            highlightSlice={MISSION_HERO_CONTENT.titleHighlightSlice}
             className={styles.title}
           />
 
           <p ref={messageRef} className={styles.message}>
-            Transforming government to deliver fast, secure and user-centered digital services that millions of
-            Americans rely on every day.
+            {MISSION_HERO_CONTENT.message}
           </p>
         </header>
       </div>

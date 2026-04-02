@@ -5,7 +5,7 @@ import CTA from "../../../components/buttons/CTA";
 import Image from "next/image";
 import { useTitleReveal, useBodyReveal } from "@/hooks/useSplitReveal/presets";
 import { useRef } from "react";
-import { HOME_HERO_CONTENT } from "@/content/home";
+import { HOME_HERO_CONTENT, HOME_SECTION_ARIA_TEXT } from "@/text/home";
 
 type HeroProps = {
   ready?: boolean;
@@ -79,7 +79,7 @@ export default function Hero({ ready = true }: HeroProps) {
         <div
           className={styles.ctaWrapper}
           role="group"
-          aria-label="Primary actions"
+          aria-label={HOME_SECTION_ARIA_TEXT.heroPrimaryActions}
         >
           {HOME_HERO_CONTENT.ctas.map((cta, index) => (
             <CTA

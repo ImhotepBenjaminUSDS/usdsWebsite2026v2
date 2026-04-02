@@ -8,9 +8,9 @@ export type ProjectCardContent = {
 
 export const PROJECTS_PAGE_CONTENT = {
   hero: {
-    eyebrow: "Project Portfolio",
-    title: "Projects that improve everyday public services.",
-    body: "We partner with federal agencies to modernize systems used by millions of people. Our teams focus on durable improvements to reliability, usability, and measurable outcomes across high-impact public services.",
+    eyebrow: "Project portfolio and delivery highlights",
+    title: "Projects",
+    body: "We partner with federal agencies to modernize systems, improving reliability, usability, and outcomes across public services.",
     primaryCta: {
       text: "See our mission",
       href: "/mission",
@@ -35,65 +35,65 @@ export const PROJECTS_PAGE_CONTENT = {
   projects: [
     {
       area: "Veterans Affairs",
-      title: "Veterans benefits modernization",
+      title: "Modernizing Veterans Benefits Delivery",
       summary:
-        "Redesigned core digital flows so Veterans can apply for and track benefits with fewer steps and clearer status updates.",
+        "Redesigned core digital flows so Veterans apply for and track benefits with fewer steps, clearer updates, and less paperwork burden.",
       impact: "Faster access to earned services with less administrative burden.",
       status: "Active",
     },
     {
       area: "Immigration",
-      title: "Casework and adjudication tooling",
+      title: "Streamlining Casework and Adjudication",
       summary:
-        "Improved operations software used by officers to reduce rework, increase reliability, and support secure decision workflows.",
+        "Improved operations software for officers to reduce rework, increase reliability, and support secure adjudication workflow each day.",
       impact: "More resilient systems for high-volume immigration services.",
       status: "In Delivery",
     },
     {
       area: "Tax Filing",
-      title: "Simplified filing experiences",
+      title: "Simplifying Tax Filing Service Journeys",
       summary:
-        "Partnered on modern tax service interfaces to reduce confusion and make filing pathways easier to complete across devices.",
+        "Partnered on modern tax service interfaces to reduce confusion, and help filers complete pathways quickly across devices nationwide.",
       impact: "Lower friction for taxpayers and stronger service continuity.",
       status: "Scaling",
     },
     {
       area: "Public Health",
-      title: "Health data delivery improvements",
+      title: "Accelerating Public Health Data Delivery",
       summary:
-        "Upgraded data-sharing platforms used by public health teams for faster, more reliable insights and response coordination.",
+        "Upgraded data-sharing platforms used by public health teams for faster, more reliable insights and response coordination nationwide.",
       impact: "Better visibility for policy and frontline health operations.",
       status: "Active",
     },
     {
       area: "Student Aid",
-      title: "Aid application reliability",
+      title: "Stabilizing Student Aid Application Systems",
       summary:
-        "Stabilized student aid systems and improved form completion journeys to help students and families finish critical tasks.",
+        "Stabilized student aid systems and improved form journeys so students and families complete critical tasks faster with fewer errors.",
       impact: "Improved access to education support at scale.",
       status: "In Delivery",
     },
     {
       area: "Disaster Response",
-      title: "Relief application service updates",
+      title: "Speeding Up Disaster Relief Applications",
       summary:
-        "Streamlined digital pathways for emergency assistance and strengthened platform performance during peak demand windows.",
+        "Streamlined digital pathways for emergency assistance and strengthened platform performance, so services remain responsive at peaks.",
       impact: "Quicker support for communities during crisis events.",
       status: "Active",
     },
     {
       area: "Healthcare",
-      title: "Coverage and enrollment systems",
+      title: "Improving Coverage and Enrollment Systems",
       summary:
-        "Worked with agency teams to improve stability, accessibility, and user guidance in healthcare enrollment experiences.",
+        "Worked with agency teams to improve stability, accessibility, and support in healthcare enrollment experiences for users nationwide.",
       impact: "More dependable access to healthcare services.",
       status: "Scaling",
     },
     {
       area: "Child Welfare",
-      title: "Cross-agency service coordination",
+      title: "Coordinating Child Services Across Agencies",
       summary:
-        "Supported workflow modernization to help child welfare teams coordinate services across government programs.",
+        "Supported workflow modernization so child welfare teams coordinate services across programs, agencies and community partners faster.",
       impact: "Better outcomes through clearer and faster case coordination.",
       status: "In Delivery",
     },
@@ -110,4 +110,9 @@ export const PROJECTS_PAGE_CONTENT = {
       href: "/mission#contact",
     },
   },
+} as const;
+
+export const PROJECTS_PAGE_UI_TEXT = {
+  heroAsideAriaLabel: "Portfolio highlights",
+  projectLinkLabel: "Learn more",
 } as const;

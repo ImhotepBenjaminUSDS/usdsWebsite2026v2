@@ -150,3 +150,52 @@ export const MISSION_PAGE_CONTENT = {
     },
   ] as const satisfies readonly BasicTextCard[],
 } as const;
+
+export const MISSION_HERO_CONTENT = {
+  eyebrow: "Built for the public good",
+  title: "Our Mission",
+  titleHighlightSlice: [4, 11] as [number, number],
+  message:
+    "Transforming government to deliver fast, secure and user-centered digital services that millions of Americans rely on every day.",
+} as const;
+
+export const MISSION_VALUES_SECTION_CONTENT = {
+  eyebrow: "What Guides Us",
+  title: "Our Values",
+  titleHighlightSlice: [4, 10] as [number, number],
+  subtitle:
+    "Our values shape how we partner, how we build, and how we deliver measurable outcomes for the public.",
+  linkText: "See how we work",
+  linkHref: "/how-we-work",
+} as const;
+
+export const MISSION_WHO_WE_HELP_UI_TEXT = {
+  sectionAriaLabel: "Who we help",
+  expandLabel: "More",
+  collapseLabel: "Less",
+} as const;
+
+export const MISSION_ORIGIN_STORY_CONTENT = {
+  header: {
+    eyebrow: "How We Started",
+    title: "The USDS origin story",
+    titleHighlightSlice: [4, 9] as [number, number],
+    subtitle:
+      "How a scrappy idea became a durable digital service for the American people.",
+    subtitleSize: "medium" as const,
+    linkText: "Apply now",
+    linkHref: "#applyNow",
+  },
+  paragraphs: [
+    "The idea of a team like USDS had been percolating since 2012, and people across federal agencies had been exploring new modes of hiring and working since 2008. The HealthCare.gov launch crisis created an opportunity for a scrappy idea to become a reality. The challenges behind the launch made clear that accessing government services should be as easy as ordering a book online.",
+    "Founded by President Obama in August of 2014, the U.S. Digital Service brought together the best engineering, design, and government talent to change our government's approach to technology. We planned to hire ten people for three critical national priorities: modernizing immigration, Veterans' benefits, and HealthCare.gov. During the 2015 State of the Union address, we launched an online application to join the team. We worried if ten people would even apply. 1000 did.",
+    "We quickly went to work with a simple strategy:",
+    "Does this sound like you?",
+  ],
+  strategyLines: [
+    "Recruit top designers and engineers.",
+    "Pair them with leading civil servants.",
+    "Deploy teams to address critical services.",
+  ],
+  applyLinkLabel: "Apply now.",
+} as const;

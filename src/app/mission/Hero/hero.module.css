@@ -1,6 +1,6 @@
 .wrapper {
   width: 100%;
-  padding-top: var(--space-2xl);
+  max-width: 100ch;
 }
 
 .inner {
@@ -32,13 +32,13 @@
 
 .message {
   margin: 0;
-  max-width: 35ch;
   color: var(--primary-light);
-  font-size: var(--fs-h1);
+  font-size: var(--fs-h2);
   line-height: 1.5;
   font-weight: 400;
   font-family: var(--font-instrumentSerif);
   text-align: center;
+  max-width: 45ch;
 }
 
 @media (max-width: 72em) {

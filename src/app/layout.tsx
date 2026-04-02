@@ -1,42 +1,52 @@
 import type { Metadata } from "next";
-import "@trussworks/react-uswds/lib/uswds.css";
-import "@trussworks/react-uswds/lib/index.css";
-import { Public_Sans, Instrument_Serif, Outfit, Open_Sans, Inter } from "next/font/google";
+import {
+  Public_Sans,
+  Instrument_Serif,
+  Outfit,
+  Open_Sans,
+  Inter,
+} from "next/font/google";
 import "./globals.css";
 import HeaderWrapper from "@/components/general/HeaderWrapper";
 import FooterWrapper from "@/components/general/FooterWrapper";
 import LenisSmoothScroll from "@/utils/Initialization/LenisSmoothScroll";
+import {
+  ROOT_LAYOUT_METADATA_TEXT,
+  SHARED_METADATA_TEXT,
+  SITE_URL_FALLBACK,
+} from "@/text/metadata";
+import { ROOT_LAYOUT_UI_TEXT } from "@/text/ui";
 // import Preloader from "@/components/general/Preloader";
 
 const publicSans = Public_Sans({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-publicSans"
+  variable: "--font-publicSans",
 });
 
 const openSans = Open_Sans({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-openSans"
+  variable: "--font-openSans",
 });
 
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-inter"
+  variable: "--font-inter",
 });
 
 const outfit = Outfit({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-outfit"
+  variable: "--font-outfit",
 });
 
 const instrumentSerif = Instrument_Serif({
   weight: ["400"],
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-instrumentSerif"
+  variable: "--font-instrumentSerif",
 });
 
 // const instrumentSerif = Instrument_Serif({
@@ -45,27 +55,18 @@ const instrumentSerif = Instrument_Serif({
 //   variable: "--font-instrumentSerif",
 // });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "https://www.usds.gov";
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || SITE_URL_FALLBACK;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "U.S. DOGE Service (USDS) | U.S. Digital Service",
-    template: "%s | U.S. DOGE Service (USDS)",
+    default: ROOT_LAYOUT_METADATA_TEXT.title.default,
+    template: ROOT_LAYOUT_METADATA_TEXT.title.template,
   },
-  description:
-    "U.S. DOGE Service (USDS), also known as the U.S. Digital Service, partners with agencies to modernize critical government services, improve user experience, and deliver measurable public impact.",
-  applicationName: "U.S. DOGE Service",
-  keywords: [
-    "USDS",
-    "U.S. DOGE Service",
-    "US DOGE Service",
-    "U.S. Digital Service",
-    "US Digital Service",
-    "government technology",
-    "federal digital service",
-    "public service technology",
-  ],
+  description: ROOT_LAYOUT_METADATA_TEXT.description,
+  applicationName: ROOT_LAYOUT_METADATA_TEXT.applicationName,
+  keywords: [...ROOT_LAYOUT_METADATA_TEXT.keywords],
   alternates: {
     canonical: "/",
   },
@@ -84,37 +85,35 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "/",
-    siteName: "U.S. DOGE Service (USDS)",
-    title: "U.S. DOGE Service (USDS) | U.S. Digital Service",
-    description:
-      "USDS helps government deliver fast, secure, and user-centered digital services for the American people.",
+    siteName: ROOT_LAYOUT_METADATA_TEXT.openGraph.siteName,
+    title: ROOT_LAYOUT_METADATA_TEXT.openGraph.title,
+    description: ROOT_LAYOUT_METADATA_TEXT.openGraph.description,
     images: [
       {
-        url: "/usds-logo-cropped.svg",
-        alt: "U.S. DOGE Service logo",
+        url: SHARED_METADATA_TEXT.logoImagePath,
+        alt: SHARED_METADATA_TEXT.logoAlt,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "U.S. DOGE Service (USDS) | U.S. Digital Service",
-    description:
-      "USDS helps government deliver fast, secure, and user-centered digital services for the American people.",
-    images: ["/usds-logo-cropped.svg"],
+    title: ROOT_LAYOUT_METADATA_TEXT.twitter.title,
+    description: ROOT_LAYOUT_METADATA_TEXT.twitter.description,
+    images: [SHARED_METADATA_TEXT.logoImagePath],
   },
   icons: {
     icon: [
       {
-        url: "/usds-logo-cropped.svg",
+        url: SHARED_METADATA_TEXT.logoImagePath,
         type: "image/svg+xml",
       },
     ],
-    shortcut: ["/usds-logo-cropped.svg"],
-    apple: ["/usds-logo-cropped.svg"],
+    shortcut: [SHARED_METADATA_TEXT.logoImagePath],
+    apple: [SHARED_METADATA_TEXT.logoImagePath],
   },
-  creator: "U.S. DOGE Service",
-  publisher: "U.S. DOGE Service",
-  category: "government",
+  creator: ROOT_LAYOUT_METADATA_TEXT.creator,
+  publisher: ROOT_LAYOUT_METADATA_TEXT.publisher,
+  category: ROOT_LAYOUT_METADATA_TEXT.category,
 };
 
 export default function RootLayout({
@@ -125,18 +124,18 @@ export default function RootLayout({
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "U.S. DOGE Service (USDS)",
-    alternateName: ["U.S. Digital Service", "USDS", "US DOGE Service"],
+    name: ROOT_LAYOUT_METADATA_TEXT.schema.websiteName,
+    alternateName: ROOT_LAYOUT_METADATA_TEXT.schema.websiteAlternateNames,
     url: siteUrl,
   };
 
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "U.S. DOGE Service",
-    alternateName: ["U.S. Digital Service", "USDS"],
+    name: ROOT_LAYOUT_METADATA_TEXT.schema.organizationName,
+    alternateName: ROOT_LAYOUT_METADATA_TEXT.schema.organizationAlternateNames,
     url: siteUrl,
-    logo: `${siteUrl}/usds-logo-cropped.svg`,
+    logo: `${siteUrl}${SHARED_METADATA_TEXT.logoImagePath}`,
   };
 
   return (
@@ -151,14 +150,16 @@ export default function RootLayout({
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
         />
-        <a href="#main-content" className="skipLink">
-          Skip to main content
+        <a href="#" className="skipLink">
+          <div className="skipLinkInner">{ROOT_LAYOUT_UI_TEXT.skipLink}</div>
         </a>
         <LenisSmoothScroll />
         <HeaderWrapper />
-        <main id="main-content" className="appMain" tabIndex={-1}>
+        <main tabIndex={-1}>
           {children}
         </main>
 

@@ -18,10 +18,10 @@ export type Card = BasicTextCard & {
 };
 
 export default function ContentCard({ card }: ContentCardProps) {
-  const gradientStyle = {
-    "--card-gradient-x": card.gradientPosition?.x ?? "20%",
-    "--card-gradient-y": card.gradientPosition?.y ?? "80%",
-  } as CSSProperties;
+  // const gradientStyle = {
+  //   "--card-gradient-x": card.gradientPosition?.x ?? "20%",
+  //   "--card-gradient-y": card.gradientPosition?.y ?? "80%",
+  // } as CSSProperties;
 
   return (
     <motion.article
@@ -50,12 +50,15 @@ export default function ContentCard({ card }: ContentCardProps) {
         amount: 0.2,
       }}
     >
-      <div className={styles.frame} style={gradientStyle}>
-        {card.image ? <div className={styles.image}>{card.image}</div> : null}
+      <div className={styles.frame}>
 
         <div className={styles.content}>
-          {card.eyebrow ? <p className={styles.eyebrow}>{card.eyebrow}</p> : null}
-
+          {card.eyebrow ? (
+            <p className={styles.eyebrow}>{card.eyebrow}</p>
+          ) : null}
+          {card.subtitle ? (
+            <p className={styles.subtitle}>{card.subtitle}</p>
+          ) : null}
           <Subtitle
             text={card.title}
             as="h3"
@@ -65,10 +68,6 @@ export default function ContentCard({ card }: ContentCardProps) {
             animation="title"
             className={styles.title}
           />
-
-          {card.subtitle ? (
-            <p className={styles.subtitle}>{card.subtitle}</p>
-          ) : null}
 
           <p className={styles.body}>{card.body}</p>
 

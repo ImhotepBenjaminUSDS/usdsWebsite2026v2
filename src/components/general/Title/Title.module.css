@@ -17,10 +17,14 @@
 
 .title {
   visibility: hidden;
+  max-width: 1000px !important;
+
 }
 
 .title :global(.word),
 .title :global(.char) {
   font-family: var(--font-instrumentSerif) !important;
   line-height: inherit;
+  
+
 }

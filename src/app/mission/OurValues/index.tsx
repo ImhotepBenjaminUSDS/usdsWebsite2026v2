@@ -4,6 +4,7 @@ import SectionHeader from "@/components/general/SectionHeader";
 import HorizontalCards from "@/components/general/sections/HorizontalCards";
 import styles from "./ourValues.module.css";
 import type { BasicTextCard } from "@/types/cards";
+import { MISSION_VALUES_SECTION_CONTENT } from "@/text/mission";
 
 type Props = {
   items: readonly BasicTextCard[];
@@ -13,18 +14,14 @@ export default function OurValues({ items }: Props) {
   return (
     <section className={styles.wrapper} id="ourValues">
       <SectionHeader
-        eyebrow="What Guides Us"
-        title="Our Values"
-        titleAs="h2"
-        titleSize="large"
+        eyebrow={MISSION_VALUES_SECTION_CONTENT.eyebrow}
+        title={MISSION_VALUES_SECTION_CONTENT.title}
         titleAlignment="left"
-        titleColor="primaryLight"
-        titleHighlightColor="primaryColorLight"
-        titleHighlightSlice={[4, 10]}
-        subtitle="Our values shape how we partner, how we build, and how we deliver measurable outcomes for the public."
+        titleHighlightSlice={MISSION_VALUES_SECTION_CONTENT.titleHighlightSlice}
+        subtitle={MISSION_VALUES_SECTION_CONTENT.subtitle}
         subtitleAlignment="left"
-        linkText="See how we work"
-        linkHref="/how-we-work"
+        linkText={MISSION_VALUES_SECTION_CONTENT.linkText}
+        linkHref={MISSION_VALUES_SECTION_CONTENT.linkHref}
       />
 
       <HorizontalCards className={styles.grid} cards={items} />

@@ -23,8 +23,8 @@ export type CareersProcessStep = {
 
 export const CAREERS_PAGE_CONTENT = {
   hero: {
-    eyebrow: "Careers",
-    title: "Bring your craft to the most important systems in government.",
+    eyebrow: "Mission-driven tours across high-impact government services",
+    title: "Careers",
     subTitle:
       "USDS hires engineers, designers, product leaders, data scientists, and procurement specialists for high-impact tours of service.",
     body: "You will work with agency teams on services used by millions of people. The work is practical, mission-driven, and focused on outcomes that improve how government serves the public.",
@@ -66,7 +66,7 @@ export const CAREERS_PAGE_CONTENT = {
       applyHref: "/mission#applyNow",
     },
     {
-      title: "Design and user experience",
+      title: "Design and UX",
       summary:
         "Design alongside the public and civil servants so services are clear, accessible, and easy to complete.",
       skills: [
@@ -96,7 +96,7 @@ export const CAREERS_PAGE_CONTENT = {
       applyHref: "/mission#applyNow",
     },
     {
-      title: "Product/Strategy/Operations",
+      title: "Product, Strategy, & Operations",
       summary:
         "Lead delivery with clear priorities, measurable outcomes, and strong coordination across agency stakeholders.",
       skills: [
@@ -165,4 +165,13 @@ export const CAREERS_PAGE_CONTENT = {
     text: "Apply to USDS",
     href: "/mission#applyNow",
   },
+} as const;
+
+export const CAREERS_PAGE_UI_TEXT = {
+  viewPositionLabel: "View position",
+  applicationDetailsAriaLabel: "Application details",
+  focusedToursTitle: "Focused tours. Real outcomes.",
+  focusedToursBody:
+    "Submit one application and we will evaluate you across tracks where your skills are strongest.",
+  readHiringFaqLabel: "Read hiring FAQ",
 } as const;

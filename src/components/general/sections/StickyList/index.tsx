@@ -7,19 +7,11 @@ import { ArrowRight } from "lucide-react";
 import { useBodyReveal } from "@/hooks/useSplitReveal/presets";
 import Eyebrow from "@/components/general/Eyebrow";
 import Title from "@/components/general/Title";
+import { STICKY_LIST_HEADER_OPTIONS } from "@/text/ui";
 
 type ListItem = {
   title: string;
   description: string;
-};
-
-type HeaderOption = {
-  eyebrow: string;
-  header: string;
-  linkText: string;
-  linkIcon: React.ReactNode;
-  href: string;
-  highlightSlice?: [number, number];
 };
 
 type Props = {
@@ -27,24 +19,6 @@ type Props = {
   list: readonly ListItem[];
 };
 
-const headerOpts: Record<string, HeaderOption> = {
-  "Our Objectives": {
-    eyebrow: "What Drives Us",
-    header: "Our Objectives",
-    linkText: "See how we work",
-    linkIcon: <ArrowRight />,
-    href: "/how-we-work",
-    highlightSlice: [4, 14],
-  },
-  "How We Work": {
-    eyebrow: "",
-    header: "How We Work",
-    linkText: "Back to mission",
-    linkIcon: null,
-    href: "/mission",
-    highlightSlice: [4, 11],
-  },
-};
 export default function StickyList({ header, list }: Props) {
   const sectionRef = useRef<HTMLElement>(null);
   const subTitleRef = useRef<HTMLParagraphElement | null>(null);
@@ -52,7 +26,7 @@ export default function StickyList({ header, list }: Props) {
 
   useBodyReveal(sectionRef, subTitleRef, []);
 
-  const opts = headerOpts[header];
+  const opts = STICKY_LIST_HEADER_OPTIONS[header];
   if (!opts) return null;
 
 
@@ -65,11 +39,7 @@ export default function StickyList({ header, list }: Props) {
           </div>
           <Title
             text={opts.header}
-            as="h2"
-            size="large"
             alignment="left"
-            color="primaryLight"
-            highlightColor="primaryColorLight"
             highlightSlice={opts.highlightSlice}
             className={styles.title}
           />
@@ -77,7 +47,7 @@ export default function StickyList({ header, list }: Props) {
           <p className={styles.subTitle} ref={subTitleRef}>
             <Link className={styles.link} href={opts.href}>
               {opts.linkText}
-              {opts.linkIcon}
+              {opts.showLinkArrow ? <ArrowRight /> : null}
             </Link>
           </p>
         </div>

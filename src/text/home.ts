@@ -126,7 +126,7 @@ export const HOME_OUR_IMPACT_CONTENT: HomeOurImpactContent = {
     {
       status: "Active",
       eyebrow: "Technical Capacity",
-      title: "Building Tech Talent Across Government",
+      title: "Building Tech Across Government",
       bullets: [
         "Supporting TechForce initiative with OPM",
         "Resume reviews & interview assistance",
@@ -300,3 +300,17 @@ export const HOME_WHAT_TO_EXPECT_CONTENT: HomeWhatToExpectContent = {
     },
   ],
 };
+
+export const HOME_SECTION_ARIA_TEXT = {
+  heroPrimaryActions: "Primary actions",
+  howWeWork: "How we work",
+  whatToExpect: "What to expect",
+  applicationProcess: "Application Process",
+} as const;
+
+export const HOME_COMMUNITIES_CONTENT = {
+  header: "Communities We Hire From",
+  cursorLabel: "View",
+  linkMeta: "View details",
+  fallbackHref: "/how-we-work#who-we-hire",
+} as const;

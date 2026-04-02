@@ -6,6 +6,7 @@ import SectionHeader from "@/components/general/SectionHeader";
 import { useBodyReveal } from "@/hooks/useSplitReveal/presets";
 import ColorImageBlock from "@/components/general/ColorImageBlock";
 import styles from "./originStory.module.css";
+import { MISSION_ORIGIN_STORY_CONTENT } from "@/text/mission";
 
 export default function OriginStory() {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -23,47 +24,41 @@ export default function OriginStory() {
     <section className={styles.wrapper} ref={sectionRef}>
       <SectionHeader
         className={styles.originHeader}
-        eyebrow="How We Started"
-        title="The USDS origin story"
-        titleSize="large"
+        eyebrow={MISSION_ORIGIN_STORY_CONTENT.header.eyebrow}
+        title={MISSION_ORIGIN_STORY_CONTENT.header.title}
         titleAlignment="left"
-        subtitle="How a scrappy idea became a durable digital service for the American people."
+        subtitle={MISSION_ORIGIN_STORY_CONTENT.header.subtitle}
         subtitleAlignment="left"
-        subtitleSize="medium"
-        linkText="Apply now"
-        linkHref="#applyNow"
-        titleHighlightSlice={[4, 9]}
+        subtitleSize={MISSION_ORIGIN_STORY_CONTENT.header.subtitleSize}
+        linkText={MISSION_ORIGIN_STORY_CONTENT.header.linkText}
+        linkHref={MISSION_ORIGIN_STORY_CONTENT.header.linkHref}
+        titleHighlightSlice={MISSION_ORIGIN_STORY_CONTENT.header.titleHighlightSlice}
       />
 
       <div className={styles.layout}>
         <article className={styles.copy}>
           <p className={styles.paragraph} ref={p1Ref}>
-            The idea of a team like USDS had been percolating since 2012, and people across federal agencies had been
-            exploring new modes of hiring and working since 2008. The HealthCare.gov launch crisis created an
-            opportunity for a scrappy idea to become a reality. The challenges behind the launch made clear that
-            accessing government services should be as easy as ordering a book online.
+            {MISSION_ORIGIN_STORY_CONTENT.paragraphs[0]}
           </p>
 
           <p className={styles.paragraph} ref={p2Ref}>
-            Founded by President Obama in August of 2014, the U.S. Digital Service brought together the best
-            engineering, design, and government talent to change our government&apos;s approach to technology. We
-            planned to hire ten people for three critical national priorities: modernizing immigration, Veterans&apos;
-            benefits, and HealthCare.gov. During the 2015 State of the Union address, we launched an online
-            application to join the team. We worried if ten people would even apply. 1000 did.
+            {MISSION_ORIGIN_STORY_CONTENT.paragraphs[1]}
           </p>
 
-          <p className={styles.paragraph}>We quickly went to work with a simple strategy:</p>
+          <p className={styles.paragraph}>{MISSION_ORIGIN_STORY_CONTENT.paragraphs[2]}</p>
 
           <div className={styles.strategyBlock} ref={strategyBlockRef}>
-            <p className={styles.strategyLine}>Recruit top designers and engineers.</p>
-            <p className={styles.strategyLine}>Pair them with leading civil servants.</p>
-            <p className={styles.strategyLine}>Deploy teams to address critical services.</p>
+            {MISSION_ORIGIN_STORY_CONTENT.strategyLines.map((line) => (
+              <p key={line} className={styles.strategyLine}>
+                {line}
+              </p>
+            ))}
           </div>
 
           <p className={styles.paragraph} ref={p3Ref}>
-            Does this sound like you?{" "}
+            {`${MISSION_ORIGIN_STORY_CONTENT.paragraphs[3]} `}
             <Link className={styles.inlineLink} href="#applyNow">
-              Apply now.
+              {MISSION_ORIGIN_STORY_CONTENT.applyLinkLabel}
             </Link>
           </p>
         </article>

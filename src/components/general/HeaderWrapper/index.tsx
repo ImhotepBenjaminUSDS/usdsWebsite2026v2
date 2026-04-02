@@ -6,7 +6,9 @@ import CTA from "@/components/buttons/CTA";
 import Image from "next/image";
 import styles from "./HeaderWrapper.module.css";
 import { ChevronDown } from "lucide-react";
-import { HEADER_NAV_ITEMS } from "@/content/site";
+import { HEADER_NAV_ITEMS } from "@/text/site";
+import { HEADER_WRAPPER_TEXT } from "@/text/ui";
+import { motion } from "motion/react";
 
 export default function HeaderWrapper() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -46,23 +48,34 @@ export default function HeaderWrapper() {
   const nav = HEADER_NAV_ITEMS;
 
   return (
-    <header className={styles.wrapper} aria-label="Site header" ref={headerRef}>
+    <header
+      className={styles.wrapper}
+      aria-label={HEADER_WRAPPER_TEXT.headerAriaLabel}
+      ref={headerRef}
+    >
       <div className={styles.innerWrapper}>
         <div className={styles.inner}>
-          <Link href="/" className={styles.brand} aria-label="Home">
+          <Link
+            href="/"
+            className={styles.brand}
+            aria-label={HEADER_WRAPPER_TEXT.homeAriaLabel}
+          >
             <span className={styles.logoBox}>
               <Image
                 src="/usds-logo-cropped.svg"
-                alt="USDS logo"
+                alt={HEADER_WRAPPER_TEXT.logoAlt}
                 fill
                 priority
                 className={styles.logoImg}
               />
             </span>
-            <span className={styles.brandText}>U.S. DOGE Service</span>
+            <span className={styles.brandText}>{HEADER_WRAPPER_TEXT.brandName}</span>
           </Link>
 
-          <nav className={styles.navDesktop} aria-label="Primary navigation">
+          <nav
+            className={styles.navDesktop}
+            aria-label={HEADER_WRAPPER_TEXT.primaryNavigationAriaLabel}
+          >
             <ul className={styles.navList}>
               {nav.map((item) => {
                 if (item.type === "link") {
@@ -80,7 +93,7 @@ export default function HeaderWrapper() {
 
                   return (
                     <li key={item.label} className={styles.navItem}>
-                      <button
+                      <motion.button
                         type="button"
                         className={styles.navButton}
                         aria-haspopup="true"
@@ -98,7 +111,7 @@ export default function HeaderWrapper() {
                         <span className={styles.chev} aria-hidden="true">
                           <ChevronDown />
                         </span>
-                      </button>
+                      </motion.button>
 
                       {openDropdown === item.label && (
                         <ul className={styles.dropdown} id={dropdownId}>
@@ -128,22 +141,29 @@ export default function HeaderWrapper() {
             </ul>
           </nav>
 
-          <button
+          <motion.button
             type="button"
             className={styles.mobileToggle}
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-label={
+              mobileOpen
+                ? HEADER_WRAPPER_TEXT.mobileToggleLabelClose
+                : HEADER_WRAPPER_TEXT.mobileToggleLabelOpen
+            }
             aria-expanded={mobileOpen}
             aria-controls={mobileNavId}
             onClick={() => setMobileOpen((v) => !v)}
           >
             <span className={styles.mobileBars} aria-hidden="true" />
-          </button>
+          </motion.button>
         </div>
       </div>
 
       {mobileOpen && (
         <div className={styles.mobilePanel}>
-          <nav aria-label="Mobile primary navigation" id={mobileNavId}>
+          <nav
+            aria-label={HEADER_WRAPPER_TEXT.mobileNavigationAriaLabel}
+            id={mobileNavId}
+          >
             <ul className={styles.mobileList}>
               {nav.map((item) => {
                 if (item.type === "link") {

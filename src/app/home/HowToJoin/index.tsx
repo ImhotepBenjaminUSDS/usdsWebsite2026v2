@@ -3,7 +3,7 @@
 import styles from "./HowToJoin.module.css";
 import SectionHeader from "@/components/general/SectionHeader";
 import CTA from "@/components/buttons/CTA";
-import { HOME_HOW_TO_JOIN_CONTENT } from "@/content/home";
+import { HOME_HOW_TO_JOIN_CONTENT, HOME_SECTION_ARIA_TEXT } from "@/text/home";
 
 export default function HowToJoin() {
   const { header, process, ctaHref, ctaText } = HOME_HOW_TO_JOIN_CONTENT;
@@ -29,7 +29,10 @@ export default function HowToJoin() {
           />
         </div>
 
-        <aside className={styles.right} aria-label="Application Process">
+        <aside
+          className={styles.right}
+          aria-label={HOME_SECTION_ARIA_TEXT.applicationProcess}
+        >
           <div className={styles.rightInner}>
             {/* <Subtitle
               text="Application Process"

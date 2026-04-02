@@ -41,10 +41,6 @@
 
 
 
-.hero {
-  margin-top: clamp(7rem, 14vh, 10rem);
-  margin-bottom: var(--space-s);
-}
 
 .quickLinks {
   display: flex;
@@ -258,8 +254,19 @@ tbody tr:nth-child(odd) {
 }
 
 @media (max-width: 72em) {
+  .faqItem,
+  .equalOpportunity {
+    max-width: 100%;
+  }
+
   .timelineGrid {
     max-width: 100%;
+    gap: var(--space-m);
+  }
+
+  .timelineCard {
+    flex-basis: 100%;
+    min-width: 0;
   }
 }
 
@@ -270,6 +277,43 @@ tbody tr:nth-child(odd) {
 
   .panelTone {
     padding: var(--space-l);
+  }
+
+  .quickLinks {
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  .quickLink {
+    flex: 1 1 calc((100% - 0.5rem) / 2);
+    min-width: 0;
+    padding: 0.5rem 0.75rem;
+    font-size: var(--fs-meta-smaller);
+  }
+
+  .question {
+    font-size: var(--fs-h4);
+    margin-bottom: var(--space-s);
+  }
+
+  .answer {
+    font-size: var(--fs-body);
+  }
+
+  .answerList {
+    padding-left: var(--space-m);
+    font-size: var(--fs-body);
+  }
+
+  .timelineTable th,
+  .timelineTable td {
+    padding: var(--space-s);
+    font-size: var(--fs-meta);
+  }
+
+  .timelineTable th:last-child,
+  .timelineTable td:last-child {
+    text-align: left;
   }
 
   .ctaTitle {

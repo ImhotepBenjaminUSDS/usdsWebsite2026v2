@@ -1,38 +1,35 @@
 import type { Metadata } from "next";
+import {
+  ROUTE_METADATA_TEXT,
+  SHARED_METADATA_TEXT,
+  SITE_URL_FALLBACK,
+} from "@/text/metadata";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "https://www.usds.gov";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || SITE_URL_FALLBACK;
+const pageMeta = ROUTE_METADATA_TEXT.mission;
 
 export const metadata: Metadata = {
-  title: "Mission",
-  description:
-    "Learn the mission, values, origin story, and measurable impact of U.S. DOGE Service (USDS), also known as the U.S. Digital Service.",
-  keywords: [
-    "USDS mission",
-    "U.S. DOGE Service mission",
-    "U.S. Digital Service mission",
-    "government digital modernization",
-    "federal technology mission",
-  ],
+  title: pageMeta.title,
+  description: pageMeta.description,
+  keywords: [...pageMeta.keywords],
   alternates: {
-    canonical: "/mission",
+    canonical: pageMeta.canonical,
   },
   openGraph: {
-    url: `${siteUrl}/mission`,
-    title: "Mission | U.S. DOGE Service (USDS)",
-    description:
-      "See how USDS improves critical government services through engineering, design, and public service collaboration.",
+    url: `${siteUrl}${pageMeta.canonical}`,
+    title: pageMeta.openGraphTitle,
+    description: pageMeta.openGraphDescription,
     images: [
       {
-        url: "/usds-logo-cropped.svg",
-        alt: "U.S. DOGE Service logo",
+        url: SHARED_METADATA_TEXT.logoImagePath,
+        alt: SHARED_METADATA_TEXT.logoAlt,
       },
     ],
   },
   twitter: {
-    title: "Mission | U.S. DOGE Service (USDS)",
-    description:
-      "See how USDS improves critical government services through engineering, design, and public service collaboration.",
-    images: ["/usds-logo-cropped.svg"],
+    title: pageMeta.twitterTitle,
+    description: pageMeta.twitterDescription,
+    images: [SHARED_METADATA_TEXT.logoImagePath],
   },
 };
 

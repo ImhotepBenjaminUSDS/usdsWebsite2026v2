@@ -47,10 +47,28 @@
   color: var(--primary-light-muted);
 }
 
+@media (max-width: 64em) {
+  .wrapper {
+    min-height: 0;
+    gap: var(--space-l);
+  }
+
+  .communityLink {
+    padding: var(--space-m) var(--space-l);
+    font-size: var(--fs-h4);
+  }
+
+  .communityLink:hover,
+  .communityLinkActive {
+    padding-left: var(--space-l);
+  }
+}
+
 @media (max-width: 40em) {
   .communityLink {
-    padding: var(--space-m) var(--space-m);
-    font-size: var(--fs-h4);
+    align-items: flex-start;
+    padding: var(--space-m);
+    font-size: var(--fs-h5);
   }
 
   .linkMeta {

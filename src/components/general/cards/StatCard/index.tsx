@@ -2,6 +2,7 @@
 
 import ImpactCard from "@/components/general/cards/ImpactCard";
 import type { IconName } from "@/components/general/cards/ImpactCard";
+import styles from "./StatCard.module.css";
 
 type StatCardProps = {
   icon: IconName;
@@ -18,6 +19,7 @@ export default function StatCard({
 }: StatCardProps) {
   return (
     <ImpactCard
+      className={styles.statCard}
       variant="stat"
       icon={icon}
       value={value}

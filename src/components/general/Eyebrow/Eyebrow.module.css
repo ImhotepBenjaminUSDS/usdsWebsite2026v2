@@ -32,4 +32,5 @@
 .text {
   display: inline-block;
   will-change: transform;
+  text-transform: capitalize;
 }

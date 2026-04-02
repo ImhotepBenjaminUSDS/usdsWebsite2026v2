@@ -8,37 +8,34 @@ import StickyList from "@/components/general/sections/StickyList";
 import WhoWeHelp from "./WhoWeHelp";
 import OurValues from "./OurValues";
 import OriginStory from "./OriginStory";
-import { MISSION_PAGE_CONTENT } from "@/content/mission";
+import { MISSION_PAGE_CONTENT } from "@/text/mission";
 
 export default function MissionPage() {
   const { infoCards, objectives, whoWeHelp, values } = MISSION_PAGE_CONTENT;
 
   return (
-    <div className={`pageWrapper ${styles.wrapper}`}>
-      <div className="pageInnerWrapper">
-        <Hero />
+    <div className={`pageWrap ${styles.wrapper}`}>
+      <Hero />
 
-        <DividerStars />
+      <DividerStars />
 
-        <InfoPanel cards={infoCards} />
+      <InfoPanel cards={infoCards} />
 
-        <DividerStars />
+      <DividerStars />
 
-        <StickyList header={objectives.header} list={objectives.items} />
+      <StickyList header={objectives.header} list={objectives.items} />
 
-        <DividerStars />
+      <DividerStars />
 
-        <WhoWeHelp cards={whoWeHelp.cards} content={whoWeHelp.content} />
+      <WhoWeHelp cards={whoWeHelp.cards} content={whoWeHelp.content} />
 
-        <DividerStars />
+      <DividerStars />
 
-        <OurValues items={values} />
+      <OurValues items={values} />
 
-        <DividerStars />
+      <DividerStars />
 
-        <OriginStory />
-
-      </div>
+      <OriginStory />
     </div>
   );
 }

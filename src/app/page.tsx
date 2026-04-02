@@ -12,7 +12,7 @@ import { AnimatePresence } from "motion/react";
 import { useState } from "react";
 import DividerStars from "@/ui/DividerStars";
 import Communities from "./home/Communities";
-import { HOME_HOW_WE_WORK_CONTENT } from "@/content/home";
+import { HOME_HOW_WE_WORK_CONTENT } from "@/text/home";
 
 
 export default function Home() {

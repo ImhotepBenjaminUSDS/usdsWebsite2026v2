@@ -2,21 +2,63 @@
   width: 100%;
   display: flex;
   flex-direction: row;
-  gap: var(--space-m);
+  flex-wrap: wrap;
+  /* gap: var(--space-m); */
   align-items: stretch;
+  gap: 0 !important;
 }
 
 .cardWrapper {
   flex: 1 1 auto;
-  max-width: var(--horizontal-card-max-width, 33.3%);
-  flex-basis: var(--horizontal-card-basis, auto);
-  min-width: var(--horizontal-card-min-width, min(100%, 16rem));
+
+  /* max-width: var(--horizontal-card-max-width, 33.3%); */
+  /* min-width: var(--horizontal-card-min-width, min(100%, 16rem)); */
+  width: 100%;
+  /* border: 1px solid green; */
+}
+
+.cardTri {
+  width: 33.3333%;
+  border-right: var(--border-theme);
+  padding: 0 var(--space-m);
+}
+
+.cardQuad {
+  width: 25%;
+  border-right: var(--border-theme);
+  padding: 0 var(--space-m);
+}
+
+.cardOfMany {
+  padding: var(--space-2xl) var(--space-m);
+
+  border-bottom: var(--border-theme);
+}
+
+.cardOfMany:last-child {
+  border-bottom: none;
+}
+.cardWrapper:last-child {
+  border-right: none;
+}
+
+@media (max-width: 72em) {
+  .cardWrapper {
+    max-width: 50%;
+    min-width: 0;
+  }
+
+  .cardWrapper:nth-child(2n) {
+    border-right: none;
+  }
 }
 
 @media (max-width: 40em) {
   .cardWrapper {
-    flex: 1 1 100%;
+    flex: 1 1 auto;
     max-width: 100%;
     min-width: 0;
+    border-right: none;
+    padding: 0;
   }
 }

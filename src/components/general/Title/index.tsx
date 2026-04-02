@@ -1,8 +1,10 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import { useRef } from "react";
 import { useTitleReveal } from "@/hooks/useSplitReveal/presets";
 import styles from "./Title.module.css";
+import { motion } from "motion/react";
 
 type Alignment = "left" | "center" | "right";
 type TitleSize = "small" | "medium" | "large";
@@ -17,6 +19,7 @@ type Props = {
   highlightColor?: TitleColor;
   highlightSlice?: [number, number];
   as?: HeadingTag;
+  lineHeight?: CSSProperties["lineHeight"];
   className?: string;
 };
 
@@ -57,6 +60,7 @@ export default function Title({
   highlightColor = "primaryColorLight",
   highlightSlice,
   as = "h2",
+  lineHeight,
   className,
 }: Props) {
   const scopeRef = useRef<HTMLDivElement | null>(null);
@@ -81,7 +85,7 @@ export default function Title({
   }
 
   return (
-    <div
+    <motion.div
       ref={scopeRef}
       className={`${styles.wrapper} ${styles[alignment]}`}
       style={{ alignSelf: alignmentOpts[alignment].alignSelf }}
@@ -92,6 +96,7 @@ export default function Title({
         style={{
           fontSize: sizeOpts[size],
           color: colorOpts[color],
+          lineHeight: lineHeight ?? "var(--title-line-height, inherit)",
           textAlign: alignmentOpts[alignment].textAlign,
         }}
       >
@@ -105,6 +110,6 @@ export default function Title({
           text
         )}
       </Tag>
-    </div>
+    </motion.div>
   );
 }

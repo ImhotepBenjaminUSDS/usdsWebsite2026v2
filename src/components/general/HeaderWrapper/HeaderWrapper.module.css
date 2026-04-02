@@ -109,7 +109,7 @@
   border: none;
   padding: var(--space-s) var(--space-m);
   cursor: pointer;
-  color: var(--primary-light);
+  color: var(--primary-light-subtle);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -117,7 +117,7 @@
   border: 1px solid transparent;
   transition: var(--transition-fast);
   font-size: inherit;
-  font-weight: inherit;
+  font-weight: var(--fw-subtitle);
 }
 
 .navLink *,
@@ -128,6 +128,7 @@
 .navLink:hover,
 .navButton:hover {
   background: var(--primary-light-subtle-transparent);
+  color: var(--primary-light)
 }
 
 .brand:focus-visible,
@@ -230,6 +231,8 @@
   background: var(--primary-dark-panel);
   box-shadow: var(--shadow-s);
   padding: 0.75rem 1rem 1rem;
+  max-height: calc(100svh - var(--header-height) - 1.75rem);
+  overflow: auto;
 }
 
 .mobileList {

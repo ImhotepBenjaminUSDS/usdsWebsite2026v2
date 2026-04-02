@@ -6,6 +6,7 @@ import Image from "next/image";
 
 import { useTitleReveal, useBodyReveal } from "@/hooks/useSplitReveal/presets";
 import usePerspectiveTilt from "@/hooks/usePerspectiveTilt";
+import { INFO_PANEL_CARD_TEXT } from "@/text/ui";
 
 type Props = {
   title: string;
@@ -24,10 +25,7 @@ export default function Card({ title, body, name }: Props) {
   useTitleReveal(cardRef, titleRef, []);
   useBodyReveal(cardRef, bodyRef, []);
 
-  const images = {
-    whoWeAre: { src: "/whoWeAre.png", alt: "Who We Are" },
-    whatWeDo: { src: "/whatWeDo.png", alt: "What We Do" },
-  } as const;
+  const images = INFO_PANEL_CARD_TEXT.images;
 
   usePerspectiveTilt({
     containerRef: cardRef,

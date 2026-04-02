@@ -22,7 +22,7 @@
 
 .rail {
   position: relative;
-  width: 1px;
+  width: 2px;
   border-radius: 999px;
   background: var(--primary-light-muted-transparent);
   overflow: hidden;
@@ -32,7 +32,7 @@
   position: absolute;
   inset: 0 auto 0 0;
   width: 100%;
-  background: var(--yellow-color);
+  background: var(--primary-yellow-color-transparent);
 }
 
 .list {
@@ -51,7 +51,7 @@
 }
 
 .listItemActive {
-  color: var(--yellow-color);
+  color: var(--primary-light);
 } 
 
 .listLink {
@@ -100,7 +100,6 @@
   /* border: 1px solid red; */
   height: calc(100vh - var(--header-height) - var(--space-2xl) - var(--space-2xl));
   padding: var(--space-m) 0
-
 }
 
 .card span {
@@ -122,10 +121,14 @@
 
 .title {
   margin: 0;
-  color: var(--primary-color-light);
+  color: var(--primary-light);
   font-size: var(--fs-h1);
   font-weight: var(--fw-title);
-  font-family: var(--font-instrumentSerif);
+  visibility: hidden;
+}
+
+.title * {
+  font-family: var(--font-instrumentSerif) !important;
 }
 
 .summary {
@@ -135,6 +138,12 @@
   line-height: 2;
   max-width: 50ch;
   font-weight: var(--fw-body);
+  visibility: hidden;
+}
+
+.summary * {
+  line-height: 2;
+
 }
 
 .rolesTitle {
@@ -167,12 +176,16 @@
 
 .skills {
   margin: 0;
-  color: var(--primary-light-muted);
+  color: var(--primary-color-light);
   font-size: var(--fs-h5);
   font-weight: var(--fw-body);
   line-height: 2;
   max-width: 60ch;
+  visibility: hidden;
 
+}
+.skills * {
+  line-height: 2;
 }
 
 @media (max-width: 72em) {
@@ -183,12 +196,15 @@
   }
 
   .left {
+    width: 100%;
+    flex: none;
     position: static;
     height: auto;
   }
 
   .leftInner {
-    align-items: center;
+    align-items: flex-start;
+    gap: var(--space-s);
   }
 
   .rail {
@@ -198,19 +214,47 @@
 
   .list {
     justify-content: flex-start;
+    gap: var(--space-l);
   }
 
   .communitySection {
-    min-height: calc(100svh - var(--header-height) - 3rem);
+    min-height: 0;
+    align-items: stretch;
+  }
+
+  .card {
+    min-height: 0;
+    padding: var(--space-l);
   }
 }
 
 @media (max-width: 40em) {
+  .rail {
+    display: none;
+  }
+
+  .list {
+    gap: var(--space-s);
+  }
+
+  .listLink {
+    font-size: var(--fs-body);
+  }
+
   .card {
-    padding: var(--space-l);
+    padding: var(--space-m);
+    gap: var(--space-l);
   }
 
   .title {
     font-size: var(--fs-h3);
+  }
+
+  .summary {
+    font-size: var(--fs-body);
+  }
+
+  .skills {
+    font-size: var(--fs-body);
   }
 }

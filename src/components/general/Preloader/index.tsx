@@ -5,8 +5,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import type { Variants } from "motion/react";
 import Image from "next/image";
+import { PRELOADER_TEXT } from "@/text/ui";
 
-const words = ["We're Building", "Tech & Efficiency", "Americans Deserve"];
 const easeCurve: [number, number, number, number] = [0.76, 0, 0.24, 1];
 
 const wordTotalMs = 1250;
@@ -48,7 +48,7 @@ export default function Preloader({ onDone }: PreloaderProps) {
   const timeoutRef = useRef<number | null>(null);
   const doneRef = useRef(false);
 
-  const isLastWord = index === words.length - 1;
+  const isLastWord = index === PRELOADER_TEXT.words.length - 1;
 
   useEffect(() => {
     const update = () =>
@@ -153,20 +153,20 @@ export default function Preloader({ onDone }: PreloaderProps) {
           >
             <Image
               src="/usds-logo-cropped.svg"
-              alt="USDS logo"
+              alt={PRELOADER_TEXT.logoAlt}
               height={50}
               width={200}
               priority
               className={styles.logoImg}
             />
-            <span className={styles.logoText}>U.S. DOGE Service</span>
+            <span className={styles.logoText}>{PRELOADER_TEXT.logoLabel}</span>
           </motion.div>
 
           <AnimatePresence mode="wait">
             {showWord && (
               <motion.div className={styles.inner} style={{ overflow: "hidden" }}>
                 <motion.p
-                  key={words[index]}
+                  key={PRELOADER_TEXT.words[index]}
                   className={styles.text}
                   initial={{ opacity: 0, y: "100%" }}
                   animate={{ opacity: 1, y: "0%" }}
@@ -180,9 +180,9 @@ export default function Preloader({ onDone }: PreloaderProps) {
                     exit="exit"
                     style={{ display: "inline-block", whiteSpace: "pre" }}
                   >
-                    {Array.from(words[index]).map((ch, i) => (
+                    {Array.from(PRELOADER_TEXT.words[index]).map((ch, i) => (
                       <motion.span
-                        key={`${words[index]}-${i}`}
+                        key={`${PRELOADER_TEXT.words[index]}-${i}`}
                         variants={letter}
                         style={{ display: "inline-block", willChange: "transform, opacity, filter" }}
                         className={styles.letter}

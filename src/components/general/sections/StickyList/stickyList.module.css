@@ -13,7 +13,7 @@
   flex-direction: column;
   justify-content: flex-start;
   min-width: 0;
-  max-width: calc(50% - 1.5rem);
+  /* max-width: calc(50% - 1.5rem); */
   /* border: 1px solid red; */
 
 }
@@ -61,6 +61,8 @@
   font-size: var(--fs-h4);
   list-style-type: none;
   box-shadow: var(--shadow-s);
+  max-width: 60%;
+
 }
 
 .listItem {

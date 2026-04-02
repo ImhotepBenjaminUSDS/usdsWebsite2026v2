@@ -4,6 +4,7 @@ import { type ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import gsap from "gsap";
 import { motion, type Variants } from "motion/react";
 import styles from "./HoverCursorPreview.module.css";
+import { HOVER_CURSOR_PREVIEW_TEXT } from "@/text/ui";
 
 type HoverCursorPreviewItem = {
   id: string;
@@ -68,7 +69,7 @@ const DEFAULT_PREVIEW_COLORS = [
 
 export default function HoverCursorPreview({
   items,
-  cursorLabel = "View",
+  cursorLabel = HOVER_CURSOR_PREVIEW_TEXT.defaultCursorLabel,
   renderTriggers,
 }: HoverCursorPreviewProps) {
   const [modal, setModal] = useState<ModalState>({
@@ -80,15 +81,8 @@ export default function HoverCursorPreview({
   const cursorRef = useRef<HTMLDivElement | null>(null);
   const cursorLabelRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    setModal((previous) => {
-      if (previous.index < items.length) {
-        return previous;
-      }
-
-      return { active: false, index: 0 };
-    });
-  }, [items.length]);
+  const resolvedModal: ModalState =
+    modal.index < items.length ? modal : { active: false, index: 0 };
 
   useEffect(() => {
     if (!modalContainerRef.current || !cursorRef.current || !cursorLabelRef.current) {
@@ -162,8 +156,8 @@ export default function HoverCursorPreview({
   );
 
   const isActive = useMemo(
-    () => (index: number) => modal.active && modal.index === index,
-    [modal.active, modal.index],
+    () => (index: number) => resolvedModal.active && resolvedModal.index === index,
+    [resolvedModal.active, resolvedModal.index],
   );
 
   return (
@@ -175,12 +169,12 @@ export default function HoverCursorPreview({
         className={styles.modalContainer}
         variants={SCALE_ANIMATION}
         initial="initial"
-        animate={modal.active ? "enter" : "closed"}
+        animate={resolvedModal.active ? "enter" : "closed"}
       >
         <div
           className={styles.modalSlider}
           style={{
-            top: `${modal.index * -100}%`,
+            top: `${resolvedModal.index * -100}%`,
           }}
         >
           {items.map((item, itemIndex) => (
@@ -204,7 +198,7 @@ export default function HoverCursorPreview({
         className={styles.cursor}
         variants={SCALE_ANIMATION}
         initial="initial"
-        animate={modal.active ? "enter" : "closed"}
+        animate={resolvedModal.active ? "enter" : "closed"}
       />
 
       <motion.div
@@ -212,7 +206,7 @@ export default function HoverCursorPreview({
         className={styles.cursorLabel}
         variants={SCALE_ANIMATION}
         initial="initial"
-        animate={modal.active ? "enter" : "closed"}
+        animate={resolvedModal.active ? "enter" : "closed"}
       >
         {cursorLabel}
       </motion.div>

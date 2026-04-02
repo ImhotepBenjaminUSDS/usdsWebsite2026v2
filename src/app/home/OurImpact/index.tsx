@@ -3,7 +3,7 @@
 import styles from "./OurImpact.module.css";
 import ImpactCard from "@/components/general/cards/ImpactCard";
 import SectionHeader from "@/components/general/SectionHeader";
-import { HOME_OUR_IMPACT_CONTENT } from "@/content/home";
+import { HOME_OUR_IMPACT_CONTENT } from "@/text/home";
 import { AnimatePresence } from "motion/react";
 
 export default function OurImpact() {
@@ -13,8 +13,23 @@ export default function OurImpact() {
     { variant: "feature", icon: "verified", animateWaves: true },
     { variant: "gradientTeal", icon: "iphone", animateWaves: false },
   ] as const;
+  const leftGradientPositions = [
+    { x: "50%", y: "10%" },
+    { x: "90%", y: "90%" },
+    { x: "10%", y: "90%" },
+  ] as const;
   const topStatIcons = ["dollar", "school", "building", "globe"] as const;
+  const topStatGradientPositions = [
+    { x: "90%", y: "10%" },
+    { x: "10%", y: "10%" },
+    { x: "90%", y: "90%" },
+    { x: "10%", y: "90%" },
+  ] as const;
   const bottomStatIcons = ["trendingUp", "map"] as const;
+  const bottomStatGradientPositions = [
+    { x: "50%", y: "10%" },
+    { x: "90%", y: "90%" },
+  ] as const;
 
   return (
     <section
@@ -25,9 +40,7 @@ export default function OurImpact() {
         eyebrow={header.eyebrow}
         title={header.title}
         titleHighlightSlice={[4, 10]}
-        titleAlignment="center"
         subtitle={header.subTitle}
-        subtitleAlignment="center"
         linkText={header.linkText}
         linkHref={header.linkHref}
       />
@@ -45,6 +58,7 @@ export default function OurImpact() {
                 title={card.title}
                 bullets={card.bullets}
                 animateWaves={leftCardStyles[index]?.animateWaves ?? false}
+                gradientPosition={leftGradientPositions[index]}
               />
             ))}
           </AnimatePresence>
@@ -61,6 +75,7 @@ export default function OurImpact() {
                   value={card.value}
                   title={card.title}
                   subtitle={card.subtitle}
+                  gradientPosition={topStatGradientPositions[index]}
                 />
               ))}
 
@@ -71,6 +86,7 @@ export default function OurImpact() {
                   eyebrow={wideCard.eyebrow}
                   title={wideCard.title}
                   bullets={wideCard.bullets}
+                  gradientPosition={{ x: "10%", y: "10%" }}
                 />
               </div>
 
@@ -82,6 +98,7 @@ export default function OurImpact() {
                   value={card.value}
                   title={card.title}
                   subtitle={card.subtitle}
+                  gradientPosition={bottomStatGradientPositions[index]}
                 />
               ))}
             </AnimatePresence>

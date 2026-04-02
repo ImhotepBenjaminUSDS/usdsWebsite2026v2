@@ -1,11 +1,15 @@
 .wrapper {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .hero {
+  height: 100%;
   width: 100%;
+  max-width: 75ch;
   /* padding-top: var(--space-l); */
-  /* border: 1px solid red; */
 }
 
 .heroLayout {
@@ -17,7 +21,7 @@
 
 .heroContent {
   min-width: 0;
-  flex: 1 1 52%;
+  flex: 1 1 60%;
   display: flex;
   flex-direction: column;
   gap: var(--space-m);
@@ -25,10 +29,11 @@
 
 .heroAside {
   min-width: 0;
-  flex: 1 1 48%;
+  flex: 1 1 40%;
   display: flex;
   flex-direction: column;
   gap: var(--space-m) !important  ;
+  display: none;
 }
 
 .heroVisual {
@@ -130,12 +135,10 @@
   min-width: min(100%, 20rem);
   border-radius: var(--border-radius-primary);
   background: var(--primary-color-transparent);
-
-
+  height: 475px;
   box-shadow: var(--shadow-s);
   overflow: hidden;
   padding: var(--space-xl);
-
 }
 
 .projectCard:nth-child(1) {
@@ -245,6 +248,7 @@
   /* font-family: var(--font-instrumentSerif); */
   font-weight: var(--fw-title);
   /* line-height: 1.35; */
+  min-height: 35%;
 }
 
 .projectSummary {
@@ -252,6 +256,7 @@
   color: var(--primary-light-muted);
   font-size: var(--fs-h5) !important;
   font-weight: var(--fw-body);
+  min-height: 20%;
   /* line-height: 1.6; */
   /* margin-bottom: var(--space-xl); */
 }
@@ -264,9 +269,9 @@
 .projectImpact {
   margin: 0.15rem 0 0;
   color: var(--primary-light);
-  font-size: var(--fs-h5);
+  font-size: var(--fs-body);
   font-weight: var(--fw-body);
-
+  margin-bottom: auto;
 }
 
 .projectLinkRow {
@@ -279,7 +284,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  color: var(--primary-color-light);
+  color: var(--primary-yellow-color);
   font-size: var(--fs-meta);
   font-weight: var(--fw-subtitle);
   white-space: nowrap;
@@ -340,6 +345,7 @@
   .projectCard {
     flex-basis: 100%;
     min-width: 0;
+    height: auto;
   }
 }
 
@@ -361,6 +367,10 @@
 
   .projectTitle {
     font-size: var(--fs-h3);
+  }
+
+  .projectSummary {
+    font-size: var(--fs-body) !important;
   }
 
   .ctaBody {

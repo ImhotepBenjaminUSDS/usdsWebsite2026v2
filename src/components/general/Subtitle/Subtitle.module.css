@@ -17,13 +17,23 @@
 
 .subtitle {
   /* margin: 0; */
-  /* line-height: 1.25; */
   /* letter-spacing: -0.01em; */
   /* font-weight: 420; */
-  font-weight: var(--fw-body);
-  font-size: var(--fs-h3);
   visibility: hidden;
+  /* max-width: 40ch; */
+  font-size: var(--fs-h4);
+
 }
+
+.subtitle :global(.line) {
+  font-weight: var(--fw-body);
+  color: var(--primary-light-muted);
+  line-height: 10rem !important;
+  text-box-edge: cap alphabetical;
+  text-box-trim: trim-both;
+  margin-bottom: var(--space-s);
+}
+
 
 .noAnimation {
   visibility: visible;

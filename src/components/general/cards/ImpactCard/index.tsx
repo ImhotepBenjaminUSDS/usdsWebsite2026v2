@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import gsap from "gsap";
 import { motion } from "motion/react";
 import { useGSAP } from "@gsap/react";
@@ -41,6 +41,7 @@ type IconName =
   | "map";
 
 type Props = {
+  className?: string;
   variant?: CardVariant;
   icon?: IconName;
   status?: string;
@@ -50,6 +51,10 @@ type Props = {
   value?: string;
   subtitle?: string;
   animateWaves?: boolean;
+  gradientPosition?: {
+    x: string;
+    y: string;
+  };
 };
 
 export type { IconName };
@@ -68,6 +73,7 @@ const iconMap: Record<IconName, ReactNode> = {
 };
 
 export default function ImpactCard({
+  className,
   variant = "default",
   icon,
   status,
@@ -76,6 +82,7 @@ export default function ImpactCard({
   value,
   subtitle,
   animateWaves = false,
+  gradientPosition,
 }: Props) {
   const cardRef = useRef<HTMLElement | null>(null);
   const titleRef = useRef<HTMLHeadingElement | null>(null);
@@ -87,11 +94,16 @@ export default function ImpactCard({
 
   const iconNode = icon ? iconMap[icon] : null;
   const isStat = variant === "stat";
+  const gradientStyle = {
+    "--impact-gradient-x": gradientPosition?.x,
+    "--impact-gradient-y": gradientPosition?.y,
+  } as CSSProperties;
 
   return (
     <motion.article
       ref={cardRef}
-      className={`${styles.card} ${styles[variant]}`}
+      className={`${styles.card} ${styles[variant]} ${className ?? className}`}
+      style={gradientStyle}
       aria-label={title}
       layout
       initial={{
@@ -152,7 +164,7 @@ export default function ImpactCard({
               {bullets.map((bullet) => (
                 <li key={bullet} className={styles.bullet}>
                   <span className={styles.bulletDot} aria-hidden="true" />
-                  <span>{bullet}</span>
+                  <span className={styles.bulletText}>{bullet}</span>
                 </li>
               ))}
             </ul>

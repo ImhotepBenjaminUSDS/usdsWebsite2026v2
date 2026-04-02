@@ -4,14 +4,56 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useBodyReveal, useTitleReveal } from "@/hooks/useSplitReveal/presets";
 import styles from "./ContentScroller.module.css";
-import type { CommunityDiscipline } from "@/content/communities";
+import type { CommunityDiscipline } from "@/text/communities";
+import { HOW_WE_WORK_PAGE_UI_TEXT } from "@/text/howWeWork";
 
 gsap.registerPlugin(ScrollTrigger);
 
 type Props = {
   disciplines: readonly CommunityDiscipline[];
 };
+
+type CommunityCardProps = {
+  discipline: CommunityDiscipline;
+};
+
+function CommunityCard({ discipline }: CommunityCardProps) {
+  const cardRef = useRef<HTMLDivElement | null>(null);
+  const titleRef = useRef<HTMLHeadingElement | null>(null);
+  const summaryRef = useRef<HTMLParagraphElement | null>(null);
+  const skillsRef = useRef<HTMLParagraphElement | null>(null);
+
+  useTitleReveal(cardRef, titleRef, [discipline.id]);
+  useBodyReveal(cardRef, summaryRef, [discipline.id]);
+  useBodyReveal(cardRef, skillsRef, [discipline.id]);
+
+  return (
+    <div className={styles.card} ref={cardRef}>
+      <span>
+        <h3 className={styles.title} ref={titleRef}>
+          {discipline.title}
+        </h3>
+        <p className={styles.summary} ref={summaryRef}>
+          {discipline.summary}
+        </p>
+      </span>
+
+      <ul className={styles.rolesList}>
+        {discipline.roles.map((role) => (
+          <li key={role} className={styles.roleItem}>
+            {role}
+          </li>
+        ))}
+      </ul>
+
+      <p className={styles.skills} ref={skillsRef}>
+        {discipline.skills}
+      </p>
+    </div>
+  );
+}
 
 export default function ContentScroller({ disciplines }: Props) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -69,7 +111,10 @@ export default function ContentScroller({ disciplines }: Props) {
 
   return (
     <div ref={containerRef} className={styles.scroller}>
-      <aside className={styles.left} aria-label="Community list">
+      <aside
+        className={styles.left}
+        aria-label={HOW_WE_WORK_PAGE_UI_TEXT.communityListAriaLabel}
+      >
         <div className={styles.leftInner}>
           <div className={styles.rail} aria-hidden="true">
             <span ref={fillRef} className={styles.fill} />
@@ -100,24 +145,7 @@ export default function ContentScroller({ disciplines }: Props) {
             }}
             className={styles.communitySection}
           >
-            <div className={styles.card}>
-              {/* <p className={styles.eyebrow}>Community {index + 1}</p> */}
-              <span>
-                <h3 className={styles.title}>{discipline.title}</h3>
-                <p className={styles.summary}>{discipline.summary}</p>
-              </span>
-
-              {/* <h4 className={styles.rolesTitle}>Role focus</h4> */}
-              <ul className={styles.rolesList}>
-                {discipline.roles.map((role) => (
-                  <li key={role} className={styles.roleItem}>
-                    {role}
-                  </li>
-                ))}
-              </ul>
-
-              <p className={styles.skills}>{discipline.skills}</p>
-            </div>
+            <CommunityCard discipline={discipline} />
           </article>
         ))}
       </div>
