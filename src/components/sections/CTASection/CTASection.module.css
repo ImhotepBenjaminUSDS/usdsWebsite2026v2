@@ -16,7 +16,7 @@
 
 .title {
   margin: 0;
-  max-width: 22ch;
+  /* max-width: 22ch; */
   color: var(--primary-light);
   font-family: var(--font-instrumentSerif);
   font-size: clamp(var(--fs-h3), 4vw, var(--fs-h1));

@@ -215,7 +215,7 @@
 }
 
 tbody tr:nth-child(odd) {
-  background: var(--primary-dark-soft-transparent);
+  background: var(--primary-dark-muted-transparent);
 }
 
 

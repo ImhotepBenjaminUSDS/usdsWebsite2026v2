@@ -8,7 +8,6 @@
 }
 
 .half {
-  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -20,6 +19,8 @@
 
 .stickyHalf {
   align-self: stretch;
+  flex: 1 1 auto;
+
 }
 
 .headerWrapper {
@@ -55,41 +56,53 @@
 }
 
 .listHalf {
-  border-radius: var(--border-radius-tertiary);
   overflow: hidden;
-  color: var(--primary-light-muted);
+  width: fit-content !important;
+  max-width: 60%;
   font-size: var(--fs-h4);
   list-style-type: none;
-  box-shadow: var(--shadow-s);
-  max-width: 60%;
+  /* box-shadow: var(--shadow-s);
+    background: radial-gradient(
+    circle at 50% 90%,
+    var(--primary-color-transparent),
+    transparent 90%
+  );
+  border-radius: var(--border-radius-primary); */
+
+  padding: var(--space-xl);
 
 }
 
 .listItem {
   font-size: var(--fs-h4);
   display: flex;
-  gap: 1.5rem;
-  padding: 3rem;
+  gap: var(--space-xl);
+  padding: var(--space-xl) var(--space-2xl);
+  align-items: stretch;
+  width: fit-content;
 }
 
 .listItem:nth-child(odd) {
-  background: var(--primary-dark-subtle);
+  /* background: var(--primary-dark-subtle); */
 }
 
 .listItem:nth-child(even) {
-  background: var(--primary-light-muted-transparent);
+  background: var(--primary-dark-subtle-transparent);
+  border-radius: var(--border-radius-primary);
 }
 
 .itemIndex {
-  height: 100%;
-  flex: 0 0 2.5rem;
-  font-size: var(--fs-h3);
+  /* height: 100%; */
+  flex: 0 0 10%;
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-body);
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   line-height: 1.5;
   color: var(--primary-light-muted);
-  font-weight: var(--fw-body);
+  /* border: 1px solid red; */
+  pointer-events: none;
 }
 
 .itemDetails {
@@ -102,14 +115,17 @@
 .itemTitle {
   width: 100%;
   font-size: var(--fs-h4);
-  color: var(--primary-color);
+  font-weight: var(--fw-title);
+  color: var(--primary-color-light);
+  margin-bottom: var(--space-s);
 }
 
 .itemDescription {
   width: 100%;
   font-size: var(--fs-h5);
   color: var(--primary-light-muted);
-  font-weight: var(--fw-body);
+  font-weight: var(--fw-subtitle);
+  max-width: 50ch;
 }
 
 @media (max-width: 72em) {

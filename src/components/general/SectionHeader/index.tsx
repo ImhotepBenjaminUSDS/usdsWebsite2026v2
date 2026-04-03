@@ -128,9 +128,9 @@ export default function SectionHeader({
         filter: titleAlignment == "left" ? "blur(0px)" : undefined,
         scale: titleAlignment == "left" ? 1 : undefined
       }}
-      // viewport={{
-      //   once: true
-      // }}
+      viewport={{
+        once: true
+      }}
       transition={{
         duration: 0.7,
         ease: "easeOut"

@@ -291,6 +291,20 @@
   background: rgba(255, 255, 255, 0.08);
 }
 
+@media (max-width: 63.9375em) {
+  .innerWrapper {
+    width: 100%;
+  }
+
+  .inner {
+    gap: var(--space-s);
+  }
+
+  .mobileToggle {
+    margin-left: auto;
+  }
+}
+
 @media (max-width: 40em) {
   .wrapper {
     padding: 0 0.5rem;
@@ -310,7 +324,7 @@
   }
 
   .mobilePanel {
-    width: calc(100vw - 1rem);
+    width: 100%;
   }
 }
 
