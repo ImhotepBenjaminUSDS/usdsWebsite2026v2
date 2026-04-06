@@ -2,8 +2,9 @@ import styles from "./projects.module.css";
 import SectionHeader from "@/components/general/SectionHeader";
 import DividerStars from "@/ui/DividerStars";
 import CTASection from "@/components/sections/CTASection";
-import { ArrowUpRight } from "lucide-react";
 import { PROJECTS_PAGE_CONTENT, PROJECTS_PAGE_UI_TEXT } from "@/text/projects";
+import ProjectCard from "@/components/cards/ProjectCard";
+
 
 export default function ProjectsPage() {
   const { hero, section, projects, cta } = PROJECTS_PAGE_CONTENT;
@@ -70,23 +71,7 @@ export default function ProjectsPage() {
 
         <div className={styles.projectGrid}>
           {projects.map((project) => (
-            <article key={project.title} className={styles.projectCard}>
-              <div className={styles.projectCardInner}>
-                <div className={styles.projectMeta}>
-                  <p className={styles.projectArea}>{project.area}</p>
-                  {/* <p className={styles.projectStatus}>{project.status}</p> */}
-                </div>
-                <h3 className={styles.projectTitle}>{`${project.title}.`}</h3>
-                <p className={styles.projectSummary}>{project.summary}</p>
-                <p className={styles.projectImpact}>{project.impact}</p>
-                <div className={styles.projectLinkRow}>
-                  <span className={styles.projectLink}>
-                    {PROJECTS_PAGE_UI_TEXT.projectLinkLabel}
-                    <ArrowUpRight size={16} />
-                  </span>
-                </div>
-              </div>
-            </article>
+            <ProjectCard key={project.title} project={project}/>
           ))}
         </div>
       </section>

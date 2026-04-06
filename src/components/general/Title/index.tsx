@@ -26,7 +26,7 @@ type Props = {
 const sizeOpts: Record<TitleSize, string> = {
   small: "var(--fs-h4)",
   medium: "var(--fs-h3)",
-  large: "var(--fs-h1)",
+  large: "var(--fs-hero)",
 };
 
 const colorOpts: Record<TitleColor, string> = {
