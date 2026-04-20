@@ -3,7 +3,6 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import CTASection from "@/components/sections/CTASection";
-import WideHorizontalCards from "@/components/sections/WideHorizontalCards";
 import CardSurface from "@/components/cards/CardSurface";
 import LongFeatureCard, { type SideTone } from "@/components/cards/LongFeatureCard";
 import SectionHeader from "@/components/general/SectionHeader";
@@ -1630,66 +1629,6 @@ function renderJoinApplyPage() {
   const disciplines = Array.from(
     new Set(teamMembers.map((member) => member.discipline)),
   ).sort();
-  const applicationSteps = [
-    {
-      id: "before-step-01",
-      step: "01",
-      title: "About you",
-      body: "Share basic contact information so the recruiting team can review and follow up quickly.",
-      imageSrc: "/image-breaks/white-house.jpg",
-      imageAlt: "White House grounds in Washington, D.C., viewed from the lawn.",
-    },
-    {
-      id: "before-step-02",
-      step: "02",
-      title: "Your background",
-      body: "Describe what you have built, the constraints you handled, and where you have delivered measurable outcomes.",
-      imageSrc: "/image-breaks/eop-building.jpg",
-      imageAlt: "Exterior view of the Eisenhower Executive Office Building.",
-    },
-    {
-      id: "before-step-03",
-      step: "03",
-      title: "Why USDS",
-      body: "Explain why this mission matters to you and where you want to contribute in government service delivery.",
-      imageSrc: "/image-breaks/jackson-place.jpg",
-      imageAlt: "Street view of Jackson Place near Lafayette Square.",
-    },
-  ];
-  const postApplyStages = [
-    {
-      id: "after-step-01",
-      step: "01",
-      title: "Application review",
-      body: "A human reads every submission. If there is alignment, candidates typically hear back within 1-2 weeks.",
-      imageSrc: "/image-breaks/eop-center.jpg",
-      imageAlt: "Central perspective of the Eisenhower Executive Office Building facade.",
-    },
-    {
-      id: "after-step-02",
-      step: "02",
-      title: "Phone screen",
-      body: "A focused conversation to review background, role fit, and mission alignment.",
-      imageSrc: "/image-breaks/eop-east.jpg",
-      imageAlt: "East-facing angle of federal offices in Washington, D.C.",
-    },
-    {
-      id: "after-step-03",
-      step: "03",
-      title: "Skill assessment",
-      body: "Discipline-specific exercises and interviews with practitioners from relevant teams.",
-      imageSrc: "/image-breaks/eop-west.jpg",
-      imageAlt: "West-facing view of the executive office campus.",
-    },
-    {
-      id: "after-step-04",
-      step: "04",
-      title: "Team match and onboarding",
-      body: "Candidates are matched to agency teams based on skills and needs, followed by federal onboarding steps.",
-      imageSrc: "/image-breaks/white-house-center.jpg",
-      imageAlt: "Frontal view of the White House complex entrance.",
-    },
-  ];
   const compensationHighlights = [
     { value: "$197K", label: "Max salary (2026, DC)" },
     { value: "5%", label: "TSP match" },
@@ -1764,55 +1703,6 @@ function renderJoinApplyPage() {
           { text: "See dispatches", href: "/dispatches" },
         ]}
       />
-      <DividerStars />
-
-      <section className={`sectionFrameBase ${styles.section}`}>
-        <SectionHeader
-          eyebrow="Application"
-          title="Before you apply"
-          titleAlignment="left"
-          subtitleAlignment="left"
-          subtitle="Prepare these three parts of your application before you begin."
-        />
-
-        <WideHorizontalCards
-          cards={applicationSteps.map((item) => ({
-            id: item.id,
-            eyebrow: "Before you apply",
-            title: item.title,
-            description: item.body,
-            imageSrc: item.imageSrc,
-            imageAlt: item.imageAlt,
-            sideValue: item.step,
-            sideLabel: "Step",
-          }))}
-        />
-      </section>
-
-      <DividerStars />
-
-      <section className={`sectionFrameBase ${styles.section}`}>
-        <SectionHeader
-          eyebrow="After you apply"
-          title="What happens next"
-          titleAlignment="left"
-          subtitleAlignment="left"
-          subtitle="Review sequence, candidate conversations, and team matching follow a structured, human-led process."
-        />
-
-        <WideHorizontalCards
-          cards={postApplyStages.map((stage) => ({
-            id: stage.id,
-            eyebrow: "After you apply",
-            title: stage.title,
-            description: stage.body,
-            imageSrc: stage.imageSrc,
-            imageAlt: stage.imageAlt,
-            sideValue: stage.step,
-            sideLabel: "Stage",
-          }))}
-        />
-      </section>
 
       <DividerStars />
 

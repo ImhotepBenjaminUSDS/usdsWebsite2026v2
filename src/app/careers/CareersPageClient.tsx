@@ -10,6 +10,7 @@ import SectionHeader from "@/components/general/SectionHeader";
 import CTA from "@/components/buttons/CTA";
 import CTASection from "@/components/sections/CTASection";
 import HorizontalCards from "@/components/sections/HorizontalCards";
+import WideHorizontalCards from "@/components/sections/WideHorizontalCards";
 import HeroFrame, { type HeroStatTone } from "@/components/sections/PageHero";
 import {
   CAREERS_PAGE_CONTENT,
@@ -19,6 +20,88 @@ import {
 import Title from "@/components/general/Title";
 
 const HERO_STAT_TONES: HeroStatTone[] = ["blue", "teal", "gold", "sky"];
+const BEFORE_APPLY_CARDS = [
+  {
+    id: "before-step-01",
+    eyebrow: "Before you apply",
+    title: "About you",
+    description:
+      "Share basic contact information so the recruiting team can review and follow up quickly.",
+    imageSrc: "/image-breaks/white-house.jpg",
+    imageAlt: "White House grounds in Washington, D.C., viewed from the lawn.",
+    sideValue: "01",
+    sideLabel: "Step",
+  },
+  {
+    id: "before-step-02",
+    eyebrow: "Before you apply",
+    title: "Your background",
+    description:
+      "Describe what you have built, the constraints you handled, and where you have delivered measurable outcomes.",
+    imageSrc: "/image-breaks/eop-building.jpg",
+    imageAlt: "Exterior view of the Eisenhower Executive Office Building.",
+    sideValue: "02",
+    sideLabel: "Step",
+  },
+  {
+    id: "before-step-03",
+    eyebrow: "Before you apply",
+    title: "Why USDS",
+    description:
+      "Explain why this mission matters to you and where you want to contribute in government service delivery.",
+    imageSrc: "/image-breaks/jackson-place.jpg",
+    imageAlt: "Street view of Jackson Place near Lafayette Square.",
+    sideValue: "03",
+    sideLabel: "Step",
+  },
+];
+
+const AFTER_APPLY_CARDS = [
+  {
+    id: "after-step-01",
+    eyebrow: "After you apply",
+    title: "Application review",
+    description:
+      "A human reads every submission. If there is alignment, candidates typically hear back within 1-2 weeks.",
+    imageSrc: "/image-breaks/eop-center.jpg",
+    imageAlt: "Central perspective of the Eisenhower Executive Office Building facade.",
+    sideValue: "01",
+    sideLabel: "Stage",
+  },
+  {
+    id: "after-step-02",
+    eyebrow: "After you apply",
+    title: "Phone screen",
+    description:
+      "A focused conversation to review background, role fit, and mission alignment.",
+    imageSrc: "/image-breaks/eop-east.jpg",
+    imageAlt: "East-facing angle of federal offices in Washington, D.C.",
+    sideValue: "02",
+    sideLabel: "Stage",
+  },
+  {
+    id: "after-step-03",
+    eyebrow: "After you apply",
+    title: "Skill assessment",
+    description:
+      "Discipline-specific exercises and interviews with practitioners from relevant teams.",
+    imageSrc: "/image-breaks/eop-west.jpg",
+    imageAlt: "West-facing view of the executive office campus.",
+    sideValue: "03",
+    sideLabel: "Stage",
+  },
+  {
+    id: "after-step-04",
+    eyebrow: "After you apply",
+    title: "Team match and onboarding",
+    description:
+      "Candidates are matched to agency teams based on skills and needs, followed by federal onboarding steps.",
+    imageSrc: "/image-breaks/white-house-center.jpg",
+    imageAlt: "Frontal view of the White House complex entrance.",
+    sideValue: "04",
+    sideLabel: "Stage",
+  },
+];
 
 type RoleCardProps = {
   role: CareersRole;
@@ -287,6 +370,34 @@ export default function CareersPageClient() {
             </div>
           </aside>
         </div>
+      </section>
+
+      <DividerStars />
+
+      <section className={`sectionFrameBase ${styles.processSection}`}>
+        <SectionHeader
+          eyebrow="Application"
+          title="Before you apply"
+          titleAlignment="left"
+          subtitle="Prepare these three parts of your application before you begin."
+          subtitleAlignment="left"
+        />
+
+        <WideHorizontalCards cards={BEFORE_APPLY_CARDS} />
+      </section>
+
+      <DividerStars />
+
+      <section className={`sectionFrameBase ${styles.processSection}`}>
+        <SectionHeader
+          eyebrow="After you apply"
+          title="What happens next"
+          titleAlignment="left"
+          subtitle="Review sequence, candidate conversations, and team matching follow a structured, human-led process."
+          subtitleAlignment="left"
+        />
+
+        <WideHorizontalCards cards={AFTER_APPLY_CARDS} />
       </section>
 
       <DividerStars />
