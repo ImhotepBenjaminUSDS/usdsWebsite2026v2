@@ -1,11 +1,11 @@
 "use client";
 
-import styles from "./infoPanel.module.css";
+import styles from "./InfoPanel.module.css";
 import Card from "./Card";
 import type { BasicTextCard } from "@/types/cards";
 
 type Props = {
-  cards: readonly BasicTextCard[];
+  cards: BasicTextCard[];
 };
 
 export default function InfoPanel({ cards }: Props) {

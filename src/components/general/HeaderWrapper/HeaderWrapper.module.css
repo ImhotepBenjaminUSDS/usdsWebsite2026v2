@@ -1,6 +1,7 @@
 .wrapper {
   position: fixed;
   top: var(--space-m);
+  left: 0;
   z-index: 50;
   width: 100%;
   padding: 0 1.5rem;
@@ -9,30 +10,28 @@
   display: flex;
   justify-content: center;
   height: var(--header-height);
-  
+  flex-direction: column;
 }
 
 .innerWrapper {
-  /* width: 1000px; */
+  width: min(fit-content, var(--max-layout-width));
+  margin: 0 auto;
   height: 100%;
   display: flex;
   align-items: center;
   border-radius: var(--border-radius-tertiary);
   box-shadow: var(--shadow-s);
-  /* overflow: hidden; */
-  /* border: 1px solid red; */
-
 }
 
 .inner {
-  width: 100%;
+  width: fit-content;
   height: 100%;
   flex: auto;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   border-radius: var(--border-radius-secondary);
-  background: var(--primary-light-muted-transparent);
+  background: var(--primary-dark-transparent);
 
   -webkit-backdrop-filter: var(--backdrop-filter-blur);
   backdrop-filter: var(--backdrop-filter-blur);
@@ -63,7 +62,6 @@
 
 .brandText {
   font-weight: var(--fw-subtitle);
-  line-height: 1;
   white-space: nowrap;
   font-size: var(--fs-meta);
   overflow: hidden;
@@ -76,7 +74,6 @@
   flex: 1 1 auto;
   margin-left: auto;
   justify-content: flex-end;
-  /* border: 1px solid violet; */
 }
 
 .navList {
@@ -84,22 +81,23 @@
   align-items: center;
   list-style: none;
   margin: 0;
-  margin-left: 0;
   padding: var(--space-s);
   gap: var(--space-s);
-  /* border-radius: var(--border-radius-secondary); */
   justify-content: flex-end;
   height: 100%;
-  width: auto;
+  width: 100%;
   font-size: var(--fs-body);
   font-weight: var(--fw-subtitle);
-  /* border: 1px solid red; */
 }
 
 .navItem {
   position: relative;
   display: flex;
   height: 100%;
+}
+
+.navItemCta {
+  margin-left: auto;
 }
 
 .navLink,
@@ -113,7 +111,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: calc(var(--border-radius-tertiary) - 0.75rem) !important;
+  border-radius: calc(var(--border-radius-tertiary) - var(--space-s)) !important;
   border: 1px solid transparent;
   transition: var(--transition-fast);
   font-size: inherit;
@@ -158,7 +156,7 @@
   right: 0;
   min-width: 300px;
   background: #111;
-  border-radius: 12px;
+  border-radius: var(--border-radius-primary);
   padding: 0.4rem;
   transform-origin: top right;
   list-style: none;
@@ -168,7 +166,7 @@
 .dropdownLink {
   display: block;
   padding: 0.65rem 0.75rem;
-  border-radius: 10px;
+  border-radius: var(--border-radius-primary);
   color: var(--primary-light);
   text-decoration: none;
 }
@@ -180,7 +178,6 @@
 .headerCTA {
   height: 100%;
   align-self: center;
-  margin-left: auto;
 }
 
 .mobileToggle {
@@ -191,9 +188,9 @@
   height: 44px;
   background: transparent;
   border: none;
-  border-radius: 12px;
+  border-radius: var(--border-radius-primary);
   cursor: pointer;
-  margin-right: 0;
+  margin-right: 0.75rem;
 }
 
 .mobileBars {
@@ -223,7 +220,7 @@
 }
 
 .mobilePanel {
-  width: min(100%, 1250px);
+  width: 100%;
   margin: 0.5rem auto 0;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--border-radius-primary);
@@ -231,8 +228,10 @@
   background: var(--primary-dark-panel);
   box-shadow: var(--shadow-s);
   padding: 0.75rem 1rem 1rem;
-  max-height: calc(100svh - var(--header-height) - 1.75rem);
-  overflow: auto;
+  height: fit-content;
+  position: absolute;
+  top: 100%;
+  left: 0;
 }
 
 .mobileList {
@@ -247,7 +246,7 @@
 .mobileLink {
   display: block;
   padding: 0.9rem 0.75rem;
-  border-radius: 12px;
+  border-radius: var(--border-radius-primary);
   color: var(--primary-light);
   text-decoration: none;
   background: rgba(255, 255, 255, 0.04);
@@ -258,7 +257,7 @@
 }
 
 .mobileDetails {
-  border-radius: 12px;
+  border-radius: var(--border-radius-primary);
   overflow: hidden;
   background: rgba(255, 255, 255, 0.04);
 }
@@ -281,7 +280,7 @@
 .mobileSublink {
   display: block;
   padding: 0.7rem 0.75rem;
-  border-radius: 10px;
+  border-radius: var(--border-radius-primary);
   color: var(--primary-light);
   text-decoration: none;
   background: rgba(255, 255, 255, 0.04);
@@ -347,20 +346,10 @@
 }
 
 @media (min-width: 64em) {
-  /* .innerWrapper {
-    width: fit-content;
-    max-width: min(var(--max-layout-width), 100%);
-  } */
-
-  .inner {
-    width: auto;
-    flex: 0 0 auto;
-  }
-
   .navDesktop {
     display: flex;
-    flex: 0 0 auto;
-    margin-left: clamp(0.5rem, 1.5vw, 1.25rem);
+    flex: 1 1 auto;
+    margin-left: auto;
   }
 
   .mobileToggle {

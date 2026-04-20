@@ -135,8 +135,20 @@ export default function HeaderWrapper() {
 
                 if (item.type === "cta") {
                   return (
-                    <CTA text={item.text} href={item.href} key={item.text} icon="arrowRight" backgroundColor="var(--primary-color-light)" textColor="var(--primary-dark)" className={styles.headerCTA}/>
-                  )
+                    <li
+                      key={item.text}
+                      className={`${styles.navItem} ${styles.navItemCta}`}
+                    >
+                      <CTA
+                        text={item.text}
+                        href={item.href}
+                        icon="arrowRight"
+                        backgroundColor="var(--primary-color-light)"
+                        textColor="var(--primary-dark)"
+                        className={styles.headerCTA}
+                      />
+                    </li>
+                  );
                 }
               })}
             </ul>

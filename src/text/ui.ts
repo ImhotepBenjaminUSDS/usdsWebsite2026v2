@@ -16,7 +16,7 @@ export const HEADER_WRAPPER_TEXT = {
   mobileToggleLabelOpen: "Open menu",
   mobileToggleLabelClose: "Close menu",
   mobileNavigationAriaLabel: "Mobile primary navigation",
-} as const;
+};
 
 export const FOOTER_WRAPPER_TEXT = {
   footerAriaLabel: "Footer",
@@ -28,21 +28,39 @@ export const FOOTER_WRAPPER_TEXT = {
   officialSiteNotice:
     "An official website of the United States Government.",
   rightsReservedSuffix: "U.S. DOGE Service. All rights reserved.",
-} as const;
+};
 
 export const FOOTER_SOCIAL_LINKS_TEXT = {
   listAriaLabel: "Social media links",
-} as const;
+};
 
 export const PRELOADER_TEXT = {
   words: ["We're Building", "Tech & Efficiency", "Americans Deserve"],
   logoAlt: "USDS logo",
   logoLabel: "U.S. DOGE Service",
-} as const;
+};
 
 export const HOVER_CURSOR_PREVIEW_TEXT = {
   defaultCursorLabel: "View",
-} as const;
+};
+
+export const IMPACT_CASE_STUDY_CARDS_TEXT = {
+  domainFilterAriaLabel: "Case study domains",
+  allFilterLabel: "All",
+  domainFilterOrder: [
+    "Healthcare",
+    "Veterans",
+    "Immigration & State",
+    "Education & Finance",
+    "Defense & Security",
+  ],
+  imageAltSuffix: "case study image",
+  openCaseStudyLabel: "Open case study",
+};
+
+export function formatImpactCaseStudyImageAlt(title: string): string {
+  return `${title} ${IMPACT_CASE_STUDY_CARDS_TEXT.imageAltSuffix}`;
+}
 
 export const INFO_PANEL_CARD_TEXT = {
   images: {
@@ -55,7 +73,7 @@ export const INFO_PANEL_CARD_TEXT = {
       alt: "What We Do",
     },
   },
-} as const;
+};
 
 export const STICKY_LIST_HEADER_OPTIONS: Record<string, StickyListHeaderOption> = {
   "Our Objectives": {
@@ -75,7 +93,3 @@ export const STICKY_LIST_HEADER_OPTIONS: Record<string, StickyListHeaderOption> 
     showLinkArrow: false,
   },
 };
-
-export const ROOT_LAYOUT_UI_TEXT = {
-  skipLink: "Skip to main content",
-} as const;

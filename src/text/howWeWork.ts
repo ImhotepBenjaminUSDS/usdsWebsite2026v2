@@ -29,6 +29,24 @@ export const HOW_WE_WORK_PAGE_CONTENT = {
     eyebrow: "Mission-Driven Service Tours",
     title: "How We Work",
     body: "We deploy mission-driven experts with federal teams to solve urgent service problems and deliver measurable improvements for the people.",
+    details: [
+      {
+        label: "Tour length",
+        value: "Up to 4 years",
+      },
+      {
+        label: "Working model",
+        value: "Embedded with agency teams",
+      },
+      {
+        label: "Delivery focus",
+        value: "Fast, measurable outcomes",
+      },
+      {
+        label: "Team composition",
+        value: "Cross-functional delivery squads",
+      },
+    ],
   },
   valuesSection: {
     header: {
@@ -57,7 +75,7 @@ export const HOW_WE_WORK_PAGE_CONTENT = {
         body: "We prioritize based on where we are needed most and where we can do the greatest good for the greatest number of people in the greatest need.",
         gradientPosition: { x: "80%", y: "80%" },
       },
-    ] as const satisfies readonly BasicTextCard[],
+    ] as BasicTextCard[],
   },
   disciplinesSection: {
     header: {
@@ -97,7 +115,7 @@ export const HOW_WE_WORK_PAGE_CONTENT = {
         tone: "amber",
         gradientPosition: { x: "80%", y: "80%" },
       },
-    ] as const satisfies readonly PrincipleCardContent[],
+    ] as PrincipleCardContent[],
   },
   spotlightsSection: {
     header: {
@@ -168,7 +186,7 @@ export const HOW_WE_WORK_PAGE_CONTENT = {
         linkText: "Learn more",
         gradientPosition: { x: "80%", y: "20%" },
       },
-    ] as const satisfies readonly SpotlightCardContent[],
+    ] as SpotlightCardContent[],
   },
   ctaSection: {
     eyebrow: "Tour of service",
@@ -176,15 +194,15 @@ export const HOW_WE_WORK_PAGE_CONTENT = {
     body: "Work directly with federal teams to ship measurable improvements.",
     primary: {
       text: "Apply now",
-      href: "/mission#applyNow",
+      href: "/apply",
     },
     secondary: {
       text: "View careers",
       href: "/careers",
     },
   } satisfies HowWeWorkCtaSectionContent,
-} as const;
+};
 
 export const HOW_WE_WORK_PAGE_UI_TEXT = {
   communityListAriaLabel: "Community list",
-} as const;
+};

@@ -2,8 +2,8 @@ import type { CtaSectionContent } from "@/types/cta";
 
 export type HiringFaqItem = {
   question: string;
-  paragraphs: readonly string[];
-  bullets?: readonly string[];
+  paragraphs: string[];
+  bullets?: string[];
 };
 
 export type HiringTimelineRow = {
@@ -20,6 +20,24 @@ export const HIRING_FAQ_PAGE_CONTENT = {
     titleHighlightSlice: [7, 10] as [number, number],
     subtitle:
       "Guidance on eligibility, interviews, timelines, background checks, relocation expectations, and day-to-day life at USDS.",
+    details: [
+      {
+        label: "Hiring timeline",
+        value: "16-28 business days",
+      },
+      {
+        label: "Onboarding timeline",
+        value: "14-44 business days",
+      },
+      {
+        label: "Work model",
+        value: "In-person in Washington, D.C.",
+      },
+      {
+        label: "Eligibility",
+        value: "U.S. citizenship required",
+      },
+    ],
   },
   quickLinks: [
     { href: "#getting-hired", label: "Getting hired" },
@@ -27,13 +45,13 @@ export const HIRING_FAQ_PAGE_CONTENT = {
     { href: "#relocation", label: "Relocation" },
     { href: "#life-at-usds", label: "Life at USDS" },
   ],
+  quickLinksAriaLabel: "Hiring FAQ quick links",
   sections: {
     gettingHired: {
       id: "getting-hired",
       header: {
         eyebrow: "Getting Hired",
         title: "Application and interview process",
-        titleSize: "medium" as const,
       },
       timelineCards: [
         {
@@ -46,7 +64,7 @@ export const HIRING_FAQ_PAGE_CONTENT = {
               days: "10 - 18",
             },
             { step: "Total", days: "16 - 28" },
-          ] as readonly HiringTimelineRow[],
+          ] as HiringTimelineRow[],
         },
         {
           title: "Onboarding process",
@@ -58,7 +76,7 @@ export const HIRING_FAQ_PAGE_CONTENT = {
             },
             { step: "Final offer of employment", days: "2 - 7" },
             { step: "Total", days: "14 - 44" },
-          ] as readonly HiringTimelineRow[],
+          ] as HiringTimelineRow[],
         },
       ],
       faqs: [
@@ -112,7 +130,7 @@ export const HIRING_FAQ_PAGE_CONTENT = {
             "We are always hiring for multiple roles. If you are an expert in your field and want to contribute, you should apply.",
           ],
         },
-      ] as readonly HiringFaqItem[],
+      ] as HiringFaqItem[],
       equalOpportunity: {
         title: "USDS is an equal employment opportunity employer",
         paragraphs: [
@@ -126,7 +144,6 @@ export const HIRING_FAQ_PAGE_CONTENT = {
       header: {
         eyebrow: "Onboarding",
         title: "Background checks, offers, and start dates",
-        titleSize: "medium" as const,
       },
       faqs: [
         {
@@ -177,14 +194,13 @@ export const HIRING_FAQ_PAGE_CONTENT = {
             "After taking the drug test, you must start within 30 days or results become invalid.",
           ],
         },
-      ] as readonly HiringFaqItem[],
+      ] as HiringFaqItem[],
     },
     relocation: {
       id: "relocation",
       header: {
         eyebrow: "Relocation",
         title: "In-person expectations and office visits",
-        titleSize: "medium" as const,
       },
       faqs: [
         {
@@ -205,14 +221,13 @@ export const HIRING_FAQ_PAGE_CONTENT = {
             "Reach out to the talent team to schedule a visit.",
           ],
         },
-      ] as readonly HiringFaqItem[],
+      ] as HiringFaqItem[],
     },
     lifeAtUsds: {
       id: "life-at-usds",
       header: {
         eyebrow: "Life at USDS",
         title: "Culture, work style, and day-to-day experience",
-        titleSize: "medium" as const,
       },
       faqs: [
         {
@@ -238,7 +253,7 @@ export const HIRING_FAQ_PAGE_CONTENT = {
             "The team works hard because the mission matters and outcomes are visible in real people's lives. Even when bureaucracy creates friction, the USDS community supports one another to troubleshoot and deliver.",
           ],
         },
-      ] as readonly HiringFaqItem[],
+      ] as HiringFaqItem[],
     },
   },
   timelineTableHeaders: {
@@ -251,11 +266,11 @@ export const HIRING_FAQ_PAGE_CONTENT = {
     body: "Submit one application and we will evaluate you across the tracks where your skills fit best.",
     primary: {
       text: "Apply now",
-      href: "/mission#applyNow",
+      href: "/apply",
     },
     secondary: {
       text: "View careers",
       href: "/careers",
     },
   } satisfies HiringFaqCtaContent,
-} as const;
+};

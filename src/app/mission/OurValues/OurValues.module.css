@@ -1,0 +1,16 @@
+.wrapper {
+  width: 100%;
+}
+
+.cardStack {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+}
+
+@media (max-width: 40em) {
+  .wrapper {
+    gap: var(--space-l);
+  }
+}

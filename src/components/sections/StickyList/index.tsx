@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "./stickyList.module.css";
+import styles from "./StickyList.module.css";
 import { useRef } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
@@ -16,7 +16,7 @@ type ListItem = {
 
 type Props = {
   header: string;
-  list: readonly ListItem[];
+  list: ListItem[];
 };
 
 export default function StickyList({ header, list }: Props) {

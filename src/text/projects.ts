@@ -19,7 +19,7 @@ type ProjectsHeroContent = {
   body: string;
   primaryCta: CtaLink;
   secondaryCta: CtaLink;
-  stats: readonly ProjectsHeroStat[];
+  stats: ProjectsHeroStat[];
 };
 
 type ProjectsCtaContent = CtaSectionContent;
@@ -42,7 +42,7 @@ export const PROJECTS_PAGE_CONTENT = {
       { label: "Agencies supported", value: "10+" },
       { label: "Critical service lines", value: "8" },
       { label: "People impacted", value: "Millions" },
-    ] as const,
+    ],
   } satisfies ProjectsHeroContent,
   section: {
     eyebrow: "Current Work",
@@ -115,23 +115,24 @@ export const PROJECTS_PAGE_CONTENT = {
       impact: "Better outcomes through clearer and faster case coordination.",
       status: "In Delivery",
     },
-  ] as const satisfies readonly ProjectCardContent[],
+  ] as ProjectCardContent[],
   cta: {
     eyebrow: "Project collaboration",
     title: "Have a high-impact service challenge?",
     body: "We partner with federal teams where modernization can deliver the greatest public value.",
     primary: {
       text: "Apply now",
-      href: "/mission#applyNow",
+      href: "/apply",
     },
     secondary: {
       text: "Contact us",
-      href: "/mission#contact",
+      href: "/contact",
     },
   } satisfies ProjectsCtaContent,
-} as const;
+};
 
 export const PROJECTS_PAGE_UI_TEXT = {
   heroAsideAriaLabel: "Portfolio highlights",
   projectLinkLabel: "Learn more",
-} as const;
+  statusSideLabel: "Status",
+};

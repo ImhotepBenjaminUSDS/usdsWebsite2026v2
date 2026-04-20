@@ -1,76 +1,13 @@
 .wrapper {
   flex: 1 1 calc((100% - var(--space-2xl)) / 2);
   min-width: min(100%, 20rem);
+}
+
+.surface {
   border-radius: var(--border-radius-primary);
-  background: var(--primary-color-transparent);
   min-height: 475px;
-  box-shadow: var(--shadow-s);
   overflow: hidden;
   padding: var(--space-xl);
-}
-
-.projectCard:nth-child(1) {
-  background: radial-gradient(
-    circle at 60% 90%,
-    var(--primary-color-transparent),
-    transparent 80%
-  );
-}
-
-.projectCard:nth-child(2) {
-    background: radial-gradient(
-    circle at 40% 90%,
-    var(--primary-color-transparent),
-    transparent 80%
-  );
-}
-
-.projectCard:nth-child(3) {
-    background: radial-gradient(
-    circle at 60% 50%,
-    var(--primary-color-transparent),
-    transparent 80%
-  );
-}
-
-.projectCard:nth-child(4) {
-    background: radial-gradient(
-    circle at 40% 50%,
-    var(--primary-color-transparent),
-    transparent 80%
-  );
-}
-
-.projectCard:nth-child(5) {
-      background: radial-gradient(
-    circle at 60% 50%,
-    var(--primary-color-transparent),
-    transparent 80%
-  );
-}
-
-.projectCard:nth-child(6) {
-      background: radial-gradient(
-    circle at 40% 50%,
-    var(--primary-color-transparent),
-    transparent 80%
-  );
-}
-
-.projectCard:nth-child(7) {
-        background: radial-gradient(
-    circle at 60% 10%,
-    var(--primary-color-transparent),
-    transparent 80%
-  );
-}
-
-.projectCard:nth-child(8) {
-      background: radial-gradient(
-    circle at 40% 10%,
-    var(--primary-color-transparent),
-    transparent 80%
-  );
 }
 
 .projectCardInner {
@@ -114,10 +51,10 @@
 .projectTitle {
   color: var(--primary-color-light);
   font-size: var(--fs-h2);
-  font-family: var(--font-instrumentSerif);
+  font-family: var(--font-spaceGrotesk);
   font-weight: var(--fw-title);
   margin-bottom: var(--space-m);
-  /* line-height: 1.35; */
+  /* line-height: var(--lh-norm); */
 }
 
 .projectSummary {
@@ -163,5 +100,3 @@
 .projectLink:active {
   transform: scale(0.97);
 }
-
-
