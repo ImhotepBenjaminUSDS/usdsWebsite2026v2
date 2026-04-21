@@ -262,7 +262,7 @@ export default function DispatchesPageClient() {
 
         <div className={styles.statsGrid}>
           {statsCards.map((card, index) => (
-            <CardSurface tone="background" className={styles.statCard} key={card.label}>
+            <CardSurface tone="plain" className={styles.statCard} key={card.label}>
               <p className={styles.statValue} style={{ color: card.color }}>
                 {statsValues[index]}
               </p>

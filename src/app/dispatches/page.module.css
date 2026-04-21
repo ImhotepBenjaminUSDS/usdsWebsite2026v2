@@ -21,23 +21,12 @@
 }
 
 .statCard {
-  padding: var(--space-l) var(--space-m);
+  padding: 0;
   display: flex;
   flex-direction: column;
   gap: var(--space-xs);
-  justify-content: center;
-  min-height: 8.5rem;
-  background:
-    radial-gradient(
-      circle at 88% 16%,
-      var(--primary-color-transparent),
-      transparent 70%
-    ),
-    linear-gradient(
-      155deg,
-      var(--primary-dark-panel-subtle-transparent),
-      var(--primary-dark-soft-transparent)
-    );
+  justify-content: flex-start;
+  min-height: 0;
 }
 
 .statValue {
@@ -445,8 +434,8 @@
   }
 
   .statCard {
-    min-height: 7.25rem;
-    padding: var(--space-m);
+    min-height: 0;
+    padding: 0;
   }
 
   .chartCard,
