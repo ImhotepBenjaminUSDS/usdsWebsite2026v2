@@ -2,7 +2,8 @@ import DividerStars from "@/ui/DividerStars";
 import SectionHeader from "@/components/general/SectionHeader";
 import CTASection from "@/components/sections/CTASection";
 import ImpactCaseStudyCards from "@/components/sections/ImpactCaseStudyCards";
-import CardSurface from "@/components/cards/CardSurface";
+import QuoteSection, { type QuoteSectionItem } from "@/components/sections/QuoteSection";
+import WideHorizontalCards from "@/components/sections/WideHorizontalCards";
 import HeroFrame from "@/components/sections/PageHero";
 import LongFeatureCard from "@/components/cards/LongFeatureCard";
 import DataTable from "@/components/general/DataTable";
@@ -80,6 +81,25 @@ export default function Page() {
     .reduce((sum, entry) => sum + entry.people, 0);
   const totalTeams = agencyEngagements.reduce((sum, entry) => sum + entry.teams, 0);
   const showcaseStudies = caseStudies.slice(0, 5);
+  const partnerQuoteCards: QuoteSectionItem[] = partnerQuotes.map((item) => ({
+    id: `${item.agency}-${item.name}`,
+    quote: item.quote,
+    name: item.name,
+    role: item.agency,
+  }));
+  const engagementModelCards = serviceCards.map((service, index) => {
+    const scene = getImageBreakScene(index);
+
+    return {
+      id: `engagement-model-${index + 1}`,
+      eyebrow: sections.engagementModel.eyebrow,
+      title: service.title,
+      description: service.description,
+      imageSrc: scene.src,
+      imageAlt: scene.alt,
+      sideValue: String(index + 1).padStart(2, "0"),
+    };
+  });
 
   const domainRollup = Array.from(
     agencyEngagements.reduce(
@@ -159,20 +179,7 @@ export default function Page() {
           subtitle={sections.engagementModel.subtitle}
         />
 
-        <div className={styles.servicesGrid}>
-          {serviceCards.map((service, index) => (
-            <CardSurface
-              as="article"
-              tone="background"
-              className={styles.serviceCard}
-              key={service.title}
-            >
-              <p className={styles.serviceStep}>{`0${index + 1}`}</p>
-              <h3 className={styles.serviceTitle}>{service.title}</h3>
-              <p className={styles.serviceBody}>{service.description}</p>
-            </CardSurface>
-          ))}
-        </div>
+        <WideHorizontalCards cards={engagementModelCards} tones={SHOWCASE_TONES} />
       </section>
 
       <DividerStars />
@@ -186,15 +193,7 @@ export default function Page() {
           subtitle={sections.partnerQuotes.subtitle}
         />
 
-        <div className={styles.quoteGrid}>
-          {partnerQuotes.map((item) => (
-            <CardSurface as="article" tone="background" className={styles.quoteCard} key={item.agency}>
-              <p className={styles.quoteBody}>&ldquo;{item.quote}&rdquo;</p>
-              <p className={styles.quoteName}>{item.name}</p>
-              <p className={styles.quoteAgency}>{item.agency}</p>
-            </CardSurface>
-          ))}
-        </div>
+        <QuoteSection className={styles.partnerQuotes} items={partnerQuoteCards} />
       </section>
 
       <DividerStars />

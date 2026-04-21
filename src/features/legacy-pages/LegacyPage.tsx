@@ -1167,8 +1167,7 @@ function renderImpactDetailPage(slug: ImpactDetailSlug) {
             <LongFeatureCard
               key={outcome}
               eyebrow="Outcomes"
-              title="Outcome"
-              description={outcome}
+              title={outcome}
               sideValue={`${index + 1}`.padStart(2, "0")}
               sideLabel="Result"
               sideTone={WIDE_CARD_TONES[index % WIDE_CARD_TONES.length] ?? "blue"}

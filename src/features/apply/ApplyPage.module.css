@@ -141,6 +141,68 @@
   font-size: var(--fs-body);
 }
 
+.stepList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-s);
+}
+
+.stepItem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-s);
+  border: 1px solid hsl(225 45% 28% / 0.9);
+  background: linear-gradient(
+    90deg,
+    hsl(224 45% 14% / 0.82),
+    hsl(219 36% 10% / 0.82)
+  );
+  border-radius: var(--apply-control-radius);
+  padding: 0.75rem 0.85rem;
+}
+
+.stepItemActive {
+  border-color: hsl(226 86% 71%);
+  box-shadow: 0 0 0 1px hsl(226 86% 71% / 0.25);
+}
+
+.stepNumber {
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: hsl(222 60% 12%);
+  background: linear-gradient(140deg, hsl(227 100% 74%), hsl(214 97% 80%));
+  font-size: var(--fs-meta-smaller);
+  font-weight: var(--fw-title);
+  flex: 0 0 auto;
+}
+
+.stepBody {
+  display: grid;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.stepTitle {
+  margin: 0;
+  color: hsl(220 66% 93%);
+  font-size: var(--fs-meta);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: var(--fw-subtitle);
+}
+
+.stepText {
+  margin: 0;
+  color: hsl(219 23% 76%);
+  font-size: var(--fs-meta);
+}
+
 .form {
   margin-top: clamp(var(--space-s), 1.5vw, var(--space-m));
   display: flex;
@@ -250,6 +312,10 @@
   .stepLine {
     flex-direction: column;
     gap: 0.2rem;
+  }
+
+  .stepItem {
+    padding: 0.7rem 0.75rem;
   }
 }
 

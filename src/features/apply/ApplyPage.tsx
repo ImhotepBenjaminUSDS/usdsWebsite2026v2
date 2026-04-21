@@ -7,7 +7,30 @@ const HIGHLIGHTS = [
   "5 minutes to complete",
 ] as const;
 
+const APPLICATION_STEPS = [
+  {
+    step: "1",
+    title: "About you",
+    body: "Basic contact info so we can reach you. Nothing formal.",
+  },
+  {
+    step: "2",
+    title: "Experience snapshot",
+    body: "Share your strongest skills, recent work, and preferred role tracks.",
+  },
+  {
+    step: "3",
+    title: "Mission fit and submit",
+    body: "Answer final prompts, review your details, and submit one application.",
+  },
+] as const;
+
+const ACTIVE_STEP_INDEX = 0;
+
 export default function ApplyPage() {
+  const activeStep = APPLICATION_STEPS[ACTIVE_STEP_INDEX];
+  const stepProgress = `${((ACTIVE_STEP_INDEX + 1) / APPLICATION_STEPS.length) * 100}%`;
+
   return (
     <div className={`pageWrap ${styles.page}`}>
       <section className={styles.shell}>
@@ -34,15 +57,35 @@ export default function ApplyPage() {
         </ul>
 
         <div className={styles.stepTrack} aria-hidden="true">
-          <div className={styles.stepFill} />
+          <div className={styles.stepFill} style={{ width: stepProgress }} />
         </div>
 
         <p className={styles.stepLine}>
-          <span className={styles.stepLabel}>Step 1 of 3 - About you</span>
-          <span className={styles.stepSummary}>
-            Basic contact info so we can reach you. Nothing formal.
+          <span className={styles.stepLabel}>
+            Step {activeStep.step} of {APPLICATION_STEPS.length} - {activeStep.title}
           </span>
+          <span className={styles.stepSummary}>{activeStep.body}</span>
         </p>
+
+        <ol className={styles.stepList} aria-label="Application steps">
+          {APPLICATION_STEPS.map((step, index) => {
+            const isActive = index === ACTIVE_STEP_INDEX;
+            return (
+              <li
+                key={step.step}
+                className={`${styles.stepItem} ${isActive ? styles.stepItemActive : ""}`}
+              >
+                <span className={styles.stepNumber} aria-hidden="true">
+                  {step.step}
+                </span>
+                <div className={styles.stepBody}>
+                  <p className={styles.stepTitle}>{step.title}</p>
+                  <p className={styles.stepText}>{step.body}</p>
+                </div>
+              </li>
+            );
+          })}
+        </ol>
 
         <form className={styles.form}>
           <label className={styles.field}>

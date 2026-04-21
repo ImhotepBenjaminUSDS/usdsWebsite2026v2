@@ -15,7 +15,7 @@ type LongFeatureCardProps = {
   href?: string;
   eyebrow: string;
   title: string;
-  description: string;
+  description?: string;
   imageSrc?: string;
   imageAlt?: string;
   sideValue?: string;
@@ -97,7 +97,7 @@ export default function LongFeatureCard({
           <div className={styles.copy}>
             <p className={styles.eyebrow}>{eyebrow}</p>
             <h3 className={styles.title}>{title}</h3>
-            <p className={styles.description}>{description}</p>
+            {description ? <p className={styles.description}>{description}</p> : null}
 
             {footer ? <div className={styles.footer}>{footer}</div> : null}
           </div>

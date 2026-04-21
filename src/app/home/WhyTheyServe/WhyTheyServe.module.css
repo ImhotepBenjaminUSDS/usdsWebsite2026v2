@@ -8,50 +8,6 @@
 
 .cards {
   width: 100%;
-  gap: var(--space-m) !important;
-  --fs-h2: clamp(1.2rem, 1.85vw, 1.58rem);
-}
-
-
-.profileMeta {
-  padding-top: var(--space-m);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-m);
-  align-self: flex-end;
-}
-
-.profileIdentity {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-}
-
-.profileName {
-  margin: 0;
-  color: var(--primary-color-light);
-  font-size: var(--fs-h3);
-  font-weight: var(--fw-title);
-  font-family: var(--font-spaceGrotesk);
-}
-
-.profileRole {
-  margin: 0;
-  color: var(--primary-light-muted);
-  font-size: var(--fs-h5);
-  font-weight: var(--fw-regular);
-  letter-spacing: 0.05rem;
-}
-
-.profileShipped {
-  margin: 0;
-  color: var(--primary-light-subtle);
-  font-size: var(--fs-body);
-  line-height: var(--lh-tall);
-  min-height: 100px;
-}
-
-.profileShippedLabel {
-  color: var(--primary-yellow-color);
-  font-weight: var(--fw-subtitle);
+  --quote-section-quote-size: clamp(1.2rem, 1.85vw, 1.58rem);
+  --quote-section-detail-min-height: 100px;
 }

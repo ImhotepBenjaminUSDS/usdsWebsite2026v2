@@ -2,35 +2,21 @@
 
 import styles from "./WhyTheyServe.module.css";
 import SectionHeader from "@/components/general/SectionHeader";
-import HorizontalCards from "@/components/sections/HorizontalCards";
-import type { Card } from "@/components/cards/ContentCard";
+import QuoteSection, { type QuoteSectionItem } from "@/components/sections/QuoteSection";
 import { HOME_SECTION_ARIA_TEXT, HOME_WHY_THEY_SERVE_CONTENT } from "@/text/home";
 
 export default function WhyTheyServe() {
   const { header, cards } = HOME_WHY_THEY_SERVE_CONTENT;
 
-  const profileCards: Card[] = cards.map((card) => ({
+  const profileCards: QuoteSectionItem[] = cards.map((card) => ({
     id: card.name,
-    title: card.quote,
-    surface: "background",
-    titleAnimation: "body",
-    titleColor: "var(--primary-light-subtle)",
-    titleFontStyle: "italic",
-    titleFontWeight: "var(--fw-regular)",
-    footer: (
-      <div className={styles.profileMeta}>
-        <div className={styles.profileIdentity}>
-          <p className={styles.profileName}>{card.name}</p>
-          <p className={styles.profileRole}>{card.role}</p>
-        </div>
-        <p className={styles.profileShipped}>
-          <span className={styles.profileShippedLabel}>
-            {HOME_SECTION_ARIA_TEXT.whyTheyServeShippedLabel}
-          </span>{" "}
-          {card.shipped}
-        </p>
-      </div>
-    ),
+    quote: card.quote,
+    name: card.name,
+    role: card.role,
+    detail: {
+      label: HOME_SECTION_ARIA_TEXT.whyTheyServeShippedLabel,
+      value: card.shipped,
+    },
   }));
 
   return (
@@ -47,7 +33,7 @@ export default function WhyTheyServe() {
         subtitleAlignment="center"
       />
 
-      <HorizontalCards className={styles.cards} layout="grid" cards={profileCards} />
+      <QuoteSection className={styles.cards} items={profileCards} />
     </section>
   );
 }
