@@ -13,6 +13,7 @@ import {
   type Items,
 } from "@/text/mission";
 import { flushSync } from "react-dom";
+import { withBasePath } from "@/utils/basePath";
 
 type Props = {
   items: Items;
@@ -93,7 +94,7 @@ export default function FlipGallery({ items }: Props) {
       >
         <Image
           alt={activeItem.alt}
-          src={activeItem.src}
+          src={withBasePath(activeItem.src)}
           fill
           priority
           sizes="(max-width: 72em) 100vw, 34vw"
@@ -113,7 +114,7 @@ export default function FlipGallery({ items }: Props) {
           >
             <Image
               alt={item.alt}
-              src={item.src}
+              src={withBasePath(item.src)}
               fill
               sizes="(max-width: 72em) 31vw, 11vw"
               className={styles.itemImage}
