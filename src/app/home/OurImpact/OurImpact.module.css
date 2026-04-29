@@ -69,7 +69,14 @@
   text-align: left;
   gap: var(--space-xl);
   width: 50%;
-  padding: 3rem;
+  padding: var(--space-xl);
+}
+
+@media (max-width: 425px) {
+  .textPane {
+    /* border: 1px solid red; */
+    padding: var(--space-m) var(--space-l) var(--space-2xl) !important;
+  }
 }
 
 /* @media (min-width: 64em) {
@@ -179,6 +186,7 @@
   color: var(--primary-light-subtle);
   font-size: clamp(1rem, 1.5vw, 1.8rem);
   line-height: 1.6;
+  margin-bottom: var(--space-s);
   max-width: 34ch;
 }
 
@@ -187,6 +195,7 @@
   align-items: baseline;
   gap: var(--space-m);
   flex-wrap: wrap;
+  margin-bottom: var(--space-s);
 }
 
 .storyMetricBefore {

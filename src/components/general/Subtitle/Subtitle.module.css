@@ -36,3 +36,12 @@
 .noAnimation {
   visibility: visible;
 }
+
+@media (max-width: 425px) {
+  .subtitle {
+    font-size: var(--fs-h5);
+    width: 100%;
+    max-width: 90vw;
+    /* border: 1px solid red; */
+  }
+}
