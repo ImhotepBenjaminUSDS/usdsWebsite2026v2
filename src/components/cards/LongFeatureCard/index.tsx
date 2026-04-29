@@ -4,7 +4,7 @@ import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 import { motion } from "motion/react";
 import SlotMachineValue from "@/components/general/SlotMachineValue";
-import CardSurface from "@/components/cards/CardSurface";
+import CardSurface, { type CardSurfaceTone } from "@/components/cards/CardSurface";
 import { withBasePath } from "@/utils/basePath";
 import styles from "./LongFeatureCard.module.css";
 
@@ -23,6 +23,8 @@ type LongFeatureCardProps = {
   sideLabel?: string;
   animateSideValue?: boolean;
   sideTone?: SideTone;
+  surface?: CardSurfaceTone;
+  showBackground?: boolean;
   footer?: ReactNode;
 };
 
@@ -52,6 +54,8 @@ export default function LongFeatureCard({
   sideLabel,
   animateSideValue,
   sideTone = "blue",
+  surface = "background",
+  showBackground = true,
   footer,
 }: LongFeatureCardProps) {
   const hasSideValue = Boolean(sideValue);
@@ -90,8 +94,13 @@ export default function LongFeatureCard({
         ease: "easeOut",
       }}
     >
-      <CardSurface tone="background" className={styles.card}>
-        <div className={styles.background} style={backgroundStyle} aria-hidden="true" />
+      <CardSurface
+        tone={surface}
+        className={`${styles.card} ${!showBackground ? styles.cardNoBackground : ""}`}
+      >
+        {showBackground ? (
+          <div className={styles.background} style={backgroundStyle} aria-hidden="true" />
+        ) : null}
 
         <div className={styles.inner}>
           <div className={styles.copy}>

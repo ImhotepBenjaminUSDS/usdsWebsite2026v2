@@ -138,7 +138,7 @@ export const HOW_WE_WORK_PAGE_CONTENT = {
       },
       {
         id: "va-veteran-care",
-        eyebrow: "Department of Veterans Affairs",
+        eyebrow: "Dept. of Veterans Affairs",
         title: "Transforming Veteran care",
         body: "Partnering with VA teams to modernize legacy systems and deliver faster, more secure digital benefits and services for Veterans and their families.",
         tone: "teal",
@@ -148,7 +148,7 @@ export const HOW_WE_WORK_PAGE_CONTENT = {
       },
       {
         id: "education-fafsa",
-        eyebrow: "Department of Education",
+        eyebrow: "Dept. of Education",
         title: "Modernizing FAFSA and student aid",
         body: "Collaborating with Education to modernize FAFSA and student aid systems so millions of students can apply for and receive support without disruption.",
         tone: "amber",

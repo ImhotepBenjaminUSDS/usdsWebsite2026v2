@@ -148,5 +148,4 @@ export const FOOTER_ACTIONS = [
 export const FOOTER_POLICIES = [
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Contact", href: "/contact" },
-  { label: "FOIA", href: "https://www.foia.gov/" },
 ] as const;

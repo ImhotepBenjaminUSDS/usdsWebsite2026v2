@@ -207,6 +207,7 @@ margin-top: 0 !important;
   text-transform: uppercase;
   font-weight: var(--fw-body);
   border-bottom: var(--primary-yellow-color) 1px solid;
+  padding-bottom: var(--space-xs);
   width: fit-content;  
   /* text-box-edge: cap alphabetical;
   text-box-trim: trim-both; */
@@ -356,9 +357,12 @@ margin-top: 0 !important;
     max-height: none;
     gap: 2rem;
     padding: 2rem 0;
+    align-items: center;
   }
 
   .callout {
+    width: calc(100% - 3rem);
+    margin: 0 auto;
     padding: 1.5rem;
     flex-direction: column;
     align-items: stretch;
@@ -375,6 +379,11 @@ margin-top: 0 !important;
   .inner {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+  }
+
+  .surface {
+    width: calc(100% - 3rem);
+    margin: 0 auto;
   }
 
   .inner {
@@ -403,6 +412,9 @@ margin-top: 0 !important;
 
 @media (max-width: 40em) {
   .footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 1.5rem;
     padding: 1.5rem 0;
   }
@@ -414,10 +426,53 @@ margin-top: 0 !important;
     padding-right: 1rem;
   }
 
+  .callout,
+  .surface {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% - 2rem);
+  }
+
+  .inner {
+    width: 100%;
+  }
+
   .inner {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     gap: 1.5rem;
+  }
+
+  .mainGrid,
+  .linkColumns,
+  .column,
+  .actionPanel,
+  .actionCtas,
+  .bottomRow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mainGrid,
+  .linkColumns,
+  .column,
+  .actionPanel {
+    width: 100%;
+  }
+
+  .colTitle,
+  .linkList,
+  .linkList li,
+  .linkList a {
+    width: 100%;
+    text-align: center;
+  }
+
+  .linkList {
+    align-items: center;
+    gap: var(--space-s);
   }
 
   .brandRow {
@@ -427,13 +482,34 @@ margin-top: 0 !important;
 
   .linkColumns {
     width: 100%;
+    gap: var(--space-l);
   }
 
   .column {
     width: 100%;
+    gap: var(--space-s);
   }
 
   .logoHeading {
     font-size: var(--fs-h3);
+  }
+
+  .bottomRow {
+    align-items: center;
+    text-align: center;
+  }
+
+  .policyList {
+    justify-content: center;
+  }
+
+  .socialWrap {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .notice {
+    width: 100%;
+    text-align: center;
   }
 }

@@ -28,7 +28,7 @@ export const featuredCoverage: Article[] = [
     publication: "Federal News Network",
     headline: "VA\u2019s AI rollout is the model for responsible government adoption",
     date: "January 2026",
-    excerpt: "The Department of Veterans Affairs\u2019 AI-assisted claims processing, built with USDS support, has cut processing time by 82% while maintaining accuracy above 95%.",
+    excerpt: "The Dept. of Veterans Affairs\u2019 AI-assisted claims processing, built with USDS support, has cut processing time by 82% while maintaining accuracy above 95%.",
     url: "#",
     tag: "AI",
   },
@@ -37,7 +37,7 @@ export const featuredCoverage: Article[] = [
 const coverage: Article[] = [
   { publication: "The New York Times", headline: "The government\u2019s best-kept secret: a team of technologists who actually ship", date: "December 2025", excerpt: "After a decade of quiet impact, USDS has delivered results across 30+ agencies \u2014 from rescuing HealthCare.gov to modernizing how veterans receive benefits.", url: "#", tag: "Profile" },
   { publication: "TechCrunch", headline: "Why top engineers are leaving Big Tech for government service", date: "November 2025", excerpt: "A growing number of senior engineers from Google, Meta, and Stripe are signing up for tours of duty at USDS, drawn by the scale of impact and the challenge of legacy systems.", url: "#", tag: "Recruiting" },
-  { publication: "Government Executive", headline: "State Department visa system restored after USDS intervention", date: "October 2025", excerpt: "A silent timeout bug was dropping a million daily visa applications. A USDS team found and fixed it in weeks, restoring service to applicants worldwide.", url: "#", tag: "Impact" },
+  { publication: "Government Executive", headline: "State Dept. visa system restored after USDS intervention", date: "October 2025", excerpt: "A silent timeout bug was dropping a million daily visa applications. A USDS team found and fixed it in weeks, restoring service to applicants worldwide.", url: "#", tag: "Impact" },
   { publication: "Bloomberg Government", headline: "USDS identifies $4 billion in fraudulent federal spending", date: "September 2025", excerpt: "Data-driven oversight tools built by USDS teams have surfaced billions in fraud, waste, and abuse across federal programs.", url: "#", tag: "Efficiency" },
   { publication: "Fast Company", headline: "The most innovative team in government you\u2019ve never heard of", date: "August 2025", excerpt: "USDS brings user-centered design to federal services \u2014 an approach that sounds obvious but has been transformative in an environment built on compliance, not usability.", url: "#", tag: "Innovation" },
   { publication: "Axios", headline: "Inside the White House tech team modernizing Medicare claims", date: "July 2025", excerpt: "CMS processes over 40 million claims through a pipeline rebuilt by USDS engineers \u2014 replacing decades-old batch processing with modern, real-time infrastructure.", url: "#", tag: "Modernization" },

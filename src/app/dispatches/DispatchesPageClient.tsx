@@ -72,8 +72,8 @@ const DISPLAY_DATE_FORMATTER = new Intl.DateTimeFormat(DISPATCHES_PAGE_DATE_FORM
   timeZone: "UTC",
 });
 const CHART_LABEL_FORMATTER = new Intl.DateTimeFormat(DISPATCHES_PAGE_DATE_FORMAT_TEXT.locale, {
-  month: "2-digit",
-  day: "2-digit",
+  month: "short",
+  year: "2-digit",
   timeZone: "UTC",
 });
 
@@ -113,21 +113,7 @@ function formatTimeAgo(dateValue: string): string {
   return `${Math.floor(days / 365)}${DISPATCHES_PAGE_TIME_AGO_TEXT.yearSuffix}`;
 }
 
-function getIsoWeekLabel(date: Date): string {
-  const utcDate = new Date(
-    Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()),
-  );
-  const dayNumber = utcDate.getUTCDay() || 7;
-  utcDate.setUTCDate(utcDate.getUTCDate() + 4 - dayNumber);
-  const yearStart = new Date(Date.UTC(utcDate.getUTCFullYear(), 0, 1));
-  const weekNo = Math.ceil(
-    ((utcDate.getTime() - yearStart.getTime()) / 86400000 + 1) / 7,
-  );
-  return `W${weekNo}`;
-}
-
-function buildActivityBuckets(entries: Dispatch[], bucketCount = 17): ActivityBucket[] {
-  const MS_PER_DAY = 24 * 60 * 60 * 1000;
+function buildActivityBuckets(entries: Dispatch[], bucketCount = 12): ActivityBucket[] {
   const parsedDates = entries
     .map((entry) => new Date(`${entry.date}T00:00:00Z`))
     .filter((date) => !Number.isNaN(date.getTime()));
@@ -138,17 +124,20 @@ function buildActivityBuckets(entries: Dispatch[], bucketCount = 17): ActivityBu
 
   const latestMs = Math.max(...parsedDates.map((date) => date.getTime()));
   const latest = new Date(latestMs);
-  const latestDayStart = Date.UTC(
+  const latestMonthStart = new Date(Date.UTC(
     latest.getUTCFullYear(),
     latest.getUTCMonth(),
-    latest.getUTCDate(),
-  );
-  const startMs = latestDayStart - (bucketCount - 1) * 7 * MS_PER_DAY;
+    1,
+  ));
+  const startMonth = new Date(latestMonthStart);
+  startMonth.setUTCMonth(startMonth.getUTCMonth() - (bucketCount - 1));
+  const startYear = startMonth.getUTCFullYear();
+  const startMonthIndex = startMonth.getUTCMonth();
 
   const buckets: ActivityBucket[] = Array.from({ length: bucketCount }, (_, index) => {
-    const bucketStart = new Date(startMs + index * 7 * MS_PER_DAY);
+    const bucketStart = new Date(Date.UTC(startYear, startMonthIndex + index, 1));
     return {
-      label: `${getIsoWeekLabel(bucketStart)}${DISPATCHES_PAGE_DATE_FORMAT_TEXT.chartLabelSeparator}${CHART_LABEL_FORMATTER.format(bucketStart)}`,
+      label: CHART_LABEL_FORMATTER.format(bucketStart),
       shipped: 0,
       deployed: 0,
       other: 0,
@@ -162,13 +151,9 @@ function buildActivityBuckets(entries: Dispatch[], bucketCount = 17): ActivityBu
       return;
     }
 
-    const dayStart = Date.UTC(
-      parsed.getUTCFullYear(),
-      parsed.getUTCMonth(),
-      parsed.getUTCDate(),
-    );
-    const diffDays = Math.floor((dayStart - startMs) / MS_PER_DAY);
-    const bucketIndex = Math.floor(diffDays / 7);
+    const bucketIndex =
+      (parsed.getUTCFullYear() - startYear) * 12 +
+      (parsed.getUTCMonth() - startMonthIndex);
 
     if (bucketIndex < 0 || bucketIndex >= buckets.length) {
       return;
@@ -194,7 +179,7 @@ function buildActivityBuckets(entries: Dispatch[], bucketCount = 17): ActivityBu
 }
 
 export default function DispatchesPageClient() {
-  const { hero, sections, statusRow, feed, cta, statsCards } = DISPATCHES_PAGE_CONTENT;
+  const { hero, sections, statusRow, feed, cta } = DISPATCHES_PAGE_CONTENT;
   const [filter, setFilter] = useState<DispatchCategoryFilter>(
     DISPATCHES_PAGE_UI_TEXT.allFilterLabel,
   );
@@ -204,24 +189,6 @@ export default function DispatchesPageClient() {
   );
   const uniqueAgencies = useMemo(
     () => new Set(dispatches.map((entry) => entry.agency).filter(Boolean)).size,
-    [],
-  );
-  const shippedCount = useMemo(
-    () => dispatches.filter((entry) => entry.category === "Shipped").length,
-    [],
-  );
-  const deployedCount = useMemo(
-    () => dispatches.filter((entry) => entry.category === "Deployed").length,
-    [],
-  );
-  const newPeopleCount = useMemo(
-    () =>
-      dispatches
-        .filter((entry) => entry.category === DISPATCH_CATEGORY_KEYS.newFaces)
-        .reduce((sum, entry) => {
-          const match = entry.title.match(/(\d+)/);
-          return sum + (match ? Number.parseInt(match[1], 10) : 0);
-        }, 0),
     [],
   );
   const latest = dispatches[0];
@@ -235,42 +202,19 @@ export default function DispatchesPageClient() {
     [filter],
   );
 
-  const statsValues = [shippedCount, uniqueAgencies, newPeopleCount, deployedCount];
-
   return (
     <div className={`pageWrap ${styles.wrapper}`}>
       <HeroFrame
         className={styles.hero}
+        statsClassName={styles.heroStats}
         variant="center"
         eyebrow={hero.eyebrow}
         title={hero.title}
         subtitle={hero.subtitle}
         titleHighlightSlice={hero.titleHighlightSlice}
         titleLineBreakBefore={hero.titleLineBreakBefore}
+        stats={hero.stats}
       />
-
-      <DividerStars />
-
-      <section className={`sectionFrameBase ${styles.section}`}>
-        <SectionHeader
-          eyebrow={sections.dashboard.eyebrow}
-          title={sections.dashboard.title}
-          titleAlignment="left"
-          subtitleAlignment="left"
-          subtitle={sections.dashboard.subtitle}
-        />
-
-        <div className={styles.statsGrid}>
-          {statsCards.map((card, index) => (
-            <CardSurface tone="plain" className={styles.statCard} key={card.label}>
-              <p className={styles.statValue} style={{ color: card.color }}>
-                {statsValues[index]}
-              </p>
-              <p className={styles.statLabel}>{card.label}</p>
-            </CardSurface>
-          ))}
-        </div>
-      </section>
 
       <DividerStars />
 
@@ -283,7 +227,7 @@ export default function DispatchesPageClient() {
           subtitle={sections.shippingActivity.subtitle}
         />
 
-        <CardSurface tone="background" className={styles.chartCard}>
+        <CardSurface tone="plain" className={styles.chartCard}>
           <div className={styles.chartLegend}>
             <span className={styles.legendItem}>
               <span className={`${styles.legendSwatch} ${styles.legendShipped}`} />
@@ -299,33 +243,40 @@ export default function DispatchesPageClient() {
             </span>
           </div>
 
-          <div className={styles.chartGrid}>
-            {activity.map((bucket) => (
-              <div className={styles.chartColumn} key={bucket.label}>
-                <div className={styles.chartStack}>
-                  {Array.from({ length: Math.max(bucket.total, 1) }).map((_, blockIndex) => {
-                    const className =
-                      bucket.total === 0
-                        ? styles.blockEmpty
-                        : blockIndex < bucket.shipped
-                          ? styles.blockShipped
-                          : blockIndex < bucket.shipped + bucket.deployed
-                            ? styles.blockDeployed
-                            : styles.blockOther;
+          <div className={styles.chartViewport}>
+            <div
+              className={styles.chartGrid}
+              style={{
+                gridTemplateColumns: `repeat(${Math.max(activity.length, 1)}, minmax(0, 1fr))`,
+              }}
+            >
+              {activity.map((bucket) => (
+                <div className={styles.chartColumn} key={bucket.label}>
+                  <div className={styles.chartStack}>
+                    {Array.from({ length: Math.max(bucket.total, 1) }).map((_, blockIndex) => {
+                      const className =
+                        bucket.total === 0
+                          ? styles.blockEmpty
+                          : blockIndex < bucket.shipped
+                            ? styles.blockShipped
+                            : blockIndex < bucket.shipped + bucket.deployed
+                              ? styles.blockDeployed
+                              : styles.blockOther;
 
-                    return <span key={`${bucket.label}-${blockIndex}`} className={className} />;
-                  })}
+                      return <span key={`${bucket.label}-${blockIndex}`} className={className} />;
+                    })}
+                  </div>
+                  <p className={styles.chartLabel}>{bucket.label}</p>
                 </div>
-                <p className={styles.chartLabel}>{bucket.label}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </CardSurface>
       </section>
 
-      <DividerStars />
+      {/* <DividerStars /> */}
 
-      <section className={`sectionFrameBase ${styles.section}`}>
+      {/* <section className={`sectionFrameBase ${styles.section}`}>
         <CardSurface tone="background" className={styles.statusCard}>
           <p className={styles.statusItem}>
             <span className={`${styles.statusDot} ${styles.statusTeal}`} aria-hidden="true" />
@@ -344,7 +295,7 @@ export default function DispatchesPageClient() {
             {categories.size} {statusRow.updateCategoriesSuffix}
           </p>
         </CardSurface>
-      </section>
+      </section> */}
 
       <DividerStars />
 
@@ -404,7 +355,7 @@ export default function DispatchesPageClient() {
           ) : (
             filteredDispatches.map((entry) => (
               <article className={styles.feedItem} key={entry.id}>
-                <CardSurface tone="background" className={styles.feedCard}>
+                <CardSurface tone="plain" className={styles.feedCard}>
                   <div className={styles.feedTop}>
                     <div className={styles.feedDateWrap}>
                       <p className={styles.feedDate}>{formatDispatchDate(entry.date)}</p>

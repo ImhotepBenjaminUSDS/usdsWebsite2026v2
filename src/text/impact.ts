@@ -37,13 +37,12 @@ export const IMPACT_PAGE_CONTENT = {
         "Long-form case studies from the child site, brought into parent-site card, spacing, and color conventions.",
     } satisfies ImpactSectionHeader,
     latestFromField: {
-      eyebrow: "Latest from the Field",
-      title: "Impact is ongoing",
-      tableHeaders: {
-        date: "Date",
-        update: "Update",
-      },
+      eyebrow: "Dispatches",
+      title: "Latest delivery notes",
+      subtitle:
+        "Recent field updates sourced from child-site dispatches and surfaced in the parent impact route.",
       viewAllDispatchesLabel: "View all dispatches",
+      viewLinkedInitiativeLabel: "View linked initiative",
     },
   },
   cta: {

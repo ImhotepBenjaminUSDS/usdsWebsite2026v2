@@ -16,7 +16,7 @@ const caseStudies: CaseStudy[] = [
   {
     slug: "fafsa",
     title: "FAFSA Modernization",
-    agency: "Department of Education",
+    agency: "Dept. of Education",
     domain: "Education & Finance",
     result: "Cut the form from 108 to 36 questions — millions more applications completed",
     before: "108 questions",
@@ -28,7 +28,7 @@ const caseStudies: CaseStudy[] = [
   {
     slug: "va-ai",
     title: "VA AI Claims Processing",
-    agency: "Department of Veterans Affairs",
+    agency: "Dept. of Veterans Affairs",
     domain: "Veterans",
     result: "AI-assisted claims processing reduced backlog by months with 95%+ accuracy",
     before: "125 days",
@@ -40,7 +40,7 @@ const caseStudies: CaseStudy[] = [
   {
     slug: "state-visas",
     title: "Visa System Recovery",
-    agency: "Department of State",
+    agency: "Dept. of State",
     domain: "Immigration & State",
     result: "Restored 1M daily visa applications lost to silent system timeouts",
     before: "0 (down)",
@@ -52,7 +52,7 @@ const caseStudies: CaseStudy[] = [
   {
     slug: "passport",
     title: "Passport Renewal System",
-    agency: "Department of State",
+    agency: "Dept. of State",
     domain: "Immigration & State",
     result: "Built an end-to-end digital renewal system — cut wait times from 11 weeks to 6",
     before: "11 weeks",
@@ -77,7 +77,7 @@ const caseStudies: CaseStudy[] = [
   {
     slug: null,
     title: "VA Disability Claims Pipeline",
-    agency: "Department of Veterans Affairs",
+    agency: "Dept. of Veterans Affairs",
     domain: "Veterans",
     result: "82% faster disability claims with intelligent automation and modern infrastructure",
     before: "Months",

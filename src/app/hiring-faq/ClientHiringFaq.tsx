@@ -57,7 +57,6 @@ export default function ClientHiringFaq() {
             label: detail.label,
             value: detail.value,
             tone: (["blue", "teal", "gold"] as const)[index % 3],
-            animateValue: false,
           }))}
         />
 

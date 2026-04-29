@@ -164,27 +164,35 @@ export default function HeroFrame({
     !isSplitLayout && centeredStatsLayout === "auto"
       ? "long"
       : centeredStatsLayout;
-  const statsNode = shouldRenderStats ? (
-    useHorizontalStats ? (
-      <HorizontalStatsList
-        items={stats.map((stat) => ({
-          id: stat.id,
-          value: stat.value,
-          label: stat.label,
-          animateValue: stat.animateValue,
-        }))}
-        layout={resolvedCenteredStatsLayout}
-        className={statsClassNames}
-      />
-    ) : (
+  const renderStatsNode = () => {
+    if (!shouldRenderStats) {
+      return null;
+    }
+
+    if (useHorizontalStats) {
+      return (
+        <HorizontalStatsList
+          items={stats.map((stat) => ({
+            id: stat.id,
+            value: stat.value,
+            label: stat.label,
+            animateValue: stat.animateValue,
+          }))}
+          layout={resolvedCenteredStatsLayout}
+          className={statsClassNames}
+        />
+      );
+    }
+
+    return (
       <HeroStats
         stats={stats}
         variant={statsStyle}
         className={statsClassNames}
       />
-    )
-  ) : null;
-  const ctaNode = (
+    );
+  };
+  const renderCtaNode = () => (
     <div className={layoutStyles.ctaAfterStats} style={{ justifyContent: ctaJustifyContent }}>
       {resolvedCtas.map((ctaItem, index) => (
         <CTA
@@ -243,9 +251,12 @@ export default function HeroFrame({
             isPageTitle
           />
 
-          {useContentStats ? statsNode : null}
-
-          {showCtaAfterContent ? ctaNode : null}
+          {useContentStats ? (
+            <div className={layoutStyles.splitContentStatsInline}>
+              {renderStatsNode()}
+              {showCtaAfterContent ? renderCtaNode() : null}
+            </div>
+          ) : null}
           
         </div>
 
@@ -265,12 +276,19 @@ export default function HeroFrame({
             </div>
           </div>
         ) : null}
+
+        {isSplitLayout && useContentStats ? (
+          <div className={layoutStyles.splitContentAfterMedia}>
+            {renderStatsNode()}
+            {showCtaAfterContent ? renderCtaNode() : null}
+          </div>
+        ) : null}
       </HeroTop>
 
       {useBottomStats ? (
         <HeroBottom>
-          {statsNode}
-          {showCtaAfterBottom ? ctaNode : null}
+          {renderStatsNode()}
+          {showCtaAfterBottom ? renderCtaNode() : null}
         </HeroBottom>
       ) : null}
     </Tag>

@@ -176,15 +176,15 @@ export const HOME_HERO_CONTENT: HomeHeroContent = {
 export const HOME_HERO_AGENCY_MARQUEE_CONTENT: HomeHeroAgencyMarqueeContent = {
   label: "Embedded across 30+ federal agencies",
   agencies: [
-    "Department of Veterans Affairs",
-    "Department of War",
-    "Department of State",
+    "Dept. of Veterans Affairs",
+    "Dept. of War",
+    "Dept. of State",
     "Internal Revenue Service",
     "Centers for Medicare & Medicaid Services",
-    "Department of Education",
-    "Department of Homeland Security",
+    "Dept. of Education",
+    "Dept. of Homeland Security",
     "Social Security Administration",
-    "Department of Health & Human Services",
+    "Dept. of Health & Human Services",
     "General Services Administration",
     "Small Business Administration",
     "U.S. Citizenship & Immigration Services",
@@ -281,14 +281,14 @@ export const HOME_OUR_IMPACT_CONTENT: HomeOurImpactContent = {
       eyebrow: "Featured Project",
       title: "FAFSA Simplified",
       body: "The federal student aid application was 108 questions long - confusing, intimidating, and a barrier that kept millions of families from financial aid. We cut it to 36, made it mobile-first, and unlocked aid for a generation.",
-      imageSrc: "https://images.unsplash.com/photo-1523050854058-8df90110c8f1?w=1000&q=80",
+      imageSrc: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1000&q=80",
       imageAlt: "Students collaborating on laptops in a library.",
       linkText: "Read the full story",
       linkHref: "/impact/fafsa",
       metric: {
         before: "108 questions",
-        after: "36",
-        label: "Questions",
+        after: "36 questions",
+        label: "Form length",
       },
     },
     {
@@ -487,7 +487,7 @@ export const HOME_FEATURED_PROJECTS_CONTENT: HomeFeaturedProjectsContent = {
     },
     {
       id: "state-passport-renewal",
-      agency: "Department of State",
+      agency: "Dept. of State",
       title: "Passport Renewal System",
       description:
         "Designed an end-to-end digital renewal experience, eliminating paper bottlenecks and reducing wait times for millions of Americans.",
@@ -498,7 +498,7 @@ export const HOME_FEATURED_PROJECTS_CONTENT: HomeFeaturedProjectsContent = {
     },
     {
       id: "va-claims-processing",
-      agency: "Department of Veterans Affairs",
+      agency: "Dept. of Veterans Affairs",
       title: "VA Claims Processing",
       description:
         "Transformed the disability claims pipeline with intelligent automation, reducing backlog and delivering faster decisions to veterans.",
@@ -509,7 +509,7 @@ export const HOME_FEATURED_PROJECTS_CONTENT: HomeFeaturedProjectsContent = {
     },
     {
       id: "education-fafsa-modernization",
-      agency: "Department of Education",
+      agency: "Dept. of Education",
       title: "FAFSA Modernization",
       description:
         "Simplified the federal student aid experience so more families can complete applications quickly and access support sooner.",

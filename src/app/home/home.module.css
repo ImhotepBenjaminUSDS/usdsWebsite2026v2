@@ -20,6 +20,12 @@
   gap: var(--space-l);
 }
 
+@media (max-width: 425px) {
+  .wrapper {
+    padding: var(--space-s) !important;
+  }
+}
+
 @media (max-width: 72em) {
   .wrapper {
     padding: 0 0 calc(2rem + var(--header-height));

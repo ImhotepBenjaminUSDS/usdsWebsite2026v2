@@ -13,10 +13,11 @@
 .heroHeaderChild :global(h1),
 .heroHeaderChild :global(h2),
 .heroHeaderChild :global(h3) {
-  max-width: 20ch !important;
+  max-width: min(28ch, 100%) !important;
   font-size: var(--fs-h1-child) !important;
   line-height: 1.08 !important;
   text-transform: none !important;
+  text-wrap: balance;
 }
 
 .heroHeaderChild :global(.subTitle) {

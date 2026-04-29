@@ -117,13 +117,13 @@ export const AGENCIES_PAGE_CONTENT = {
       quote:
         "USDS did not show up with a slide deck. They sat with our engineers and shipped in the first sprint.",
       name: "Deputy CTO",
-      agency: "Department of Veterans Affairs",
+      agency: "Dept. of Veterans Affairs",
     },
     {
       quote:
         "The team did not just build and leave. They documented, paired, and made sure our staff could run the systems after handoff.",
       name: "Chief Information Officer",
-      agency: "Department of Education",
+      agency: "Dept. of Education",
     },
     {
       quote: "Quote from Jen at ATF coming soon.",

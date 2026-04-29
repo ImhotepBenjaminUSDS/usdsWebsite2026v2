@@ -1,7 +1,5 @@
-import LegacyPage, {
-  generateMetadata as generateLegacyMetadata,
-} from "@/features/legacy-pages/LegacyPage";
-import styles from "./page.module.css";
+import { generateMetadata as generateLegacyMetadata } from "@/features/legacy-pages/LegacyPage";
+import ContactPage from "@/features/contact/ContactPage";
 
 function getLegacyParams() {
   return Promise.resolve({ legacy: ["contact"] });
@@ -12,9 +10,5 @@ export async function generateMetadata() {
 }
 
 export default function Page() {
-  return (
-    <div className={styles.route}>
-      <LegacyPage params={getLegacyParams()} />
-    </div>
-  );
+  return <ContactPage />;
 }

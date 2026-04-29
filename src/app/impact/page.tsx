@@ -4,8 +4,7 @@ import SectionHeader from "@/components/general/SectionHeader";
 import CTASection from "@/components/sections/CTASection";
 import HeroFrame from "@/components/sections/PageHero";
 import ImpactCaseStudyCards from "@/components/sections/ImpactCaseStudyCards";
-import Eyebrow from "@/components/general/Eyebrow";
-import DataTable from "@/components/general/DataTable";
+import CardSurface from "@/components/cards/CardSurface";
 import caseStudies from "@/data/child/case-studies";
 import dispatches from "@/data/child/dispatches";
 import { getImageBreakScene } from "@/text/imageBreaks";
@@ -60,31 +59,7 @@ function getDispatchCategoryClassName(
 export default function Page() {
   const { hero, sections, cta } = IMPACT_PAGE_CONTENT;
   const heroImage = caseStudies[0]?.image ?? getImageBreakScene(0).src;
-  const recentDispatches = dispatches.slice(0, 3);
-  const latestFieldRows = recentDispatches.map((entry) => ({
-    key: entry.id,
-    cells: [
-      (
-        <div key={`${entry.id}-meta`} className={styles.latestFieldMeta}>
-          <p className={styles.latestFieldDate}>{formatDispatchDate(entry.date)}</p>
-          <span
-            className={`${styles.latestFieldCategory} ${getDispatchCategoryClassName(
-              entry.category,
-            )}`}
-          >
-            {entry.category}
-          </span>
-        </div>
-      ),
-      (
-        <div key={`${entry.id}-body`} className={styles.latestFieldBodyColumn}>
-          {entry.agency ? <p className={styles.latestFieldAgency}>{entry.agency}</p> : null}
-          <h3 className={styles.latestFieldItemTitle}>{entry.title}</h3>
-          <p className={styles.latestFieldDescription}>{entry.body}</p>
-        </div>
-      ),
-    ],
-  }));
+  const recentDispatches = dispatches.slice(0, 6);
 
   return (
     <div className={`pageWrap ${styles.wrapper}`}>
@@ -133,26 +108,64 @@ export default function Page() {
       <DividerStars />
 
       <section className={`sectionFrameBase ${styles.latestFieldSection}`}>
-        <div className={styles.latestFieldContentWrap}>
-          <div className={styles.latestFieldEyebrowWrap}>
-            <Eyebrow text={sections.latestFromField.eyebrow} alignment="center" />
-          </div>
-          <h2 className={styles.latestFieldTitle}>{sections.latestFromField.title}</h2>
-          <DataTable
-            headers={[
-              sections.latestFromField.tableHeaders.date,
-              sections.latestFromField.tableHeaders.update,
-            ]}
-            rows={latestFieldRows}
-            size="sm"
-            className={styles.latestFieldTableWrap}
-            tableClassName={styles.latestFieldTable}
-          />
-          <div className={styles.latestFieldCtaRow}>
-            <Link className={styles.latestFieldCtaLink} href="/dispatches">
-              {sections.latestFromField.viewAllDispatchesLabel} &rarr;
-            </Link>
-          </div>
+        <SectionHeader
+          eyebrow={sections.latestFromField.eyebrow}
+          title={sections.latestFromField.title}
+          titleAlignment="left"
+          subtitleAlignment="left"
+          subtitle={sections.latestFromField.subtitle}
+        />
+
+        <div className={styles.latestFieldGrid}>
+          {recentDispatches.map((entry) => (
+            <CardSurface
+              as="article"
+              tone="background"
+              className={styles.latestFieldCard}
+              key={entry.id}
+            >
+              <div className={styles.latestFieldCardTop}>
+                <div className={styles.latestFieldMeta}>
+                  <p className={styles.latestFieldDate}>{formatDispatchDate(entry.date)}</p>
+                  <span
+                    className={`${styles.latestFieldCategory} ${getDispatchCategoryClassName(
+                      entry.category,
+                    )}`}
+                  >
+                    {entry.category}
+                  </span>
+                </div>
+                {entry.agency ? <p className={styles.latestFieldAgency}>{entry.agency}</p> : null}
+              </div>
+
+              <h3 className={styles.latestFieldItemTitle}>{entry.title}</h3>
+              <p className={styles.latestFieldDescription}>{entry.body}</p>
+
+              {entry.metric ? (
+                <div className={styles.latestFieldMetricRow}>
+                  {entry.metric.before ? (
+                    <span className={styles.latestFieldMetricBefore}>
+                      {entry.metric.before}
+                    </span>
+                  ) : null}
+                  <span className={styles.latestFieldMetricAfter}>{entry.metric.after}</span>
+                  <span className={styles.latestFieldMetricLabel}>{entry.metric.label}</span>
+                </div>
+              ) : null}
+
+              {entry.link ? (
+                <Link className={styles.latestFieldCardLink} href={entry.link}>
+                  {sections.latestFromField.viewLinkedInitiativeLabel}
+                </Link>
+              ) : null}
+            </CardSurface>
+          ))}
+        </div>
+
+        <div className={styles.latestFieldCtaRow}>
+          <Link className={styles.latestFieldCtaLink} href="/dispatches">
+            {sections.latestFromField.viewAllDispatchesLabel} &rarr;
+          </Link>
         </div>
       </section>
 

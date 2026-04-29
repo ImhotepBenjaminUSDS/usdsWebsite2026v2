@@ -280,6 +280,7 @@ export default function CareersPageClient() {
       <HeroFrame
         className={styles.hero}
         headerClassName={`${styles.heroSectionHeader} ${styles.heroSectionHeaderCompact}`}
+        statsClassName={styles.heroStatsGrid}
         variant="center"
         eyebrow={hero.eyebrow}
         title={hero.title}

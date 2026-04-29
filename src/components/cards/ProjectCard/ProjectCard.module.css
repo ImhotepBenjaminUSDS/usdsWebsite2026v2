@@ -100,3 +100,23 @@
 .projectLink:active {
   transform: scale(0.97);
 }
+
+@media (max-width: 56em) {
+  .wrapper {
+    flex-basis: 100%;
+    min-width: 0;
+  }
+
+  .surface {
+    min-height: 0;
+    padding: var(--space-l);
+  }
+
+  .projectSummary {
+    margin-bottom: var(--space-l);
+  }
+
+  .projectLink {
+    white-space: normal;
+  }
+}

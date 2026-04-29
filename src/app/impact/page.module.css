@@ -33,95 +33,32 @@
 
 .latestFieldSection {
   width: 100%;
-  gap: 0;
-}
-
-
-.latestFieldContentWrap {
-  width: min(100%, 60rem);
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: var(--space-l);
 }
 
-.latestFieldEyebrowWrap {
+.latestFieldGrid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-xl);
+}
+
+.latestFieldCard {
+  padding: var(--space-m);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: var(--space-s);
+  min-height: 100%;
 }
 
-.latestFieldTitle {
-  margin: 0;
-  color: var(--primary-light);
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  font-weight: var(--fw-large);
-  letter-spacing: -0.04em;
-  text-align: center;
+.latestFieldCardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-m);
 }
-
-.latestFieldTableWrap {
-  width: 100%;
-}
-
-.latestFieldTable {
-  width: 100%;
-  border-spacing: 0;
-}
-
-.latestFieldTable thead {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  white-space: nowrap;
-  border: 0;
-
-}
-.latestFieldTable tbody tr:nth-child(odd) { 
-  background: var(--primary-dark-muted-transparent);
-
-}
-
-.latestFieldTable tbody tr {
-  transition: background 0.3s ease;
-
-}
-
-.latestFieldTable tbody tr td {
-  vertical-align: top;
-  padding: var(--space-xl) !important;
-  border-top-left-radius: calc(var(--border-radius-primary) - var(--space-m));
-  border-bottom-left-radius: calc(var(--border-radius-primary) - var(--space-m));
-  border-top-right-radius: calc(var(--border-radius-primary) - var(--space-m));
-  border-bottom-right-radius: calc(var(--border-radius-primary) - var(--space-m));
-
-}
-
-.latestFieldTable tbody tr:last-child td {
-  border-bottom: 0;
-}
-
-.latestFieldTable td:first-child {
-  width: 7.5rem;
-  min-width: 7.5rem;
-  padding-right: var(--space-m);
-
-}
-
-.latestFieldTable tbody tr:nth-child(odd) td:first-child {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
-.latestFieldTable tbody tr:nth-child(odd) td:last-child {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
 
 .latestFieldMeta {
   display: flex;
@@ -165,13 +102,6 @@
   color: var(--secondary-color);
 }
 
-.latestFieldBodyColumn {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-  min-width: 0;
-}
-
 .latestFieldAgency {
   margin: 0;
   color: var(--primary-color-light);
@@ -192,13 +122,45 @@
 .latestFieldDescription {
   margin: 0;
   color: var(--primary-light-subtle);
-  font-size: clamp(0.9rem, 1.2vw, 1rem);
-  line-height: 1.75;
-  max-width: 62ch;
+  font-size: var(--fs-body);
+  line-height: var(--lh-tall);
+}
+
+.latestFieldMetricRow {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-m);
+  flex-wrap: wrap;
+}
+
+.latestFieldMetricBefore {
+  color: var(--primary-light-muted);
+  text-decoration: line-through;
+  font-size: var(--fs-meta);
+}
+
+.latestFieldMetricAfter {
+  color: var(--primary-yellow-color);
+  font-size: var(--fs-h5);
+  font-weight: var(--fw-title);
+}
+
+.latestFieldMetricLabel {
+  color: var(--primary-light-muted);
+  font-size: var(--fs-meta-smaller);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.latestFieldCardLink {
+  color: var(--primary-color-light);
+  font-size: var(--fs-meta);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .latestFieldCtaRow {
-  text-align: center;
+  text-align: left;
   margin-top: var(--space-xs);
 }
 
@@ -350,7 +312,7 @@
 .caseStudyMetricRow {
   display: flex;
   align-items: baseline;
-  gap: var(--space-xs);
+  gap: var(--space-m);
   flex-wrap: wrap;
 }
 
@@ -425,15 +387,6 @@
   .heroStats {
     column-gap: var(--space-xl) !important;
   }
-
-  .latestFieldContentWrap {
-    width: min(100%, 56rem);
-  }
-
-  .latestFieldTable td:first-child {
-    width: 6.4rem;
-    min-width: 6.4rem;
-  }
 }
 
 @media (max-width: 40em) {
@@ -482,35 +435,16 @@
     font-size: var(--fs-body);
   }
 
-  .latestFieldContentWrap {
-    width: 100%;
-    padding-inline: var(--space-m);
+  .latestFieldGrid {
+    grid-template-columns: 1fr;
     gap: var(--space-m);
-  }
-
-  .latestFieldTitle {
-    font-size: clamp(1.85rem, 8vw, 2.55rem);
-  }
-
-  .latestFieldTable td:first-child {
-    width: 6rem;
-    min-width: 6rem;
-  }
-
-  .latestFieldBodyColumn {
-    gap: var(--space-xs);
   }
 }
 
 @media (max-width: 40em) {
-
-  .latestFieldEyebrowWrap {
-    justify-content: flex-start;
-  }
-
-  .latestFieldTitle {
-    text-align: left;
-    font-size: clamp(1.8rem, 10vw, 2.2rem);
+  .latestFieldCardTop {
+    flex-direction: column;
+    gap: var(--space-xs);
   }
 
   .latestFieldCtaRow {

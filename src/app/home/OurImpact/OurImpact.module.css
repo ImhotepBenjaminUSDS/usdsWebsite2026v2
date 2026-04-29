@@ -1,8 +1,7 @@
 .wrapper {
-  width: calc(100vw - (var(--page-content-inline-padding) * 2));
-  margin-inline: calc(50% - 50vw + var(--page-content-inline-padding));
+  width: calc(100% + (var(--page-content-inline-padding) * 2));
+  margin-inline: calc(var(--page-content-inline-padding) * -1);
   max-width: none;
-
 }
 
 .slidesWrapper {
@@ -10,7 +9,7 @@
   display: flex;
   flex-direction: column;
   /* gap: var(--space-2xl); */
-    border-radius: var(--border-radius-primary);
+    /* border-radius: var(--border-radius-primary); */
   overflow: hidden;
 
 }
@@ -26,8 +25,12 @@
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: row;
 }
 
+.sectionReverse {
+  flex-direction: row-reverse;
+}
 
 .sectionContent {
   width: 100%;
@@ -182,7 +185,7 @@
 .storyMetricRow {
   display: flex;
   align-items: baseline;
-  gap: 0.65rem;
+  gap: var(--space-m);
   flex-wrap: wrap;
 }
 
@@ -199,7 +202,7 @@
 
 .storyMetricAfter {
   color: var(--primary-color-light);
-  font-size: clamp(1.8rem, 3vw, 3.2rem);
+  font-size: clamp(1.65rem, 2.5vw, 2.6rem);
   font-family: var(--font-spaceGrotesk), var(--font-outfit), sans-serif;
   font-weight: var(--fw-large);
   letter-spacing: -0.03em;
@@ -225,12 +228,19 @@
   padding-bottom: 0.35rem;
 }
 
+@media (max-width: 72em) {
+  .metricValue {
+    font-size: clamp(3.5rem, 12vw, 7rem);
+  }
+}
+
 @media (max-width: 56em) {
   .sectionTrack {
     height: auto;
   }
 
-  .section {
+  .section,
+  .sectionReverse {
     flex-direction: column;
   }
 
@@ -251,19 +261,10 @@
   }
 }
 
-/* @media (max-width: 72em) {
-  .slidesWrapper {
-    gap: var(--space-xl);
-  }
-
-  .metricValue {
-    font-size: clamp(3.5rem, 12vw, 7rem);
-  }
-}
-
 @media (max-width: 40em) {
   .textPane {
     gap: var(--space-s);
+    padding: var(--space-s) var(--space-m) var(--space-m);
   }
 
   .metricValue {
@@ -279,4 +280,14 @@
     max-width: 34ch;
     font-size: clamp(0.95rem, 4.2vw, 1.1rem);
   }
-} */
+
+  .storyTitle {
+    max-width: none;
+    font-size: clamp(1.7rem, 9vw, 2.7rem);
+  }
+
+  .storyBody {
+    max-width: none;
+    font-size: var(--fs-body);
+  }
+}

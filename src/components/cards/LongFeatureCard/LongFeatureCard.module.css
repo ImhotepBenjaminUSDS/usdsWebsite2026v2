@@ -27,6 +27,16 @@
   isolation: isolate;
 }
 
+.cardNoBackground {
+  background: transparent;
+  box-shadow: none;
+  border: var(--border-theme);
+}
+
+.cardNoBackground::before {
+  content: none;
+}
+
 .card::before {
   content: "";
   position: absolute;

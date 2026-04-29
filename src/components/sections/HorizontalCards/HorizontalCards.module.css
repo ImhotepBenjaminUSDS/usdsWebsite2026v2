@@ -55,6 +55,11 @@
     min-width: 0;
   }
 
+  .cardTri,
+  .cardQuad {
+    width: 50%;
+  }
+
   .cardGrid {
     max-width: none;
     flex-basis: calc(50% - (var(--space-m) / 2));
@@ -69,9 +74,15 @@
   .cardWrapper {
     flex: 1 1 auto;
     max-width: 100%;
+    width: 100%;
     min-width: 0;
     border-right: none;
     padding: 0;
+  }
+
+  .cardTri,
+  .cardQuad {
+    width: 100%;
   }
 
   .cardGrid {

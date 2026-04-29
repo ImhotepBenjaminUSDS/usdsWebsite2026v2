@@ -70,12 +70,11 @@ function ImpactSlidePanel({ slide, index, totalSlides }: ImpactSlidePanelProps) 
   return (
     <section className={styles.sectionTrack} aria-labelledby={`${slide.id}-title`}>
       <motion.article
-        className={styles.section}
+        className={[styles.section, (index & 1) === 0 ? "" : styles.sectionReverse]
+          .filter(Boolean)
+          .join(" ")}
         ref={panelRef}
-        style={{ 
-          zIndex: totalSlides - index,
-          flexDirection: (index & 1) === 0 ? "row": "row-reverse" ,
-        }}
+        style={{ zIndex: totalSlides - index }}
       >
             <div className={styles.imageFrame}>
               <Image

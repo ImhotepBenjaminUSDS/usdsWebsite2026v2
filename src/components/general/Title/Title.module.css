@@ -17,10 +17,11 @@
 
 .title {
   visibility: hidden;
-  max-width: 20ch !important;
+  max-width: none;
   letter-spacing: -0.03em;
   font-family: var(--font-spaceGrotesk), sans-serif !important;
   text-transform: capitalize !important;
+  text-wrap: balance;
 }
 
 .title :global(.line) {

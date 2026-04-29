@@ -148,27 +148,27 @@ const LEGACY_PAGE_META: Record<LegacyPagePath, MetaContent> = {
       "Case study on FAFSA modernization, from form redesign to completion gains.",
     keywords: [
       "FAFSA modernization",
-      "Department of Education",
+      "Dept. of Education",
       "USDS case study",
     ],
   },
   "impact/va-ai": {
     title: "VA AI Claims Processing",
     description:
-      "Case study on AI-assisted disability claims processing at the Department of Veterans Affairs.",
+      "Case study on AI-assisted disability claims processing at the Dept. of Veterans Affairs.",
     keywords: ["VA AI", "veterans claims", "USDS case study"],
   },
   "impact/state-visas": {
     title: "Visa System Recovery",
     description:
-      "Case study on restoring State Department visa throughput and platform stability.",
-    keywords: ["visa system", "Department of State", "USDS case study"],
+      "Case study on restoring State Dept. visa throughput and platform stability.",
+    keywords: ["visa system", "Dept. of State", "USDS case study"],
   },
   "impact/passport": {
     title: "Passport Renewal System",
     description:
       "Case study on digital passport renewal and operational cycle-time improvements.",
-    keywords: ["passport renewal", "Department of State", "USDS case study"],
+    keywords: ["passport renewal", "Dept. of State", "USDS case study"],
   },
   agencies: {
     title: "Agencies",
@@ -386,7 +386,9 @@ function HeroSection({
   imageSrc,
   imageAlt,
   useCompactTitle,
+  headerClassName,
   cta,
+  variant,
 }: {
   eyebrow: string;
   title: string;
@@ -395,9 +397,12 @@ function HeroSection({
   imageSrc?: string;
   imageAlt?: string;
   useCompactTitle?: boolean;
+  headerClassName?: string;
   cta?: { text: string; href: string }[];
+  variant?: "left" | "center";
 }) {
-  const isSplitHero = Boolean(imageSrc);
+  const resolvedVariant = variant ?? (imageSrc ? "left" : "center");
+  const isSplitHero = resolvedVariant === "left";
   const heroStats = stats?.map((stat) => ({
     label: stat.label,
     value: stat.value,
@@ -413,17 +418,17 @@ function HeroSection({
   return (
     <HeroFrame
       className={`${styles.hero} ${isSplitHero ? styles.heroSplit : ""}`}
-      headerClassName={`${styles.heroHeader} ${isSplitHero ? styles.heroHeaderSplit : ""} ${
-        useCompactTitle ? styles.heroHeaderCompact : ""
-      }`}
+      headerClassName={`${styles.heroHeader} ${
+        isSplitHero ? styles.heroHeaderSplit : styles.heroHeaderCentered
+      } ${useCompactTitle ? styles.heroHeaderCompact : ""} ${headerClassName ?? ""}`}
       statsClassName={isSplitHero ? styles.heroStatsGrid : undefined}
-      variant={isSplitHero ? "left" : "center"}
+      variant={resolvedVariant}
       eyebrow={eyebrow}
       title={title}
       titleSize="heroChild"
       subtitle={subtitle}
-      titleAlignment="left"
-      subtitleAlignment="left"
+      titleAlignment={isSplitHero ? "left" : "center"}
+      subtitleAlignment={isSplitHero ? "left" : "center"}
       showTitleBorder={false}
       compactTitle={Boolean(useCompactTitle)}
       splitContentLayout={isSplitHero ? "stacked" : "default"}
@@ -665,10 +670,12 @@ function renderAboutPeoplePage() {
     <>
       <HeroSection
         eyebrow="People"
-        title="Employee profiles from across USDS"
-        subtitle="This page highlights opt-in employee stories about what they have worked on and why they like working at USDS."
+        title="Employee profiles"
+        subtitle="Opt-in stories from across USDS about what employees have worked on and why they like serving."
+        variant="left"
         imageSrc={getImageBreakScene(1).src}
         imageAlt="USDS employee profile collaboration session"
+        headerClassName={styles.peopleHeroHeader}
         stats={[
           { value: `${featuredProfiles.length}`, label: "Profiles shown" },
           { value: `${roleCount}`, label: "Role perspectives" },
@@ -687,29 +694,11 @@ function renderAboutPeoplePage() {
       <DividerStars />
 
       <section className={`sectionFrameBase ${styles.section}`}>
-        <SectionHeader
-          eyebrow="Participation"
-          title="Profile submissions are voluntary"
-          titleAlignment="left"
-          subtitleAlignment="left"
-          subtitle="Instead of listing every current employee, this page features stories from employees who choose to share."
-        />
+        <p className={styles.participationNotice}>
+          Employee profiles are shared voluntarily and represent a sample of
+          roles and mission work across USDS.
+        </p>
 
-        <div className={`${styles.grid} ${styles.gridTwo}`}>
-          <PanelCard
-            title="What each profile includes"
-            body="Employees can share a project or initiative they worked on, plus why working at USDS is meaningful to them."
-          />
-          <PanelCard
-            title="How profiles are selected"
-            body="Profiles are shown based on employee opt-in and are curated to represent different roles and mission areas."
-          />
-        </div>
-      </section>
-
-      <DividerStars />
-
-      <section className={`sectionFrameBase ${styles.section}`}>
         <SectionHeader
           eyebrow="Profiles"
           title="Employee stories"

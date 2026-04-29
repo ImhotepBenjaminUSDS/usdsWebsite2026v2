@@ -16,6 +16,10 @@ type DispatchesHeroContent = {
   subtitle: string;
   titleHighlightSlice: [number, number];
   titleLineBreakBefore: string;
+  stats: {
+    value: string;
+    label: string;
+  }[];
 };
 
 type DispatchesStatCardCopy = {
@@ -33,6 +37,12 @@ export const DISPATCHES_PAGE_CONTENT = {
       "Real-time field reports from teams embedded across the federal government. Every entry reflects measurable delivery in production, pilot, or deployment motion.",
     titleHighlightSlice: [3, 7],
     titleLineBreakBefore: "Here's",
+    stats: [
+      { value: "4", label: "Features shipped" },
+      { value: "8", label: "Agencies active" },
+      { value: "20", label: "People deployed" },
+      { value: "2", label: "Teams deployed" },
+    ],
   } satisfies DispatchesHeroContent,
   sections: {
     dashboard: {
@@ -42,10 +52,10 @@ export const DISPATCHES_PAGE_CONTENT = {
         "A fast snapshot of shipped features, active agencies, deployed teams, and recent staffing movement.",
     } satisfies DispatchesSectionHeader,
     shippingActivity: {
-      eyebrow: "Shipping activity",
-      title: "Weekly dispatch velocity",
+      eyebrow: "Monthly dispatches",
+      title: "Monthly dispatch activity",
       subtitle:
-        "A week-by-week stacked activity chart highlighting shipped, deployed, and supporting delivery events over the latest 17-week window.",
+        "A month-by-month stacked activity chart highlighting shipped, deployed, and supporting delivery events over the latest 12-month window.",
       legend: {
         shipped: "Shipped",
         deployed: "Deployed",

@@ -39,6 +39,8 @@ export default function OurValues({ items }: Props) {
             sideLabel={MISSION_VALUES_SECTION_CONTENT.cardSideLabel}
             sideTone={CARD_TONES[index % CARD_TONES.length] ?? "blue"}
             animateSideValue={false}
+            surface="plain"
+            showBackground={false}
           />
         ))}
       </div>

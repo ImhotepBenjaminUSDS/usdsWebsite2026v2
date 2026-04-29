@@ -11,6 +11,12 @@
   gap: 1rem;
 }
 
+@media (max-width: 40em) {
+  .socialList {
+    justify-content: center;
+  }
+}
+
 .socialLink {
   width: 2.25rem;
   height: 2.25rem;

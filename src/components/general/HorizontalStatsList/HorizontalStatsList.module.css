@@ -106,3 +106,9 @@
     font-size: clamp(1.35rem, 7vw, 1.8rem);
   }
 }
+
+@media (max-width: 425px) {
+  .value {
+    font-size: var(--fs-h5) !important;
+  }
+}

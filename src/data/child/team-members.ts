@@ -102,7 +102,7 @@ export const profiles: Profile[] = [
     whyJoined:
       "Securing a consumer app is important. Securing systems that hold the personal data of every American is something else entirely.",
     shipped:
-      "Led the security overhaul of the State Department visa system, closing vulnerabilities that had gone unpatched for years.",
+      "Led the security overhaul of the State Dept. visa system, closing vulnerabilities that had gone unpatched for years.",
   },
   {
     name: "Jessica Liu",
@@ -125,17 +125,17 @@ export const beforeAfter: BeforeAfter[] = [
   {
     name: "Sarah P.",
     before: { title: "Principal Engineer", company: "Google", work: "Optimized ad delivery serving billions of impressions" },
-    now: { title: "Senior Software Engineer", agency: "Department of Veterans Affairs", work: "Rebuilt the disability claims pipeline \u2014 a single deploy affects 4M+ veterans" },
+    now: { title: "Senior Software Engineer", agency: "Dept. of Veterans Affairs", work: "Rebuilt the disability claims pipeline \u2014 a single deploy affects 4M+ veterans" },
   },
   {
     name: "Marcus W.",
     before: { title: "Senior Designer", company: "IDEO", work: "Designed products for Fortune 500 consumer brands" },
-    now: { title: "Product Designer", agency: "Department of Education", work: "Redesigned FAFSA, unlocking billions in student aid for millions of families" },
+    now: { title: "Product Designer", agency: "Dept. of Education", work: "Redesigned FAFSA, unlocking billions in student aid for millions of families" },
   },
   {
     name: "Kira O.",
     before: { title: "Product Lead", company: "Stripe", work: "Managed payments infrastructure for thousands of businesses" },
-    now: { title: "Product Manager", agency: "Department of State", work: "Shipped the digital passport renewal system serving 2M+ applicants in Q1" },
+    now: { title: "Product Manager", agency: "Dept. of State", work: "Shipped the digital passport renewal system serving 2M+ applicants in Q1" },
   },
   {
     name: "David T.",
@@ -145,12 +145,12 @@ export const beforeAfter: BeforeAfter[] = [
   {
     name: "Ana K.",
     before: { title: "SRE", company: "Amazon", work: "Kept e-commerce services up during Black Friday" },
-    now: { title: "Site Reliability Engineer", agency: "Department of Veterans Affairs", work: "Cut VA.gov mean recovery time from 4 hours to 15 minutes \u2014 for systems veterans depend on daily" },
+    now: { title: "Site Reliability Engineer", agency: "Dept. of Veterans Affairs", work: "Cut VA.gov mean recovery time from 4 hours to 15 minutes \u2014 for systems veterans depend on daily" },
   },
   {
     name: "Jessica L.",
     before: { title: "Senior Consultant", company: "Deloitte", work: "Advised on IT procurement for state governments" },
-    now: { title: "Procurement Specialist", agency: "Department of Homeland Security", work: "Restructured $2.3B in legacy IT contracts, saving $400M in taxpayer money" },
+    now: { title: "Procurement Specialist", agency: "Dept. of Homeland Security", work: "Restructured $2.3B in legacy IT contracts, saving $400M in taxpayer money" },
   },
 ];
 
