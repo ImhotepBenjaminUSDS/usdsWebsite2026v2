@@ -10,6 +10,8 @@
   display: flex;
   justify-content: center;
   height: var(--header-height);
+  min-height: var(--header-height);
+  max-height: var(--header-height);
   flex-direction: column;
   /* align-items: center; */
 }
@@ -302,12 +304,28 @@
 }
 
 @media (max-width: 63.9375em) {
+  .wrapper {
+    /* Keep fixed headers from resizing during mobile viewport chrome changes. */
+    height: var(--header-height);
+    min-height: var(--header-height);
+    max-height: var(--header-height);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    will-change: transform;
+  }
+
   .innerWrapper {
     width: 100%;
+    min-height: var(--header-height);
+    max-height: var(--header-height);
   }
 
   .inner {
     gap: var(--space-s);
+    min-height: var(--header-height);
+    max-height: var(--header-height);
   }
 
   .mobileToggle {
