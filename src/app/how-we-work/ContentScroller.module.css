@@ -9,8 +9,8 @@
 .left {
   flex: 0 0 clamp(16rem, 30vw, 24rem);
   position: sticky;
-  top: calc(var(--header-height) + var(--space-xl));
-  height: calc(100svh - var(--header-height) - var(--space-2xl));
+  top: calc(var(--header-clearance) + var(--space-xl));
+  height: calc(100svh - var(--header-clearance) - var(--space-2xl));
 }
 
 .leftInner {
@@ -81,7 +81,7 @@
 
 .communitySection {
   /* min-height: calc(100svh - var(--header-height) - 3rem); */
-  scroll-margin-top: calc(var(--header-height) + 1rem);
+  scroll-margin-top: calc(var(--header-clearance) + 1rem);
   display: flex;
   align-items: center;
 
@@ -102,7 +102,7 @@
   display: flex;
   flex-direction: column;
   /* gap: var(--space-xl); */
-  min-height: calc(100vh - var(--header-height) - var(--space-2xl));
+  min-height: calc(100vh - var(--header-clearance) - var(--space-2xl));
 }
 
 .card span {

@@ -2,6 +2,8 @@
   --max-layout-width: 2000px;
   --max-content-width: 1440px;
   --header-height: 60px;
+  --header-offset-top: var(--space-m);
+  --header-clearance: calc(var(--header-height) + var(--header-offset-top));
   --backdrop-filter-blur: blur(20px);
 
   --border-radius-primary: 30px;
@@ -264,7 +266,7 @@ summary:focus-visible {
   width: min(100%, var(--max-layout-width));
   min-height: 100lvh;
   margin: 0 auto;
-  padding: calc(var(--header-height) + var(--space-xl))
+  padding: calc(var(--header-clearance) + var(--space-xl))
     var(--page-content-inline-padding);
   display: flex;
   flex-direction: column;
@@ -286,7 +288,7 @@ summary:focus-visible {
 .pageHeroSection {
   --page-hero-default-height: min(
     1500px,
-    calc(100vh - var(--header-height) - var(--space-2xl))
+    calc(100vh - var(--header-clearance) - var(--space-2xl))
   );
   height: var(--page-hero-default-height);
   max-height: 1500px;
@@ -321,7 +323,7 @@ summary:focus-visible {
 
 @media (max-width: 40em) {
   .pageWrap {
-    padding: calc(var(--header-height) + 2.25rem + var(--space-2xl))
+    padding: calc(var(--header-clearance) + 2.25rem + var(--space-2xl))
       clamp(1rem, 4vw, 1.25rem);
     gap: var(--space-l);
   }
@@ -352,7 +354,7 @@ summary:focus-visible {
     overflow-x: hidden;
   }
   .pageWrap {
-    padding: calc(var(--header-height) + var(--space-s))
+    padding: calc(var(--header-clearance) + var(--space-s))
     var(--page-content-inline-padding);
   }
 

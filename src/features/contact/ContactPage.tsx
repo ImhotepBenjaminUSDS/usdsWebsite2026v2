@@ -1,5 +1,5 @@
 import Eyebrow from "@/components/general/Eyebrow";
-import styles from "@/features/apply/ApplyPage.module.css";
+import styles from "./ContactPage.module.css";
 
 const HIGHLIGHTS = [
   "Form is reviewed by a human team",
@@ -7,30 +7,7 @@ const HIGHLIGHTS = [
   "Include context so we can respond quickly",
 ] as const;
 
-const CONTACT_STEPS = [
-  {
-    step: "1",
-    title: "Your details",
-    body: "Share contact information so we can follow up directly.",
-  },
-  {
-    step: "2",
-    title: "Your request",
-    body: "Tell us what you need and provide any useful background.",
-  },
-  {
-    step: "3",
-    title: "Routing and response",
-    body: "We route your note to the right team and follow up.",
-  },
-] as const;
-
-const ACTIVE_STEP_INDEX = 0;
-
 export default function ContactPage() {
-  const activeStep = CONTACT_STEPS[ACTIVE_STEP_INDEX];
-  const stepProgress = `${((ACTIVE_STEP_INDEX + 1) / CONTACT_STEPS.length) * 100}%`;
-
   return (
     <div className={`pageWrap ${styles.page}`}>
       <section className={styles.shell}>
@@ -55,37 +32,6 @@ export default function ContactPage() {
             </li>
           ))}
         </ul>
-
-        <div className={styles.stepTrack} aria-hidden="true">
-          <div className={styles.stepFill} style={{ width: stepProgress }} />
-        </div>
-
-        <p className={styles.stepLine}>
-          <span className={styles.stepLabel}>
-            Step {activeStep.step} of {CONTACT_STEPS.length} - {activeStep.title}
-          </span>
-          <span className={styles.stepSummary}>{activeStep.body}</span>
-        </p>
-
-        <ol className={styles.stepList} aria-label="Contact process">
-          {CONTACT_STEPS.map((step, index) => {
-            const isActive = index === ACTIVE_STEP_INDEX;
-            return (
-              <li
-                key={step.step}
-                className={`${styles.stepItem} ${isActive ? styles.stepItemActive : ""}`}
-              >
-                <span className={styles.stepNumber} aria-hidden="true">
-                  {step.step}
-                </span>
-                <div className={styles.stepBody}>
-                  <p className={styles.stepTitle}>{step.title}</p>
-                  <p className={styles.stepText}>{step.body}</p>
-                </div>
-              </li>
-            );
-          })}
-        </ol>
 
         <form className={styles.form}>
           <label className={styles.field}>

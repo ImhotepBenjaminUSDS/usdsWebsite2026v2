@@ -54,8 +54,8 @@ export default function LongFeatureCard({
   sideLabel,
   animateSideValue,
   sideTone = "blue",
-  surface = "background",
-  showBackground = true,
+  surface,
+  showBackground,
   footer,
 }: LongFeatureCardProps) {
   const hasSideValue = Boolean(sideValue);
@@ -63,6 +63,9 @@ export default function LongFeatureCard({
   const hasNumericValue = hasSideValue && /\d/.test(sideValue ?? "");
   const shouldAnimateValue = animateSideValue ?? hasNumericValue;
   const shouldUseCompactSideValue = (sideValue?.trim().length ?? 0) >= 8;
+  const shouldShowBackground = showBackground ?? Boolean(imageSrc);
+  const cardSurfaceTone: CardSurfaceTone = surface
+    ?? (shouldShowBackground ? "background" : "plain");
   const sideValueClassName = `${styles.sideValue} ${
     shouldUseCompactSideValue ? styles.sideValueCompact : ""
   }`;
@@ -95,10 +98,10 @@ export default function LongFeatureCard({
       }}
     >
       <CardSurface
-        tone={surface}
-        className={`${styles.card} ${!showBackground ? styles.cardNoBackground : ""}`}
+        tone={cardSurfaceTone}
+        className={`${styles.card} ${!shouldShowBackground ? styles.cardNoBackground : ""}`}
       >
-        {showBackground ? (
+        {shouldShowBackground ? (
           <div className={styles.background} style={backgroundStyle} aria-hidden="true" />
         ) : null}
 

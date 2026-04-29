@@ -114,7 +114,7 @@
   }
 
   .outer {
-    margin-block: calc(var(--space-2xl) + var(--space-s));
+    /* margin-block: calc(var(--space-2xl) + var(--space-s)); */
   }
 
   .image {
@@ -139,7 +139,7 @@
 
 @media (max-width: 40em) {
   .outer {
-    margin-block: var(--space-xl);
+    /* margin-block: var(--space-xl); */
   }
 
   .frame {

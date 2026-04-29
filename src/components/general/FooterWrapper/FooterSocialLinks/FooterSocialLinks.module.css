@@ -2,6 +2,13 @@
   width: 100%;
 }
 
+@media (max-width: 425px) {
+  .wrapper {
+    margin: var(--space-s) 0 !important;
+    
+  }
+}
+
 .socialList {
   margin: 0;
   padding: 0;
