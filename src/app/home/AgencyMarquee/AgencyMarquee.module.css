@@ -85,19 +85,3 @@
     padding-inline: 0.85rem;
   }
 }
-
-@media (hover: none), (pointer: coarse) {
-  .track {
-    animation: none;
-  }
-
-  .viewport {
-    overflow-x: auto;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .viewport::-webkit-scrollbar {
-    display: none;
-  }
-}

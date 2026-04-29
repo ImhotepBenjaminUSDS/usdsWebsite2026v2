@@ -196,7 +196,8 @@
 @media (max-width: 425px) {
   .wrapper {
     /* padding: 0; */
-  padding: calc(var(--header-clearance) + var(--space-m)) var(--space-m) var(--space-m); 
+  padding: calc(var(--header-clearance) + var(--space-s)) var(--space-m) var(--space-m) !important; 
+  margin-bottom: var(--space-2xl);
 
   }
 

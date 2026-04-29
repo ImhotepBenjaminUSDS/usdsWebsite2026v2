@@ -21,9 +21,9 @@
 }
 
 @media (max-width: 425px) {
-  .wrapper {
+  /* .wrapper {
     padding: var(--space-s) !important;
-  }
+  } */
 }
 
 @media (max-width: 72em) {
@@ -37,9 +37,9 @@
 }
 
 @media (max-width: 40em) {
-  .wrapper {
+  /* .wrapper {
     padding: 1.25rem 0 calc(1.25rem + var(--header-height));
-  }
+  } */
 
   .innerWrapper {
     padding: 0 clamp(1rem, 4vw, 1.25rem);
