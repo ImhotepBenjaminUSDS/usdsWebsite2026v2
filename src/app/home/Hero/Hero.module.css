@@ -7,7 +7,7 @@
   color: var(--primary-light);
   position: relative;
   overflow: clip;
-  padding: calc(var(--header-clearance) + var(--space-xl)) var(--space-m) var(--space-m); 
+  padding: calc(var(--header-clearance) + var(--space-s)) var(--space-m) var(--space-m); 
 }
 
 .innerWrapper {
