@@ -8,8 +8,7 @@
 }
 
 .hero {
-  /* padding: clamp(var(--space-l), 3vw, var(--space-2xl)); */
-  height: calc(100vh - var(--header-height) - var(--space-2xl));
+  /* Inherit shared hero height from PageHero/pageHeroSection. */
 }
 
 .heroHeader {

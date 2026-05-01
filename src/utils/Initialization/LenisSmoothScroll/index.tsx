@@ -19,6 +19,7 @@ export default function LenisSmoothScroll() {
       gestureOrientation: "vertical",
       autoResize: true,
       infinite: false,
+      prevent: (node) => node.id === "careerRoleModal",
     });
 
     // let rafID: number;

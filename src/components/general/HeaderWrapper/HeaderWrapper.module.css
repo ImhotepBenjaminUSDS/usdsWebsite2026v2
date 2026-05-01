@@ -83,7 +83,7 @@
   align-items: center;
   list-style: none;
   margin: 0;
-  padding: var(--space-s);
+  padding: var(--space-xs);
   gap: var(--space-s);
   justify-content: flex-end;
   height: 100%;
@@ -114,7 +114,7 @@
   align-items: center;
   justify-content: center;
   border-radius: calc(
-    var(--border-radius-tertiary) - var(--space-s)
+    var(--border-radius-tertiary) - var(--space-xs)
   ) !important;
   border: 1px solid transparent;
   transition: var(--transition-fast);

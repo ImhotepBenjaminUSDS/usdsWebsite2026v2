@@ -15,7 +15,7 @@
 }
 
 .hero {
-  gap: var(--space-m);
+  /* gap: var(--space-m); */
 }
 
 .heroSectionHeader {

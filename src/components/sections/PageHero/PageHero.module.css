@@ -1,11 +1,18 @@
 .wrapper {
   width: 100%;
-  justify-content: space-between;
-  padding-top: var(--space-xl);
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .centered {
   --hero-centered-max-width: min(100%, 72rem);
+}
+
+.top,
+.bottom {
+  width: 100%;
+  min-width: 0;
 }
 
 .topRow {
@@ -22,8 +29,12 @@
   min-width: 0;
   display: flex;
   flex-direction: column;
+  /* justify-content: space-between !important; */
   /* align-items: flex-start; */
-  /* gap: var(--space-2xl); */
+  gap: var(--space-2xl);
+  /* border: 1px solid red; */
+  height: 100%;
+
 }
 
 .centered .headerColumn {
@@ -118,6 +129,7 @@
   overflow: hidden;
   background: var(--primary-dark-panel-transparent);
   border: none !important;
+  position: relative;
 }
 
 .imageFrameFrameless {
@@ -134,28 +146,29 @@
   display: block;
 }
 
-.statsGridContent {
-  margin-top: var(--space-m);
-}
 
-.statsGridBottom {
-  margin-top: var(--space-xl);
-}
+
+
 
 .split .statsGridContent,
 .split .statsGridBottom {
-  margin: var(--space-xl) 0;
   display: flex !important;
   flex-wrap: wrap;
   align-content: flex-start;
   row-gap: var(--space-xl) !important;
   column-gap: var(--space-xl) !important;
+  margin-bottom: var(--space-2xl) !important;
+
 }
+
+
 
 .split .statsGridContent > li,
 .split .statsGridBottom > li {
-  flex: 0 1 clamp(11.75rem, 23vw, 15.5rem);
-  max-width: clamp(11.75rem, 23vw, 15.5rem);
+  /* flex: 0 1 25%; */
+  /* min-width: 50%; */
+  /* border: 1px solid blue; */
+  max-width: calc(50% - var(--space-m));
   min-height: 0;
 }
 
@@ -189,6 +202,7 @@
 
 .splitContentStatsInline {
   width: 100%;
+  /* border: 10px solid green; */
 }
 
 .splitContentAfterMedia {

@@ -18,6 +18,7 @@ import {
   type CareersRole,
 } from "@/text/careers";
 import Title from "@/components/general/Title";
+import CareerModal from "@/components/sections/CareerModal";
 
 const HERO_STAT_TONES: HeroStatTone[] = ["blue", "teal", "gold", "sky"];
 const BEFORE_APPLY_CARDS = [
@@ -64,7 +65,8 @@ const AFTER_APPLY_CARDS = [
     description:
       "A human reads every submission. If there is alignment, candidates typically hear back within 1-2 weeks.",
     imageSrc: "/image-breaks/eop-center.jpg",
-    imageAlt: "Central perspective of the Eisenhower Executive Office Building facade.",
+    imageAlt:
+      "Central perspective of the Eisenhower Executive Office Building facade.",
     sideValue: "01",
     sideLabel: "Stage",
   },
@@ -109,8 +111,9 @@ type RoleCardProps = {
   onViewPosition: (role: CareersRole) => void;
 };
 
-const roleTitleIdFromTitle = (title: string) =>
-  `role-modal-title-${title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+function roleTitleIdFromTitle(title: string): string {
+  return `role-modal-title-${title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+}
 
 function RoleCard({ role, index, onViewPosition }: RoleCardProps) {
   const { title, summary, skills, location } = role;
@@ -131,7 +134,8 @@ function RoleCard({ role, index, onViewPosition }: RoleCardProps) {
       titleElement.style.whiteSpace = "nowrap";
       titleElement.style.fontSize = "var(--fs-h3)";
 
-      const needsShrink = titleElement.scrollWidth > titleElement.clientWidth + 1;
+      const needsShrink =
+        titleElement.scrollWidth > titleElement.clientWidth + 1;
 
       titleElement.style.whiteSpace = previousWhiteSpace;
       titleElement.style.fontSize = previousFontSize;
@@ -198,11 +202,9 @@ function RoleCard({ role, index, onViewPosition }: RoleCardProps) {
             <Title text={title} className={styles.roleTitle} alignment="left" />
           </div>
           <p className={styles.roleSummary}>{summary}</p>
-
         </span>
 
         <span className={styles.roleCardBottom}>
-
           <ul className={styles.skillList}>
             {skills.map((skill) => (
               <li key={skill} className={styles.skillItem}>
@@ -245,8 +247,7 @@ export default function CareersPageClient() {
     alignTitleBottom: true,
     subtitle: step.timeline,
     body: step.body,
-    gradientPosition:
-      processCardGradients[index % processCardGradients.length],
+    gradientPosition: processCardGradients[index % processCardGradients.length],
   }));
   const openPositionModal = useCallback((role: CareersRole) => {
     setActiveRole(role);
@@ -342,12 +343,8 @@ export default function CareersPageClient() {
               <ul className={styles.asideFacts}>
                 {hero.facts.map((fact) => (
                   <li key={fact.label} className={styles.asideFact}>
-                    <span className={styles.asideFactLabel}>
-                      {fact.label}
-                    </span>
-                    <span className={styles.asideFactValue}>
-                      {fact.value}
-                    </span>
+                    <span className={styles.asideFactLabel}>{fact.label}</span>
+                    <span className={styles.asideFactValue}>{fact.value}</span>
                   </li>
                 ))}
               </ul>
@@ -413,10 +410,7 @@ export default function CareersPageClient() {
           subtitleAlignment="left"
         />
 
-        <HorizontalCards
-          className={styles.processGrid}
-          cards={processCards}
-        />
+        <HorizontalCards className={styles.processGrid} cards={processCards} />
       </section>
 
       <DividerStars />
@@ -424,112 +418,7 @@ export default function CareersPageClient() {
       <CTASection {...cta} />
 
       {activeRole ? (
-        <div
-          className={styles.roleModalOverlay}
-          onClick={closePositionModal}
-          role="presentation"
-        >
-          <motion.section
-            className={styles.roleModal}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby={roleTitleIdFromTitle(activeRole.title)}
-            onClick={(event) => event.stopPropagation()}
-            initial={{
-              opacity: 0,
-              y: 32,
-              scale: 0.98,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-              scale: 1,
-            }}
-            transition={{
-              duration: 0.28,
-              ease: "easeOut",
-            }}
-          >
-            <div className={styles.roleModalHeader}>
-              <div className={styles.roleModalTags}>
-                <span className={styles.roleModalTag}>{activeRole.location}</span>
-                <span className={styles.roleModalTag}>{activeRole.tour}</span>
-              </div>
-              <button
-                type="button"
-                className={styles.roleModalClose}
-                onClick={closePositionModal}
-                aria-label={`Close ${activeRole.title} position details`}
-              >
-                Close
-              </button>
-            </div>
-
-            <div className={styles.roleModalTitleBlock}>
-              <p className={styles.roleModalEyebrow}>Position overview</p>
-              <h2
-                id={roleTitleIdFromTitle(activeRole.title)}
-                className={styles.roleModalTitle}
-              >
-                {activeRole.title}
-              </h2>
-              <p className={styles.roleModalSummary}>{activeRole.summary}</p>
-            </div>
-
-            <div className={styles.roleModalHighlights}>
-              <article className={styles.roleModalHighlightCard}>
-                <h3>Mission</h3>
-                <p>{activeRole.details.mission}</p>
-              </article>
-              <article className={styles.roleModalHighlightCard}>
-                <h3>Impact</h3>
-                <p>{activeRole.details.impact}</p>
-              </article>
-            </div>
-
-            <div className={styles.roleModalColumns}>
-              <section className={styles.roleModalColumn}>
-                <h3>What you will lead</h3>
-                <ul className={styles.roleModalList}>
-                  {activeRole.details.responsibilities.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </section>
-              <section className={styles.roleModalColumn}>
-                <h3>Strong candidate profile</h3>
-                <ul className={styles.roleModalList}>
-                  {activeRole.details.profile.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </section>
-            </div>
-
-            <section className={styles.roleModalSkillsSection}>
-              <h3>Core skills</h3>
-              <ul className={styles.roleModalSkills}>
-                {activeRole.skills.map((skill) => (
-                  <li key={skill}>{skill}</li>
-                ))}
-              </ul>
-            </section>
-
-            <div className={styles.roleModalActions}>
-              <Link href={activeRole.applyHref} className={styles.roleModalApply}>
-                Apply for this role
-                <ArrowUpRight size={16} />
-              </Link>
-              <button
-                type="button"
-                className={styles.roleModalDismiss}
-                onClick={closePositionModal}
-              >
-                Return to positions
-              </button>
-            </div>
-          </motion.section>
-        </div>
+        <CareerModal closePositionModal={closePositionModal} roleTitleIdFromTitle={roleTitleIdFromTitle} activeRole={activeRole} />
       ) : null}
     </div>
   );

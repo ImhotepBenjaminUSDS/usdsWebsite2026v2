@@ -93,22 +93,9 @@
     flex-direction: row-reverse;
   }
 
-  .imageFrame,
-  .textPane {
-    flex: 1 1 0;
-    width: 50%;
-    min-height: 100%;
-  }
 
-  .imageFrame {
-    height: auto;
-  }
 
-  .textPane {
-    justify-content: center;
-    padding: clamp(0.25rem, 1.5vw, 1rem) 0;
-  }
-} */
+
 
 .slideCounter {
   margin: 0;
@@ -253,10 +240,7 @@
     flex-direction: column;
   }
 
-  .imageFrame {
-    width: 100%;
-    height: clamp(16rem, 58vw, 22rem);
-  }
+
 
   .textPane {
     width: 100%;

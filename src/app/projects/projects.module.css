@@ -7,7 +7,7 @@
 
 .hero {
   width: 100%;
-  gap: var(--space-2xl);
+  /* gap: var(--space-2xl); */
 }
 
 .heroSectionHeader {

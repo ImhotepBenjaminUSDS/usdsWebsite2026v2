@@ -1,13 +1,7 @@
-import { generateMetadata as generateLegacyMetadata } from "@/features/legacy-pages/LegacyPage";
 import ContactPage from "@/features/contact/ContactPage";
+import { buildRouteMetadata } from "@/features/route-content/routeMetadata";
 
-function getLegacyParams() {
-  return Promise.resolve({ legacy: ["contact"] });
-}
-
-export async function generateMetadata() {
-  return generateLegacyMetadata({ params: getLegacyParams() });
-}
+export const metadata = buildRouteMetadata("contact");
 
 export default function Page() {
   return <ContactPage />;

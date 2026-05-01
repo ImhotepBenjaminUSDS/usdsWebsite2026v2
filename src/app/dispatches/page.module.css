@@ -6,7 +6,7 @@
 .hero {
   width: 100%;
   padding-top: var(--space-s) !important;
-  gap: var(--space-xl) !important;
+  /* gap: var(--space-xl) !important; */
 }
 
 .hero :global([class*="sectionHeaderWrapper"]) {
@@ -507,7 +507,7 @@
 
   .hero {
     padding-top: 0 !important;
-    gap: var(--space-l) !important;
+    /* gap: var(--space-l) !important; */
   }
 
   .hero :global([class*="sectionHeaderWrapper"]) {
@@ -542,7 +542,7 @@
   }
 
   .hero {
-    gap: var(--space-m) !important;
+    /* gap: var(--space-m) !important; */
   }
 
   .statsGrid {

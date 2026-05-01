@@ -1,13 +1,7 @@
-import { generateMetadata as generateLegacyMetadata } from "@/features/legacy-pages/LegacyPage";
 import ApplyPage from "@/features/apply/ApplyPage";
+import { buildRouteMetadata } from "@/features/route-content/routeMetadata";
 
-function getLegacyParams() {
-  return Promise.resolve({ legacy: ["apply"] });
-}
-
-export async function generateMetadata() {
-  return generateLegacyMetadata({ params: getLegacyParams() });
-}
+export const metadata = buildRouteMetadata("apply");
 
 export default function Page() {
   return <ApplyPage />;

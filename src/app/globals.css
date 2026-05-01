@@ -1,7 +1,7 @@
 :root {
   --max-layout-width: 2000px;
   --max-content-width: 1440px;
-  --header-height: 60px;
+  --header-height: 55px;
   --header-offset-top: var(--space-m);
   --header-clearance: calc(var(--header-height) + var(--header-offset-top));
   --backdrop-filter-blur: blur(20px);
@@ -17,6 +17,7 @@
   --space-xl: 3rem;
   --space-2xl: 4.5rem;
   --page-content-inline-padding: clamp(2rem, 6vw, calc(var(--space-xl) * 2));
+  --page-hero-height: calc(100vh - var(--header-clearance) - var(--space-xl));
 
   --fs-hero: clamp(3.5rem, 8vw, 5rem);
   --fs-h1: clamp(2.25rem, 5vw, 5rem);
@@ -266,7 +267,7 @@ summary:focus-visible {
   width: min(100%, var(--max-layout-width));
   min-height: 100lvh;
   margin: 0 auto;
-  padding: calc(var(--header-clearance) + var(--space-xl))
+  padding: calc(var(--header-clearance) + var(--space-m))
     var(--page-content-inline-padding);
   display: flex;
   flex-direction: column;
@@ -280,19 +281,16 @@ summary:focus-visible {
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--space-2xl);
-  justify-content: space-between;
+  /* gap: var(--space-2xl); */
+  /* justify-content: space-between; */
 
 }
 
 .pageHeroSection {
-  --page-hero-default-height: min(
-    1500px,
-    calc(100vh - var(--header-clearance) - var(--space-2xl))
-  );
-  height: var(--page-hero-default-height);
+  height: var(--page-hero-height);
   max-height: 1500px;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+
 }
 
 .sectionFrameTonePanel {
@@ -316,7 +314,7 @@ summary:focus-visible {
 
   .pageHeroSection {
     height: auto;
-    min-height: var(--page-hero-default-height);
+    min-height: var(--page-hero-height);
     max-height: none;
   }
 }

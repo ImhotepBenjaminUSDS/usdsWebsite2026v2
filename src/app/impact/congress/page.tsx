@@ -1,20 +1,8 @@
-import LegacyPage, {
-  generateMetadata as generateLegacyMetadata,
-} from "@/features/legacy-pages/LegacyPage";
-import styles from "./page.module.css";
+import RouteContentPageClient from "@/features/route-content/RouteContentPageClient";
+import { buildRouteMetadata } from "@/features/route-content/routeMetadata";
 
-function getLegacyParams() {
-  return Promise.resolve({ legacy: ["impact", "congress"] });
-}
+export const metadata = buildRouteMetadata("impactCongress");
 
-export async function generateMetadata() {
-  return generateLegacyMetadata({ params: getLegacyParams() });
-}
-
-export default function Page() {
-  return (
-    <div className={styles.route}>
-      <LegacyPage params={getLegacyParams()} />
-    </div>
-  );
+export default function ImpactCongressPage() {
+  return <RouteContentPageClient pageKey="impact/congress" />;
 }

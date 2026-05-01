@@ -3,14 +3,14 @@
   width: 100%;
   height: fit-content;
   align-items: stretch;
-  margin-bottom: var(--space-2xl);
+  /* margin-bottom: var(--space-2xl); */
   overflow: hidden;
+
 }
 
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: var(--space-m);
   width: 100%;
   transform-origin: 0% 50%;
 }

@@ -1,20 +1,8 @@
-import LegacyPage, {
-  generateMetadata as generateLegacyMetadata,
-} from "@/features/legacy-pages/LegacyPage";
-import styles from "./page.module.css";
+import RouteContentPageClient from "@/features/route-content/RouteContentPageClient";
+import { buildRouteMetadata } from "@/features/route-content/routeMetadata";
 
-function getLegacyParams() {
-  return Promise.resolve({ legacy: ["impact", "passport"] });
-}
+export const metadata = buildRouteMetadata("impactPassport");
 
-export async function generateMetadata() {
-  return generateLegacyMetadata({ params: getLegacyParams() });
-}
-
-export default function Page() {
-  return (
-    <div className={styles.route}>
-      <LegacyPage params={getLegacyParams()} />
-    </div>
-  );
+export default function ImpactPassportPage() {
+  return <RouteContentPageClient pageKey="impact/passport" />;
 }
