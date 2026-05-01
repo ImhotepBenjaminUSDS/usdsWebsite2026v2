@@ -7,12 +7,19 @@
 
 .centered {
   --hero-centered-max-width: min(100%, 72rem);
+  height: fit-content;
+  min-height: 0;
+  max-height: none;
 }
 
 .top,
 .bottom {
   width: 100%;
   min-width: 0;
+}
+
+.bottom {
+  margin-top: var(--space-xl);
 }
 
 .topRow {
