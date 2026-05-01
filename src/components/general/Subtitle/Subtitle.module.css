@@ -21,6 +21,7 @@
   font-size: var(--fs-h4);
   letter-spacing: 0.02em;
   font-family: var(--font-outfit), sans-serif;
+  margin-bottom: var(--space-m) !important;
 }
 
 .subtitle :global(.line) {
