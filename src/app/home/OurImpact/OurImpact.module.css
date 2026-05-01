@@ -79,7 +79,8 @@
   }
 }
 
-/* @media (min-width: 64em) {
+/* Legacy desktop layout experiment kept for reference.
+@media (min-width: 64em) {
   .sectionTrack {
     min-height: calc(100svh - var(--header-height) - var(--space-xl));
   }
@@ -92,10 +93,8 @@
   .sectionTrack:nth-child(even) .sectionInner {
     flex-direction: row-reverse;
   }
-
-
-
-
+}
+*/
 
 .slideCounter {
   margin: 0;

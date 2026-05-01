@@ -114,7 +114,7 @@
 }
 
 .subTitle {
-  margin: var(--space-s) 0;
+  margin: var(--space-xs) 0;
   visibility: hidden;
   /* max-width: 90vw; */
   font-size: var(--fs-h4);
@@ -133,7 +133,8 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: var(--space-m);
+  column-gap: var(--space-m);
+  row-gap: var(--space-xs);
   margin-top: clamp(0.55rem, 1.1vw, 0.95rem);
   flex-wrap: wrap;
 }
