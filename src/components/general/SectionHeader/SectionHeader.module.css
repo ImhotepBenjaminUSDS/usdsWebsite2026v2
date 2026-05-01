@@ -3,7 +3,7 @@
   width: 100%;
   height: fit-content;
   align-items: stretch;
-  /* margin-bottom: var(--space-2xl); */
+  margin-bottom: var(--space-xl);
   overflow: hidden;
 
 }
